@@ -1,0 +1,9 @@
+# AudAgent Requirements
+# On-the-fly Privacy Auditing for AI Agents
+
+# Core dependencies (minimal - uses Python standard library)
+# Python 3.7+ required
+
+# Optional dependencies for enhanced functionality
+# pyyaml>=6.0  # For YAML policy file support (optional)
+# pytest>=7.0  # For running tests (development)

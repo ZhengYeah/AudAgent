@@ -1,0 +1,66 @@
+{
+  "name": "Example AI Agent Privacy Policy",
+  "version": "1.0",
+  "metadata": {
+    "effective_date": "2024-01-01",
+    "last_updated": "2024-01-01",
+    "jurisdiction": "Global"
+  },
+  "data_categories": {
+    "personal_info": {
+      "description": "User's personal information including name, email, and contact details",
+      "allowed_purposes": [
+        "authentication",
+        "personalization",
+        "support"
+      ],
+      "retention_period": "2 years",
+      "sharing_allowed": false,
+      "sharing_with": []
+    },
+    "usage_data": {
+      "description": "Information about how users interact with the agent",
+      "allowed_purposes": [
+        "analytics",
+        "improvement",
+        "debugging"
+      ],
+      "retention_period": "1 year",
+      "sharing_allowed": true,
+      "sharing_with": [
+        "analytics_service",
+        "internal_team"
+      ]
+    },
+    "conversation_history": {
+      "description": "Chat history and conversation logs",
+      "allowed_purposes": [
+        "personalization",
+        "improvement",
+        "quality_assurance"
+      ],
+      "retention_period": "90 days",
+      "sharing_allowed": false,
+      "sharing_with": []
+    },
+    "financial_data": {
+      "description": "Payment and financial information",
+      "allowed_purposes": [
+        "transaction_processing"
+      ],
+      "retention_period": "7 years",
+      "sharing_allowed": true,
+      "sharing_with": [
+        "payment_processor"
+      ]
+    }
+  },
+  "prohibited_actions": [
+    "data_sharing:personal_info",
+    "data_sharing:conversation_history"
+  ],
+  "required_consents": [
+    "data_collection:personal_info",
+    "data_collection:financial_data"
+  ]
+}
