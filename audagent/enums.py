@@ -11,10 +11,9 @@ class CommandAction(Enum):
     ADD_WEBHOOK = "add_webhook"
     VERBOSE = "verbose"
 
-# TODO: is this necessary for me?
 class HookEventType(Enum):
     """
-    Enum for types of webhook events.
+    Events
     """
     HTTP_REQUEST = "http_request"
     HTTP_RESPONSE = "http_response"
