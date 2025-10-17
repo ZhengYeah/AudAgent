@@ -1,3 +1,6 @@
+"""
+Audagent client for managing the process and sending commands via IPC.
+"""
 import atexit
 import logging
 import multiprocessing
@@ -21,13 +24,14 @@ class AudagentClient(HookCallBackProto):
         """
         _process: The multiprocessing.Process instance for the audagent process.
         _running: A boolean flag indicating if the audagent process is running.
-        _initialized_event: A primitive (multiprocessing.Event) used to signal when the audagent process has initialized.
-        _client_fd: The client end (receiver process) of the multiprocessing.Pipe for sending commands to the audagent process.
-        _audagent_fd: The server end (sender process) of the multiprocessing.Pipe for the audagent process to receive commands.
-        _audagent: An instance of the EventProcessor that runs in the audagent process.
+        _initialized_event: A primitive (multiprocessing.Event) used to signal when the library process is initialized.
+        _client_fd: The client file descriptor (the sender process) of the `multiprocessing.Pipe` for sending commands to the pipe.
+        _audagent_fd: The server file descriptor (the receiver process) of the `multiprocessing.Pipe` for receiving commands from the pipe.
+        _audagent: An instance of the `EventProcessor`, aka the library process.
         _llm_hosts: A list of allowed LLM API hosts for network interception.
         _execution_id: A unique identifier for this client instance, used in commands.
         """
+        # Refer to `multiprocessing.Process` documentation for details on process management.
         self._process: Optional[multiprocessing.Process] = None
         self._running = False
         self._initialized_event = multiprocessing.Event()
@@ -65,6 +69,11 @@ class AudagentClient(HookCallBackProto):
         self._write_command(cmd)
         return cmd.callback_id
 
+    def _write_command(self, cmd: Command) -> None:
+        """Write a command to the audagent pipe."""
+        logger.debug(f"Sending command: {cmd}")
+        self._client_fd.send(cmd.to_dict())
+
     def send_command_wait(self, action: CommandAction, params: Optional[dict[str, Any]] = None, timeout: float = 5.0) -> Optional[CommandResponse]:
         if not self._running:
             raise RuntimeError("Audagent process is not running")
@@ -90,15 +99,15 @@ class AudagentClient(HookCallBackProto):
 
     def _start_audagent(self) -> None:
         """
-        Initialize the command-response pipes and start the audagent process.
+        Initialize the command-response pipes and start the library process.
         """
         if self._running:
-            logger.warning("Audagent process is already running")
+            logger.warning("The library process is already running")
             return
-        logger.debug("Initializing audagent process and command-response pipe...")
+        logger.debug("Initializing the library process and command-response pipe...")
         self._process = multiprocessing.Process(
             # TODO: Write the event processer.
-            target=self._audagent.start, # the event processor
+            target=self._audagent.start, # The event processor. Start the library process.
             args=(self._client_fd, self._initialized_event),
             daemon=True
         )
@@ -117,3 +126,31 @@ class AudagentClient(HookCallBackProto):
         for hook in hooks:
             hook_instance = hook(callback_handler=self) # callback handler is this client
             hook_instance.apply_hook()
+
+    def _cleanup(self) -> None:
+        """Cleanup the audagent process and pipes"""
+        if self._running:
+            self.shutdown()
+
+    def shutdown(self) -> None:
+        if not self._running:
+            logger.warning("Audagent process is not running")
+            return
+        logger.debug("Shutting down audagent process...")
+        try:
+            self.send_command(CommandAction.SHUTDOWN) # Send shutdown command to the pipe
+            self._audagent_fd.close()
+            if self._process:
+                self._process.join(5)
+            if self._process and self._process.is_alive():
+                logger.warning("Audagent process did not shut down gracefully, terminating...")
+                self._process.terminate()
+            time.sleep(0.5) # Give some time to terminate
+            if self._process.is_alive() and self._process.pid:
+                logger.error("Audagent process still alive after terminate, killing...")
+                os.kill(self._process.pid, signal.SIGKILL)
+        except Exception as e:
+            logger.error(f"Error during shutdown: {e}")
+        finally:
+            self._running = False
+            logger.info("Audagent process shut down successfully")
