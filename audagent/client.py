@@ -88,14 +88,32 @@ class AudagentClient(HookCallBackProto):
             except TimeoutError:
                 logger.debug(f"Timeout waiting for response to {action}")
 
-    def _start_audagent(self)           -> None:
-        if self._process is not None and self._process.is_alive():
+    def _start_audagent(self) -> None:
+        """
+        Initialize the command-response pipes and start the audagent process.
+        """
+        if self._running:
             logger.warning("Audagent process is already running")
             return
-        self._process = multiprocessing.Process(target=self._run_audagent_process, args=(self._audagent_fd,), daemon=True)
+        logger.debug("Initializing audagent process and command-response pipe...")
+        self._process = multiprocessing.Process(
+            # TODO: Write the event processer.
+            target=self._audagent.start, # the event processor
+            args=(self._client_fd, self._initialized_event),
+            daemon=True
+        )
         self._process.start()
-        # Wait for initialization
-        if not self._initialized_event.wait(timeout=10.0):
-            raise RuntimeError("Timeout waiting for audagent process to initialize")
         self._running = True
-        logger.info(f"Audagent process started with PID {self._process.pid}")
+        try:
+            # The wait() method blocks until the Event flag is true.
+            # Wait up to 5 seconds for pipe initialization, refer to event_processor.py.
+            self._initialized_event.wait(5)
+        except multiprocessing.TimeoutError:
+            logger.error("Timeout waiting for audagent to initialize")
+        if self._initialized_event.is_set():
+            logger.info("Audagent process initialized successfully")
+
+    def _apply_hooks(self, hooks: list[Type[BaseHook]]) -> None:
+        for hook in hooks:
+            hook_instance = hook(callback_handler=self) # callback handler is this client
+            hook_instance.apply_hook()
