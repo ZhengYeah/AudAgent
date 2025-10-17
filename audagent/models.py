@@ -44,7 +44,7 @@ class Command(RemoveNoneBaseModel):
     @classmethod
     def from_dict(cls, execution_id: str, action: CommandAction, params: Optional[dict[str, Any]] = None) -> "Command":
         """
-        Create a Command instance from a given dictionary.
+        Create a Command instance from a given dictionary of id and parameters.
         """
         return cls(
             execution_id=execution_id,
