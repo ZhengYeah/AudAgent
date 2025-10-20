@@ -1,0 +1,9 @@
+from typing import Protocol
+
+from audagent.webhooks.models import Webhook
+
+
+class WebhookHandlerProto(Protocol):
+    def register_webhook(self, webhook: Webhook) -> None: ...
+    def get_webhooks(self) -> list[Webhook]: ...
+    def remove_webhook(self, guid: str) -> None: ...

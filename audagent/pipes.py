@@ -1,6 +1,6 @@
 """
 Managing pipes for inter-process communication (IPC) between the client and library processes,
-including asynchronous and synchronous read/write operations.
+including asynchronous and synchronous read/write commands.
 """
 import asyncio
 import logging

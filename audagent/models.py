@@ -1,5 +1,8 @@
 """
 Data models and data validation in IPC communication using Pydantic.
+Terms:
+    Command: Represents a command sent between processes.
+    CommandResponse: Represents a response to a command.
 """
 import time
 import uuid
@@ -54,7 +57,7 @@ class Command(RemoveNoneBaseModel):
 
 class CommandResponse(RemoveNoneBaseModel):
     """
-    Response class for IPC communication
+    Response to a command in IPC communication
     Attributes:
         success (bool): Indicates if the response was successful.
         data (Any): Data returned from the command execution.
