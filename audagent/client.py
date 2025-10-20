@@ -17,6 +17,7 @@ from audagent.event_processor import EventProcessor
 from audagent.hooks.base import BaseHook, HookCallBackProto
 from audagent.hooks.models import HookEvent
 from audagent.models import Command, CommandResponse
+from audagent.pipes import Pipes
 
 logger = logging.getLogger(__name__)
 class AudagentClient(HookCallBackProto):
@@ -35,7 +36,7 @@ class AudagentClient(HookCallBackProto):
         self._process: Optional[multiprocessing.Process] = None
         self._running = False
         self._initialized_event = multiprocessing.Event()
-        self._client_fd, self._audagent_fd = multiprocessing.Pipe()
+        self._client_fd, self._audagent_fd = multiprocessing.Pipe() # Two `Connection` objects for IPC.
         self._audagent = EventProcessor()
         self._llm_hosts = [
             "api.openai.com",
@@ -70,9 +71,13 @@ class AudagentClient(HookCallBackProto):
         return cmd.callback_id
 
     def _write_command(self, cmd: Command) -> None:
-        """Write a command to the audagent pipe."""
-        logger.debug(f"Sending command: {cmd}")
-        self._client_fd.send(cmd.to_dict())
+        """Write a command to the pipe."""
+        try:
+            logger.debug(f"Sending command: {cmd.action} with callback_id: {cmd.callback_id} to file descriptor {self._audagent_fd.fileno()}")
+            Pipes.write_payload_sync(self._audagent_fd, cmd) # Write the command to the pipe, refer to the Pipes class
+        except Exception as e:
+            logger.error(f"Error writing command {cmd.action}: {e}")
+            raise
 
     def send_command_wait(self, action: CommandAction, params: Optional[dict[str, Any]] = None, timeout: float = 5.0) -> Optional[CommandResponse]:
         if not self._running:
