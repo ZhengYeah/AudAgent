@@ -147,7 +147,8 @@ class EventProcessor:
     async def _handle_event(self, callback_id: str, event: HookEvent) -> Optional[CommandResponse]:
         for processor in self._processors:
             if processor.can_handle(event.event_type):
-                # Process the event data to extract graph structure; refer to audagent/processing/http_processing.py for processing details
+                # Process the event data to extract graph structure, done by http hooks;
+                # refer to audagent/processing/http_processing.py for processing details
                 structure = await processor.process(event.event_type, event.data)
                 if structure:
                     self._graph_builder.append_structure(structure)
@@ -172,7 +173,8 @@ class EventProcessor:
             self._pipe.close()
         logger.info("EventProcessor shutdown complete")
 
-    def _set_verbose(self) -> None:
+    @staticmethod
+    def _set_verbose() -> None:
         logging.basicConfig(level=logging.DEBUG)
         for logger_name, logger_instance in logging.root.manager.loggerDict.items():
             logger_instance.setLevel(logging.DEBUG)

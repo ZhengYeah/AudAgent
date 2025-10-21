@@ -18,10 +18,10 @@ class Pipes:
     """
     Manages pipes for IPC
     Methods:
-        read_payload: Read a payload from pipe asynchronously, used by the library process.
-        write_payload_sync: Write a command to the command pipe synchronously, used by the client process.
-        write_payload: Write a command to the command pipe asynchronously, used by the client process.
-        read_response: Read a response from the response pipe synchronously with timeout, used by the client process.
+    - read_payload: Read a payload from pipe asynchronously, used by the library process.
+    - write_payload_sync: Write a command to the command pipe synchronously, used by the client process.
+    - write_payload: Write a command to the command pipe asynchronously, used by the client process.
+    - read_response: Read a response from the response pipe synchronously with timeout, used by the client process.
     """
     def __init__(self) -> None:
         pass
