@@ -8,7 +8,6 @@ from pydantic import BaseModel, Field
 
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import EdgeType, NodeType
-# TODO: Figure out this
 from audagent.utils.flavor_manager import FlavorManager
 
 class GraphExtractor(BaseModel, ABC):
@@ -43,6 +42,9 @@ class Edge(BaseModel):
     created_at: float = Field(default_factory=lambda: time.time())
 
 class ModelGenerateEdge(Edge):
+    """
+    Edge representing a model generation event
+    """
     edge_type: EdgeType = EdgeType.MODEL_GENERATE
     prompt: str
     class Config:
