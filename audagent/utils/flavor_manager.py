@@ -13,8 +13,7 @@ class FlavorManager(Generic[KeyT, ValT]):
     "keys" (aka flavors), and then to use these implementations without calling them explicitly.
 
     The flavors must be hashable (to serve as a dict's keys).
-
-    for example, suppose you have these classes:
+    For example, suppose you have these classes:
 
     ```
     class Base:
@@ -31,10 +30,9 @@ class FlavorManager(Generic[KeyT, ValT]):
     ```
 
     You want to create an instance according to a string parameter - 'hello' for `Hello`, 'hi' for `Hi`.
-
     Naive way to do it is with a switch-case:
-    ```
 
+    ```
     from base import Base, Hello, Hi
 
     def base_factory(flavor: str) -> Base:
@@ -58,7 +56,6 @@ class FlavorManager(Generic[KeyT, ValT]):
     This is where FlavorManager comes to the rescue. you can create a manager and add each class with its flavor:
     ```
     from typing import Type
-
     from agent_shared.flavor_manager import FlavorManager
 
     class Base:
@@ -79,7 +76,6 @@ class FlavorManager(Generic[KeyT, ValT]):
     ```
     now you can implement your code in this way:
     ```
-
     from base import Base, base_flavor_manager
 
     def base_factory(flavor: str) -> Base:

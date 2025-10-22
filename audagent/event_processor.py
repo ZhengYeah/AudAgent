@@ -6,7 +6,6 @@ import asyncio
 import logging
 from multiprocessing.connection import Connection
 from multiprocessing.synchronize import Event
-from tabnanny import verbose
 from typing import Optional
 
 from pydantic import ValidationError
@@ -21,7 +20,6 @@ from audagent.graph.graph import GraphBuilder
 from audagent.webhooks.handler import WebhookHandler
 from audagent.webhooks.models import Webhook
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
@@ -54,7 +52,7 @@ class EventProcessor:
         self._init_event = init_event
         try:
             asyncio.run(self._start()) # asyncio.run to start the event loop and run the _start coroutine
-        except Exception as e:
+        except Exception:
             pass
         logger.info("Audagent shutdown successfully")
 

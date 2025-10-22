@@ -47,12 +47,11 @@ class HttpProcessor(BaseProcessor):
                 try:
                     req_model = model_type.model_validate_json(body)
                     return self._parse_nodes_and_edges(req_model, request=request)
-                except ValidationError as e:
+                except ValidationError:
                     continue
         logger.warning(f"Did not find a suitable model for: {body}")
         return None
 
-    @staticmethod
     def _parse_nodes_and_edges(self, payload: GraphExtractor, **kwargs: Any) -> Optional[GraphStructure]:
         nodes, edges = payload.extract_graph_structure(**kwargs)
         logger.debug(f"Extracted {len(nodes)} nodes and {len(edges)} edges from HTTP payload")

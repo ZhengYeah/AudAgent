@@ -8,4 +8,4 @@ It reads incoming command payloads (actual data or content) from the IPC reader,
 Hook implementations are what event_processor calls to perform the real work for a received command/event.
 
 Interaction flow: 
-client -> send via pipes -> event_processor (receive) -> dispatch -> hooks (execute) -> event_processor -> return response -> client.
+client -> send events/commands via pipes -> event_processor (receive) -> dispatch -> hooks (execute) -> event_processor -> return response -> client.

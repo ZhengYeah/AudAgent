@@ -9,7 +9,6 @@ import os
 import signal
 import time
 import uuid
-from http.client import responses
 from typing import Any, Optional, Type
 
 from audagent.enums import CommandAction
@@ -47,7 +46,7 @@ class AudagentClient(HookCallBackProto):
             "api.together.xyz",
             "localhost",
         ]
-        atexit.register(self.cleanup)
+        atexit.register(self._cleanup)
         self._execution_id = uuid.uuid4().hex
         self._start_audagent()
 
@@ -85,7 +84,6 @@ class AudagentClient(HookCallBackProto):
         cmd = Command.from_dict(self._execution_id, action, params) # Create Command instance with the Command model
         self._write_command(cmd)
         # Wait for response
-        start_time = time.time()
         while True:
             try:
                 response = self._read_response(timeout) # always returns CommandResponse or None or raises TimeoutError
@@ -101,6 +99,9 @@ class AudagentClient(HookCallBackProto):
                     return None
             except TimeoutError:
                 logger.debug(f"Timeout waiting for response to {action}")
+
+    def _read_response(self, timeout: float = 5.0) -> Optional[CommandResponse]:
+        return Pipes.read_response(self._audagent_fd, timeout)
 
     def _start_audagent(self) -> None:
         """
