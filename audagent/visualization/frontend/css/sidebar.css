@@ -1,0 +1,110 @@
+/* Sidebar Styles */
+.sidebar {
+  width: 25%;
+  /* 1/4 of the screen width */
+  height: 100vh;
+  background-color: #111;
+  /* Dark background similar to --bg-color in react-flow */
+  color: #f3f4f6;
+  /* Text color similar to --text-color in react-flow */
+  border-left: 1px solid #6c757d;
+  /* Border color similar to border-secondary */
+  overflow: auto;
+  font-family: 'Fira Mono', Monospace;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  font-size: 0.875rem;
+  /* Bootstrap's small text size */
+}
+
+.sidebar h2 {
+  padding: 1rem;
+  border-bottom: 1px solid #6c757d;
+  /* Border color for border-bottom */
+  font-size: 1.25rem;
+  /* Bootstrap's h5 font size */
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #111;
+  /* Dark background like --bg-color */
+}
+
+table thead {
+  background-color: #343a40;
+  /* Darker background for table header */
+}
+
+table th,
+table td {
+  padding: 0.5rem;
+  text-align: left;
+  color: #f3f4f6;
+  /* Text color like --text-color */
+  white-space: nowrap;
+  /* Prevent line breaks inside the cells */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.table td:nth-child(3),
+.table th:nth-child(3),
+/* Source column */
+.table td:nth-child(4),
+.table th:nth-child(4) {
+  /* Target column */
+  max-width: 150px;
+  /* Adjust width as needed */
+}
+
+.table td:nth-child(2), .table th:nth-child(2) { /* Time column */
+  max-width: 80px; /* Narrow column for hh:mm:ss */
+}
+
+
+table th {
+  font-size: 0.875rem;
+  /* Bootstrap's small text size */
+}
+
+table tbody tr {
+  height: 50px;
+  /* Fixed row height */
+}
+
+table tbody tr:hover {
+  background-color: #495057;
+  /* Hover effect similar to table-hover */
+}
+
+table .table-primary {
+  background-color: #2a8af6;
+  /* Blue background for highlighted rows */
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+  /* Adjust this to your preference */
+}
+
+.text-truncate:hover {
+  cursor: pointer;
+}
+
+.small {
+  font-size: 0.875rem;
+}
