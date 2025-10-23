@@ -325,8 +325,8 @@ const Flow = () => {
         >
           <div className="logo-overlay">
             <img 
-              src="logo.png" 
-              alt="agentwatch" 
+              src="public/vite.svg"
+              alt="AudAgent Logo"
               className="logo" 
             />
           </div>

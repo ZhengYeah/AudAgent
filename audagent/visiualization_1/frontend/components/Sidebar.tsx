@@ -1,8 +1,9 @@
 import { type Edge } from '@xyflow/react';
 import { motion } from "framer-motion";
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { LuChevronDown, LuChevronRight, LuClipboardCopy, LuLink2, LuLink2Off } from 'react-icons/lu';
-import '../css/sidebar.css';
+import '../sidebar.css'
 
 type EdgeData = Edge & {
   createdAt?: number;
@@ -27,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
     return (b.createdAt || 0) - (a.createdAt || 0);
   });
 
-  const getTime = (epochTime) => {
+    const getTime = (epochTime: number) => {
     const date = new Date(epochTime * 1000); // Convert epoch time to milliseconds
     const hours = String(date.getUTCHours()).padStart(2, '0');
     const minutes = String(date.getUTCMinutes()).padStart(2, '0');

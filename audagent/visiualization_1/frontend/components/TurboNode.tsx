@@ -1,4 +1,5 @@
-import React, { memo, type ReactNode } from 'react';
+import * as React from 'react';
+import { memo, type ReactNode } from 'react';
 
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react';
 
