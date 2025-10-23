@@ -13,7 +13,7 @@ from audagent.utils.custom_logging_formatter import setup_logging
 """
 Import Audagent to monitor LLM interactions
 """
-from audagent.core import initialize
+import audagent
 
 setup_logging(logging.DEBUG)
 logging.getLogger()
@@ -67,5 +67,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    initialize()
     asyncio.run(main())

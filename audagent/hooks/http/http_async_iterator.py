@@ -9,7 +9,7 @@ import httpcore
 import httpx
 
 from audagent.enums import HookEventType
-from audagent.hooks.http.models import HTTPResponseData
+from audagent.hooks.http.models import HttpResponseData
 from audagent.hooks.models import HookEvent
 
 T = TypeVar('T')
@@ -47,7 +47,7 @@ class HttpAsyncIterator(Generic[T]):
                 )
             except Exception as e:
                 return original
-            response_data = HTTPResponseData(
+            response_data = HttpResponseData(
                 status_code=httpx_response.status_code,
                 headers=dict(httpx_response.headers),
                 body=httpx_response.text
