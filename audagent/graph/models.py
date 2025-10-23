@@ -59,6 +59,11 @@ class MCPMethodType(str, Enum):
     TOOL_CALL = "tools/call"
     TOOL_LIST = "tools/list"
 
+class McpCallEdge(Edge):
+    edge_type: EdgeType = EdgeType.MCP_CALL
+    method: MCPMethodType
+    payload: Optional[dict[str, Any]] = None
+
 GraphStructure: TypeAlias = tuple[list[Node], list[Edge]]
 
 graph_extractor_fm: FlavorManager[str, Type[GraphExtractor]] = FlavorManager()
