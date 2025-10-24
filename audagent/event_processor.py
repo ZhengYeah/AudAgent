@@ -59,7 +59,10 @@ class EventProcessor:
         logger.info("Audagent shutdown successfully")
 
     async def _start(self) -> None:
+        # Initialize command queue and webhook handler
         self._command_queue = asyncio.Queue()
+        self._webhook_handler = WebhookHandler()
+
         await self._register_processors()
 
         for task_num in range(self.NUM_WORKERS):

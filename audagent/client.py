@@ -53,6 +53,7 @@ class AudagentClient(HookCallBackProto):
         self._apply_hooks([HttpcoreHook]) # Apply Http hooks
         atexit.register(self._cleanup)
         self._execution_id = uuid.uuid4().hex
+        logger.debug("Preparing to start audagent process...")
         self._start_audagent() # Start the audagent process
 
     @staticmethod
@@ -110,14 +111,13 @@ class AudagentClient(HookCallBackProto):
 
     def _start_audagent(self) -> None:
         """
-        Initialize the command-response pipes and start the library process.
+        Initialize the library process.
         """
         if self._running:
             logger.warning("The library process is already running")
             return
-        logger.debug("Initializing the library process and command-response pipe...")
+        logger.debug("Initializing the library process...")
         self._process = multiprocessing.Process(
-            # TODO: Write the event processer.
             target=self._audagent.start, # The event processor. Start the library process.
             args=(self._client_fd, self._initialized_event),
             daemon=True
@@ -131,7 +131,7 @@ class AudagentClient(HookCallBackProto):
         except multiprocessing.TimeoutError:
             logger.error("Timeout waiting for audagent to initialize")
         if self._initialized_event.is_set():
-            logger.info("Audagent process initialized successfully")
+            logger.info("Audagent initialized successfully")
 
     def _apply_hooks(self, hooks: list[Type[BaseHook]]) -> None:
         for hook in hooks:

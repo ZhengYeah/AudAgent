@@ -30,7 +30,6 @@ def setup_logging(level=logging.DEBUG) -> None:
     # Remove any existing handlers (to avoid duplicates)
     for h in root_logger.handlers[:]:
         root_logger.removeHandler(h)
-    # Console handler with a custom formatter
     console = logging.StreamHandler()
     console.setFormatter(ColorFormatter())
     root_logger.addHandler(console)

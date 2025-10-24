@@ -109,7 +109,6 @@ const Flow = () => {
     socket.addEventListener('message', (event) => {
       try {
         const message: WebSocketMessage = JSON.parse(event.data);
-        
         console.log('Message from server:', message);
         
         switch (message.type) {
@@ -325,7 +324,7 @@ const Flow = () => {
         >
           <div className="logo-overlay">
             <img 
-              src="public/vite.svg"
+              src="vite.svg"
               alt="AudAgent Logo"
               className="logo" 
             />

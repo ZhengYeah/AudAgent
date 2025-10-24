@@ -2,6 +2,7 @@ import os
 import sys
 from multiprocessing import current_process
 
+from audagent.consts import AUDAGENT_INTERNAL
 from audagent.core import initialize
 
 
@@ -17,11 +18,13 @@ def _safe_to_start() -> bool:
     Conditions:
     - Must be in the main process.
     - Must not be called from a spawned subprocess.
+    - Must not be running.
     - Must not be running in a pytest environment.
     - Must not be directly executing the "audagent" package
     """
     return current_process().name == "MainProcess" \
         and not hasattr(sys, '_called_from_spawn') \
+        and os.environ.get(AUDAGENT_INTERNAL) is None \
         and "PYTEST_VERSION" not in os.environ \
         and not _is_direct_execution()
 

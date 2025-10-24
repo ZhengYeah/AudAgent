@@ -5,30 +5,27 @@ Usage:
 $ python cli.py ui [-r]
 to launch the AudAgent UI. Use -r to rebuild the UI.
 """
-
 import os
 import shutil
 import sys
-from pathlib import Path
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from audagent.consts import AUDAGENT_INTERNAL
-os.environ[AUDAGENT_INTERNAL] = "1"
-
+import logging
 import argparse
 import asyncio
-import logging
 import subprocess
 import webbrowser
 from pathlib import Path
 from typing import Any
 
-from audagent.visualization.app import run_fastapi
-from audagent.visualization.consts import VISUALIZATION_SERVER_PORT
+sys.path.insert(0, str(Path(__file__).parent.parent))
 from audagent.utils.custom_logging_formatter import setup_logging
-
 setup_logging(logging.DEBUG)
 logging.getLogger()
+
+from audagent.visualization.app import run_fastapi
+from audagent.visualization.consts import VISUALIZATION_SERVER_PORT
+from audagent.consts import AUDAGENT_INTERNAL
+os.environ[AUDAGENT_INTERNAL] = "1" # Set running flag for AudAgent
+
 
 async def run_server() -> None:
     try:
