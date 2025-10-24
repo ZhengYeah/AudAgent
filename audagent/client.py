@@ -56,6 +56,14 @@ class AudagentClient(HookCallBackProto):
         logger.debug("Preparing to start audagent process...")
         self._start_audagent() # Start the audagent process
 
+    def _apply_hooks(self, hooks: list[Type[BaseHook]]) -> None:
+        for hook in hooks:
+            hook_instance = hook(callback_handler=self) # callback handler is this client
+            hook_instance.apply_hook()
+            if isinstance(hook_instance, HttpInterceptHook):
+                for host in self._llm_hosts:
+                    hook_instance.add_intercept_rule(host)
+
     @staticmethod
     def set_verbose() -> None:
         logging.getLogger().setLevel(logging.DEBUG)
@@ -133,13 +141,7 @@ class AudagentClient(HookCallBackProto):
         if self._initialized_event.is_set():
             logger.info("Audagent initialized successfully")
 
-    def _apply_hooks(self, hooks: list[Type[BaseHook]]) -> None:
-        for hook in hooks:
-            hook_instance = hook(callback_handler=self) # callback handler is this client
-            hook_instance.apply_hook()
-            if isinstance(hook_instance, HttpInterceptHook):
-                for host in self._llm_hosts:
-                    hook_instance.add_intercept_rule(host)
+
 
     def _cleanup(self) -> None:
         """Cleanup the audagent process and pipes"""
