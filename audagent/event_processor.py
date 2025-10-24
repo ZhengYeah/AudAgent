@@ -17,6 +17,7 @@ from audagent.pipes import Pipes
 from audagent.processing.base import BaseProcessor
 from audagent.processing.http_processing import HttpProcessor
 from audagent.graph.graph import GraphBuilder
+from audagent.visualization.consts import VISUALIZATION_SERVER_PORT
 from audagent.webhooks.handler import WebhookHandler
 from audagent.webhooks.models import Webhook
 
@@ -43,6 +44,7 @@ class EventProcessor:
         self._command_queue: Optional[asyncio.Queue] = None
         self._workers: list[asyncio.Task[None]] = [] # See python asyncio documentation for concepts on Python coroutines and tasks
         self._event_poller: Optional[asyncio.Task[None]] = None
+        # Concrete processors
         self._graph_builder = GraphBuilder()
         self._webhook_handler: Optional[WebhookHandler] = None
         self._supported_processors: list[type[BaseProcessor]] = [HttpProcessor]
@@ -59,8 +61,12 @@ class EventProcessor:
     async def _start(self) -> None:
         self._command_queue = asyncio.Queue()
         await self._register_processors()
+
         for task_num in range(self.NUM_WORKERS):
             self._workers.append(asyncio.create_task(self._consume_events(), name=f"task-{task_num}"))
+
+        self._register_visualization_webhook()
+
         logger.debug("EventProcessor started")
         if self._init_event:
             # An Event object wraps a boolean flag that can be in one of two states: "set" (True) or "not set" (False).
@@ -70,6 +76,12 @@ class EventProcessor:
         logger.debug("Stopped polling events")
         await asyncio.gather(*self._workers)
         logger.info("Audagent workers stopped")
+
+    def _register_visualization_webhook(self) -> None:
+        if self._webhook_handler is None:
+            return
+        webhook = Webhook(url=f"http://localhost:{VISUALIZATION_SERVER_PORT}/api/events",)
+        self._webhook_handler.register_webhook(webhook)
 
     async def _register_processors(self) -> None:
         for processor in self._supported_processors:

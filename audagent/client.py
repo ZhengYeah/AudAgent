@@ -14,6 +14,8 @@ from typing import Any, Optional, Type
 from audagent.enums import CommandAction
 from audagent.event_processor import EventProcessor
 from audagent.hooks.base import BaseHook, HookCallBackProto
+from audagent.hooks.http.http_base_hook import HttpInterceptHook
+from audagent.hooks.http.httpcore_hook import HttpcoreHook
 from audagent.hooks.models import HookEvent
 from audagent.models import Command, CommandResponse
 from audagent.pipes import Pipes
@@ -45,10 +47,13 @@ class AudagentClient(HookCallBackProto):
             "api.groq.com",
             "api.together.xyz",
             "localhost",
+            "127.0.0.1"
+
         ]
+        self._apply_hooks([HttpcoreHook]) # Apply Http hooks
         atexit.register(self._cleanup)
         self._execution_id = uuid.uuid4().hex
-        self._start_audagent()
+        self._start_audagent() # Start the audagent process
 
     @staticmethod
     def set_verbose() -> None:
@@ -64,7 +69,7 @@ class AudagentClient(HookCallBackProto):
 
     def send_command(self, action: CommandAction, params: Optional[dict[str, Any]] = None) -> str:
         if not self._running:
-            raise RuntimeError("Audagent process is not running")
+            raise RuntimeError("Library is not initialized")
         cmd = Command.from_dict(self._execution_id, action, params) # Create Command instance with the Command model
         self._write_command(cmd)
         return cmd.callback_id
@@ -80,7 +85,7 @@ class AudagentClient(HookCallBackProto):
 
     def send_command_wait(self, action: CommandAction, params: Optional[dict[str, Any]] = None, timeout: float = 5.0) -> Optional[CommandResponse]:
         if not self._running:
-            raise RuntimeError("Audagent process is not running")
+            raise RuntimeError("Library is not initialized")
         cmd = Command.from_dict(self._execution_id, action, params) # Create Command instance with the Command model
         self._write_command(cmd)
         # Wait for response
@@ -132,6 +137,9 @@ class AudagentClient(HookCallBackProto):
         for hook in hooks:
             hook_instance = hook(callback_handler=self) # callback handler is this client
             hook_instance.apply_hook()
+            if isinstance(hook_instance, HttpInterceptHook):
+                for host in self._llm_hosts:
+                    hook_instance.add_intercept_rule(host)
 
     def _cleanup(self) -> None:
         """Cleanup the audagent process and pipes"""

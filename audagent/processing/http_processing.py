@@ -5,6 +5,7 @@ from pydantic import ValidationError
 
 from audagent.enums import HookEventType
 from audagent.graph.enums import HttpModel
+# TODO: Check the graph extractor here.
 from audagent.graph.models import GraphExtractor, GraphStructure, graph_extractor_fm
 from audagent.hooks.http.models import HttpRequestData, HttpResponseData
 from audagent.processing.base import BaseProcessor
