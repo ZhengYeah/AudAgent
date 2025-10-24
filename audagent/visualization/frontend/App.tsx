@@ -1,3 +1,4 @@
+// Make sure to install the `websockets` package in your Python environment
 import {
   addEdge,
   Controls,

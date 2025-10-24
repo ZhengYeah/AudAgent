@@ -138,11 +138,10 @@ class AudagentClient(HookCallBackProto):
             self._initialized_event.wait(5)
         except multiprocessing.TimeoutError:
             logger.error("Timeout waiting for audagent to initialize")
+            self._cleanup()
         if self._initialized_event.is_set():
             logger.info("Audagent initialized successfully")
             print("Audagent initialized successfully")
-
-
 
     def _cleanup(self) -> None:
         """Cleanup the audagent process and pipes"""

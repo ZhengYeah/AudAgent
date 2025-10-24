@@ -41,7 +41,7 @@ class EventProcessor:
         self._init_event: Optional[Event] = None
         self._processors: list[BaseProcessor] = [] # This version only supports HttpProcessor.
         self._pipe: Optional[Connection] = None
-        self._command_queue: Optional[asyncio.Queue] = None
+        self._command_queue: Optional[asyncio.Queue[Command]] = None
         self._workers: list[asyncio.Task[None]] = [] # See python asyncio documentation for concepts on Python coroutines and tasks
         self._event_poller: Optional[asyncio.Task[None]] = None
         # Concrete processors
@@ -116,9 +116,10 @@ class EventProcessor:
     async def _poll_events(self) -> None:
         if not self._pipe or not self._command_queue:
             raise RuntimeError("Pipe or command queue not initialized, check whether Audagent started correctly")
+
+        logger.debug("Polling for events...")
         try:
             while True:
-                logger.debug("Polling for events...")
                 try:
                     payload = await Pipes.read_payload(self._pipe) # Read payload from the pipe asynchronously
                     if payload is None:
@@ -156,6 +157,7 @@ class EventProcessor:
                     return CommandResponse(success=True, callback_id=cmd.callback_id)
         except Exception as e:
             logger.error(f"Error decoding command: {e}")
+        return None
 
     async def _handle_event(self, callback_id: str, event: HookEvent) -> Optional[CommandResponse]:
         for processor in self._processors:
