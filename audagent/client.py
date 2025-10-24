@@ -36,7 +36,7 @@ class AudagentClient(HookCallBackProto):
         # Refer to `multiprocessing.Process` documentation for details on process management.
         self._process: Optional[multiprocessing.Process] = None
         self._running = False
-        self._initialized_event = multiprocessing.Event()
+        self._initialized_event = multiprocessing.Event() # Initializes a new Event object with the internal flag set to False.
         self._client_fd, self._audagent_fd = multiprocessing.Pipe() # Two `Connection` objects for IPC.
         self._audagent = EventProcessor()
         self._llm_hosts = [
@@ -140,6 +140,7 @@ class AudagentClient(HookCallBackProto):
             logger.error("Timeout waiting for audagent to initialize")
         if self._initialized_event.is_set():
             logger.info("Audagent initialized successfully")
+            print("Audagent initialized successfully")
 
 
 
