@@ -8,11 +8,10 @@ from audagent.graph.enums import HttpModel
 from audagent.graph.models import GraphExtractor, GraphStructure
 from audagent.hooks.http.models import HttpRequestData, HttpResponseData
 from audagent.processing.base import BaseProcessor
-# TODO: Check the graph extractor here.
-from audagent.llm.ollama_models import graph_extractor_fm
 from audagent.processing.normalizer.base import BaseHttpContentNormalizer
 from audagent.processing.normalizer.event_stream_normalizer import EventStreamNormalizer
 from audagent.processing.normalizer.ndjson_normalizer import NdjsonContentNormalizer
+from audagent.llm.ollama_models import graph_extractor_fm # This import all the graph extractor models; refer to llm/__init__.py
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +53,7 @@ class HttpProcessor(BaseProcessor):
                     break
             for model_type in models:
                 try:
-                    req_model = model_type.model_validate_json(body)
+                    req_model = model_type.model_validate_json(body) # TODO: BUG
                     return self._parse_nodes_and_edges(req_model, request=request)
                 except ValidationError:
                     continue

@@ -164,7 +164,7 @@ class EventProcessor:
             if processor.can_handle(event.event_type):
                 # Process the event data to extract graph structure, done by http hooks;
                 # refer to audagent/processing/http_processing.py for processing details
-                structure = await processor.process(event.event_type, event.data) # TODO: WHY the processor here is base processor? http processor?
+                structure = await processor.process(event.event_type, event.data)
                 if structure:
                     self._graph_builder.append_structure(structure)
                     if self._webhook_handler is not None:

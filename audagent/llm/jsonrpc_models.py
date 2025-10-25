@@ -41,7 +41,7 @@ class JSONRPCRequest(GraphExtractor):
     jsonrpc: str
     id: int | str 
 
-    def extract_graph_structure(self, reqres: HTTPRequestData | HTTPResponseData, **kwargs: Any) -> GraphStructure:
+    def extract_graph_structure(self, reqres: HttpRequestData | HttpResponseData, **kwargs: Any) -> GraphStructure:
         if self.method == MCPMethodType.TOOL_CALL:
             return self._extract_tool_call_graph_structure(reqres)
         elif self.method == MCPMethodType.TOOL_LIST:
@@ -49,7 +49,7 @@ class JSONRPCRequest(GraphExtractor):
         else:
             raise ValueError(f"Unsupported method: {self.method}")
     
-    def _extract_tool_list_graph_structure(self, reqres: HTTPRequestData | HTTPResponseData) -> GraphStructure:
+    def _extract_tool_list_graph_structure(self, reqres: HttpRequestData | HttpResponseData) -> GraphStructure:
         nodes: list[Node] = []
         edges: list[Edge] = []
 
@@ -63,7 +63,7 @@ class JSONRPCRequest(GraphExtractor):
         edges.append(edge)
         return nodes, edges
     
-    def _extract_tool_call_graph_structure(self, reqres: HTTPRequestData | HTTPResponseData) -> GraphStructure:
+    def _extract_tool_call_graph_structure(self, reqres: HttpRequestData | HttpResponseData) -> GraphStructure:
         nodes: list[Node] = []
         edges: list[Edge] = []
 
@@ -97,7 +97,7 @@ class JSONRPCResponse(GraphExtractor):
     result: ToolCallResult | ToolListResult
     request: Optional[JSONRPCRequest] = None
 
-    def extract_graph_structure(self, reqres: HTTPRequestData | HTTPResponseData, **kwargs: Any) -> GraphStructure:
+    def extract_graph_structure(self, reqres: HttpRequestData | HttpResponseData, **kwargs: Any) -> GraphStructure:
         if isinstance(self.result, ToolCallResult):
             if self.result.isError:
                 return ([], [])
@@ -107,7 +107,7 @@ class JSONRPCResponse(GraphExtractor):
         else:
             raise ValueError(f"Unsupported method: {self.method}")
     
-    def _extract_tool_list_graph_structure(self, reqres: HTTPRequestData | HTTPResponseData) -> GraphStructure:
+    def _extract_tool_list_graph_structure(self, reqres: HttpRequestData | HttpResponseData) -> GraphStructure:
         nodes: list[Node] = []
         edges: list[Edge] = []
 
@@ -133,7 +133,7 @@ class JSONRPCResponse(GraphExtractor):
 
         return nodes, edges
     
-    def _extract_tool_call_graph_structure(self, reqres: HTTPRequestData | HTTPResponseData) -> GraphStructure:
+    def _extract_tool_call_graph_structure(self, reqres: HttpRequestData | HttpResponseData) -> GraphStructure:
         nodes: list[Node] = []
         edges: list[Edge] = []
 
