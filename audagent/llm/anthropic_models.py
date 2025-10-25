@@ -2,8 +2,7 @@ from typing import Any, Optional
 
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import HttpModel
-from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node,
-                                     ToolCallEdge, ToolNode, graph_extractor_fm)
+from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node, ToolCallEdge, ToolNode, graph_extractor_fm)
 from audagent.llm.models import AssistantMessage, SystemMessage, TextContent, Tool, ToolUse, UserMessage
 
 
@@ -14,18 +13,15 @@ class AnthropicRequestModel(GraphExtractor):
     tools: list[Tool] = []
 
     def extract_graph_structure(self, **kwargs: Any) -> GraphStructure:
-        """
-        self.model: Model name
-        self.tools: List of Tools
-        self.messages: List of messages
-        """
         nodes: list[Node] = []
         edges: list[Edge] = []
+
         model: LLMNode = LLMNode(node_id=self.model)
         nodes.append(model)
         for tool in self.tools:
             tool_node = ToolNode(node_id=tool.name, tool_description=tool.description)
             nodes.append(tool_node)
+
         # Parse all messages, worst case we'll have duplicate edges but that's fine
         for message in self.messages:
             if isinstance(message, UserMessage):

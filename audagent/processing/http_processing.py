@@ -5,10 +5,11 @@ from pydantic import ValidationError
 
 from audagent.enums import HookEventType
 from audagent.graph.enums import HttpModel
-# TODO: Check the graph extractor here.
-from audagent.graph.models import GraphExtractor, GraphStructure, graph_extractor_fm
+from audagent.graph.models import GraphExtractor, GraphStructure
 from audagent.hooks.http.models import HttpRequestData, HttpResponseData
 from audagent.processing.base import BaseProcessor
+# TODO: Check the graph extractor here.
+from audagent.llm.ollama_models import graph_extractor_fm
 from audagent.processing.normalizer.base import BaseHttpContentNormalizer
 from audagent.processing.normalizer.event_stream_normalizer import EventStreamNormalizer
 from audagent.processing.normalizer.ndjson_normalizer import NdjsonContentNormalizer
@@ -36,8 +37,15 @@ class HttpProcessor(BaseProcessor):
         return await self._handle_payload(payload)
 
     async def _handle_payload(self, request: HttpRequestData | HttpResponseData) -> Optional[GraphStructure]:
+        """
+        Handle the HTTP request/response payload to extract graph structure according to http requests.
+        Make sure to implement all the necessary graph extractors for models in HttpModel.
+        This is a brute-force approach that tries to match the body content to each model until one succeeds.
+        """
+        # Creat a list of graph extractor instances (of requests and responses) based on HttpModel enum; refer to llm/*_models.py for details.
         models: list[type[GraphExtractor]] = [graph_extractor_fm[model] for model in HttpModel]
         body: Optional[str] = request.body
+
         if body is not None and body != "":
             for normalizer in self._content_normalizers:
                 # Brute force check for content type match

@@ -1,12 +1,10 @@
-
 from typing import Any
 
 from pydantic import BaseModel, ValidationError
 
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import HttpModel
-from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node,
-                                     ToolCallEdge, ToolNode, graph_extractor_fm)
+from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node, ToolCallEdge, ToolNode, graph_extractor_fm)
 from audagent.llm.models import AssistantMessage, Message, UserMessage
 
 

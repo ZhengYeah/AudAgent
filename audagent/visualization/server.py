@@ -5,6 +5,7 @@ from typing import Any, Type
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.staticfiles import StaticFiles
+from websockets import WebSocketException # We found that FastAPI's WebSocket is not enough (ws connection failed errors)
 
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import EdgeType, NodeType
@@ -34,7 +35,7 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
     try:
         while True:
             await websocket.receive_text()
-    except WebSocketDisconnect:
+    except WebSocketException or WebSocketDisconnect:
         connections.remove(websocket)
 
 def create_edge_from_data(edge_data: dict[str, Any]) -> Edge:

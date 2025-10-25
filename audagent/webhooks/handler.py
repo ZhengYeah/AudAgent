@@ -40,7 +40,7 @@ class WebhookHandler(WebhookHandlerProto):
 
     async def notify_webhooks(self, structure: GraphStructure) -> None:
         """
-        Notify all registered webhooks: about the provided graph structure.
+        Notify all registered webhooks: about the extracted graph structure.
         """
         nodes_event: Optional[WebhookEvent] = None
         edges_event: Optional[WebhookEvent] = None

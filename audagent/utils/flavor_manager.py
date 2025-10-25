@@ -9,8 +9,8 @@ T = TypeVar("T")
 
 class FlavorManager(Generic[KeyT, ValT]):
     """
-    Manages "flavoring" of classes, typically in order to assign implementations of some base class to different
-    "keys" (aka flavors), and then to use these implementations without calling them explicitly.
+    Manages "flavoring" of classes, typically in order to assign implementations of some base class to different "keys" (aka flavors),
+    and then to use these implementations without calling them explicitly.
 
     The flavors must be hashable (to serve as a dict's keys).
     For example, suppose you have these classes:
@@ -35,7 +35,7 @@ class FlavorManager(Generic[KeyT, ValT]):
     ```
     from base import Base, Hello, Hi
 
-    def base_factory(flavor: str) -> Base:
+    def base_factory(flavor: str) -> Base: # To create instances according to flavor
         if flavor == 'hello':
             return Hello()
         elif flavor == 'hi':
@@ -53,7 +53,8 @@ class FlavorManager(Generic[KeyT, ValT]):
     The problem with that approach is not only it is cumbersome (each new implementation needs to be added to the if-else),
     but also this couples the implementations to the user (because you need to directly import it and call it)
 
-    This is where FlavorManager comes to the rescue. you can create a manager and add each class with its flavor:
+    This is where FlavorManager comes to the rescue. You can create a manager and add each class with its flavor:
+
     ```
     from typing import Type
     from agent_shared.flavor_manager import FlavorManager
@@ -64,7 +65,7 @@ class FlavorManager(Generic[KeyT, ValT]):
 
     base_flavor_manager: FlavorManager[str, Type[Base]] = FlavorManager()
 
-    @base_flavor_manager.flavor("hello")
+    @base_flavor_manager.flavor("hello") # Create a Hello class associated with 'hello' flavor
     class Hello(Base):
         def foo(bar: str):
             return f"hello {bar}"
@@ -74,7 +75,9 @@ class FlavorManager(Generic[KeyT, ValT]):
         def foo(bar: str):
             return f"hi {bar}"
     ```
+
     now you can implement your code in this way:
+
     ```
     from base import Base, base_flavor_manager
 
@@ -86,6 +89,17 @@ class FlavorManager(Generic[KeyT, ValT]):
         print(a.foo("a"))
 
         b: Base = base_factory("hi")
+        print(b.foo("b"))
+    ```
+
+    or even more simply:
+
+    ```
+    def main():
+        a: Base = base_flavor_manager["hello"]()
+        print(a.foo("a"))
+
+        b: Base = base_flavor_manager["hi"]()
         print(b.foo("b"))
     ```
 
@@ -126,7 +140,7 @@ class FlavorManager(Generic[KeyT, ValT]):
 
     def flavor(self, flavor: KeyT, value: Optional[ValT] = None) -> Optional[Callable[[T], T]]:
         """
-        adds a flavor to the flavor manager.
+        Adds a flavor to the flavor manager.
         Two use cases for this method exists: either supply the value of the flavor immediately, or supply only the flavor.
         The second form is designed to be used as a decorator for classes or functions:
 
@@ -148,7 +162,7 @@ class FlavorManager(Generic[KeyT, ValT]):
     
     def flavor_of(self, value: ValT) -> KeyT:
         """
-        returns the key of this specific value
+        Returns the key of this specific value.
         """
         for key, val in self._flavors.items():
             if val == value:

@@ -140,8 +140,7 @@ class AudagentClient(HookCallBackProto):
             logger.error("Timeout waiting for audagent to initialize")
             self._cleanup()
         if self._initialized_event.is_set():
-            logger.info("Audagent initialized successfully")
-            print("Audagent initialized successfully")
+            logger.info("Audagent initialized successfully") # TODO: this logger does not appear
 
     def _cleanup(self) -> None:
         """Cleanup the audagent process and pipes"""
