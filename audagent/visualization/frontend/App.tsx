@@ -323,13 +323,6 @@ const Flow = () => {
           edgeTypes={customEdgeTypes}
           defaultEdgeOptions={defaultEdgeOptions}
         >
-          <div className="logo-overlay">
-            <img 
-              src="vite.svg"
-              alt="AudAgent Logo"
-              className="logo" 
-            />
-          </div>
           <Controls showInteractive={true} />
           <svg>
             <defs>

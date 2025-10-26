@@ -23,5 +23,5 @@ class Webhook(RemoveNoneBaseModel):
 
 class WebhookEvent(RemoveNoneBaseModel):
     event_type: WebhookEventType
-    data: dict[str, Any]
+    data: list[dict[str, Any]]
     

@@ -1,4 +1,7 @@
-from typing import Any
+"""
+Parse Agents' messages and tool uses based on their request and response.
+"""
+from typing import Any, Optional
 
 from pydantic import BaseModel
 
@@ -6,8 +9,9 @@ from audagent.llm.enums import Role
 
 class Tool(BaseModel):
     name: str
+    input_schema: dict[str, Any]
     description: str
-    parameters: dict[str, Any]
+    # parameters: dict[str, Any]
 
 class ToolUse(BaseModel):
     type: str = "tool_use"
@@ -18,6 +22,7 @@ class ToolUse(BaseModel):
 class TextContent(BaseModel):
     type: str = "text"
     text: str
+    model_config = {"extra": "ignore"}
 
 class Message(BaseModel):
     role: Role
@@ -28,7 +33,7 @@ class UserMessage(Message):
 
 class AssistantMessage(Message):
     role: Role = Role.ASSISTANT
-    content: str
+    content: list[ToolUse | TextContent]
 
 class SystemMessage(Message):
     role: Role = Role.SYSTEM

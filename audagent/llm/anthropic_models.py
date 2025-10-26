@@ -10,7 +10,8 @@ from audagent.llm.models import AssistantMessage, SystemMessage, TextContent, To
 class AnthropicRequestModel(GraphExtractor):
     messages: list[UserMessage | AssistantMessage | SystemMessage]
     model: str
-    tools: list[Tool] = []
+    tools: list[Tool]
+    model_config = {"extra": "ignore"} # Ignore validation for extra fields
 
     def extract_graph_structure(self, **kwargs: Any) -> GraphStructure:
         nodes: list[Node] = []
@@ -47,12 +48,13 @@ class AnthropicRequestModel(GraphExtractor):
 
 @graph_extractor_fm.flavor(HttpModel.ANTHROPIC_RESPONSE)
 class AnthropicResponseModel(GraphExtractor):
+    model: str
     id: str
     type: str
     role: str
-    model: str
     content: list[TextContent | ToolUse]
     stop_reason: Optional[str]
+    model_config = {"extra": "ignore"}
 
     def extract_graph_structure(self, **kwargs: Any) -> GraphStructure:
         edges: list[Edge] = []

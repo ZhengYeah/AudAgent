@@ -1,3 +1,4 @@
+import json
 import logging
 from typing import Any, Optional
 
@@ -47,13 +48,13 @@ class HttpProcessor(BaseProcessor):
 
         if body is not None and body != "":
             for normalizer in self._content_normalizers:
-                # Brute force check for content type match
+                # Normalize to json if the content type is text stream or ndjson
                 if any(sct in request.headers.get("content-type", 'text/plain') for sct in normalizer.supported_content_types):
                     body = normalizer.normalize(body)
                     break
             for model_type in models:
                 try:
-                    req_model = model_type.model_validate_json(body) # TODO: BUG
+                    req_model = model_type.model_validate_json(body)
                     return self._parse_nodes_and_edges(req_model, request=request)
                 except ValidationError:
                     continue

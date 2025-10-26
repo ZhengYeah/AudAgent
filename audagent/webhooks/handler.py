@@ -26,18 +26,6 @@ class WebhookHandler(WebhookHandlerProto):
     async def close(self) -> None:
         await self._session.close()
 
-    async def _send_webhook(self, webhook: Webhook, event: WebhookEvent) -> None:
-        try:
-            async with self._session.request(webhook.method,
-                                             webhook.url,
-                                             headers=webhook.headers,
-                                             json=event.model_dump()) as response:
-                logger.debug(f"Webhook response: {response.status}")
-        except aiohttp.ClientError as e:
-            logger.error(f"Error sending webhook: {e}")
-        finally:
-            await aiohttp.ClientSession().close()
-
     async def notify_webhooks(self, structure: GraphStructure) -> None:
         """
         Notify all registered webhooks: about the extracted graph structure.
@@ -54,19 +42,32 @@ class WebhookHandler(WebhookHandlerProto):
         if nodes_event:
             for webhook in self.get_webhooks():
                 tasks.append(asyncio.create_task(self._send_webhook(webhook, nodes_event)))
-            await asyncio.gather(*tasks) # Await all nodes webhook to complete
+            await asyncio.gather(*tasks)
         tasks.clear()
         if edges_event:
             for webhook in self.get_webhooks():
                 tasks.append(asyncio.create_task(self._send_webhook(webhook, edges_event)))
             await asyncio.gather(*tasks)
 
+    def get_webhooks(self) -> list[Webhook]:
+        return list(self._webhooks.values())
+
+    async def _send_webhook(self, webhook: Webhook, event: WebhookEvent) -> None:
+        try:
+            # Send the webhook event and wait for response from the fastapi server
+            async with self._session.request(webhook.method,
+                                             webhook.url,
+                                             headers=webhook.headers, # TODO: why the headers is null?
+                                             json=event.model_dump()) as response:
+                logger.debug(f"Webhook response: {response.status}")
+        except aiohttp.ClientError as e:
+            logger.error(f"Error sending webhook: {e}")
+        finally:
+            await aiohttp.ClientSession().close()
+
     def register_webhook(self, webhook: Webhook) -> None:
         logger.debug(f"Registering webhook: {webhook.method} {webhook.url}")
         self._webhooks[webhook.guid] = webhook
-
-    def get_webhooks(self) -> list[Webhook]:
-        return list(self._webhooks.values())
 
     def remove_webhook(self, guid: str) -> None:
         if webhook := self._webhooks.get(guid):

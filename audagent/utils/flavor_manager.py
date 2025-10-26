@@ -1,3 +1,9 @@
+"""
+A module that provides a FlavorManager class to manage different "flavors" (implementations) of classes based on keywords.
+Used in instance creation of LLM request and response models according to the LLM provider (e.g., OpenAI, Anthropic, Ollama);
+refer to audagent/llm/*models.py for usage examples.
+"""
+
 import abc
 from typing import Any, Callable, Generic, Optional, TypeVar, Union, cast, overload
 

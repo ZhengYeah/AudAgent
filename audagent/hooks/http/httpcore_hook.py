@@ -121,7 +121,7 @@ class HttpcoreHook(HttpInterceptHook):
 
     def _intercepted_handle_request(self, conn_self: httpcore.HTTPConnection, request: httpcore.Request) -> httpcore.Response:
         self._request_callback_sync(request)
-        response: httpcore.Response = self._original_handle_request(conn_self, request)
+        response: httpcore.Response = self._original_handle_request(conn_self, request) # type: ignore
         try:
             self._response_callback_sync(response)
         except Exception as e:

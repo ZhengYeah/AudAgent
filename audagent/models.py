@@ -15,7 +15,7 @@ from audagent.enums import CommandAction
 class RemoveNoneBaseModel(BaseModel):
     def model_dump(self, **kwargs: Any) -> dict[str, Any]:
         """
-        This Overrides the default model dump method to exclude None values
+        This Overrides Pydantic's default model dump method to exclude None values
         """
         return super().model_dump(exclude_none=True)
 
