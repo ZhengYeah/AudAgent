@@ -1,10 +1,11 @@
 from typing import Any, Optional
 
+from presidio_analyzer import AnalyzerEngine
+
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import HttpModel
 from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node, ToolCallEdge, ToolNode, graph_extractor_fm)
 from audagent.llm.models import AssistantMessage, SystemMessage, TextContent, Tool, ToolUse, UserMessage
-
 
 @graph_extractor_fm.flavor(HttpModel.ANTHROPIC_REQUEST)
 class AnthropicRequestModel(GraphExtractor):
@@ -53,7 +54,6 @@ class AnthropicResponseModel(GraphExtractor):
     type: str
     role: str
     content: list[TextContent | ToolUse]
-    stop_reason: Optional[str]
     model_config = {"extra": "ignore"}
 
     def extract_graph_structure(self, **kwargs: Any) -> GraphStructure:
@@ -70,3 +70,6 @@ class AnthropicResponseModel(GraphExtractor):
                                                         target_node_id=APP_NODE_ID)
                 edges.append(model_generate_edge)
         return [], edges
+
+    def presidio_annotate(self) -> dict[str, Any]:
+        return {"model": self.model, "id": self.id, "type": self.type, "role": self.role}

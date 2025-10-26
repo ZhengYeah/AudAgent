@@ -43,7 +43,7 @@ class Edge(BaseModel):
 
 class ModelGenerateEdge(Edge):
     """
-    Edge representing a model generation event
+    Edge representing model generation messages.
     """
     edge_type: EdgeType = EdgeType.MODEL_GENERATE
     prompt: str
