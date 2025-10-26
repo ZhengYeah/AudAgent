@@ -53,7 +53,6 @@ class AudagentClient(HookCallBackProto):
         self._apply_hooks([HttpcoreHook]) # Apply Http hooks
         atexit.register(self._cleanup)
         self._execution_id = uuid.uuid4().hex
-        logger.debug("Preparing to start audagent process...")
         self._start_audagent() # Start the audagent process
 
     def _apply_hooks(self, hooks: list[Type[BaseHook]]) -> None:

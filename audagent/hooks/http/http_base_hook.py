@@ -25,7 +25,7 @@ class HttpInterceptHook(BaseHook):
                 return True
         return False
 
-    # We should normalize requests and responses to a common format
+    # Normalize requests and responses to a common format if needed
     @abstractmethod
     def _normalize_request(self, *args: Any, **kwargs: Any) -> Any: ...
 

@@ -13,4 +13,4 @@ class HttpResponseData(BaseModel):
     status_code: int
     headers: dict[str, str]
     body: Optional[str] = None
-    request: dict[str, Any] = {}  # To link back to the request data
+    request: dict[str, Any] = {}

@@ -23,14 +23,14 @@ class Command(RemoveNoneBaseModel):
     """
     Command class for IPC communication
     Attributes:
-        action (str): The action to be performed.
-        params (dict[str, Any]): Parameters for the action.
-        callback_id (str): Unique identifier for the callback.
-        execution_id (str): Identifier for the execution context.
-        timestamp (float): Time when the command was created.
+    - action (str): The action to be performed.
+    - params (dict[str, Any]): Parameters for the action.
+    - callback_id (str): Unique identifier for the callback.
+    - execution_id (str): Identifier for the execution context.
+    - timestamp (float): Time when the command was created.
     Methods:
-        to_dict(): Converts the Command instance to a dictionary.
-        from_dict(): Creates a Command instance from a dictionary.
+    - to_dict(): Converts the Command instance to a dictionary.
+    - from_dict(): Creates a Command instance from a dictionary.
     """
     action: CommandAction
     params: dict[str, Any] = Field(default_factory=dict)
@@ -56,18 +56,6 @@ class Command(RemoveNoneBaseModel):
         )
 
 class CommandResponse(RemoveNoneBaseModel):
-    """
-    Response to a command in IPC communication
-    Attributes:
-        success (bool): Indicates if the response was successful.
-        data (Any): Data returned from the command execution.
-        error (Optional[str]): Error message if the command failed.
-        callback_id (Optional[str]): Identifier for the callback.
-        timestamp (float): Time when the response was created.
-    Methods:
-        to_dict(): Converts the CommandResponse instance to a dictionary.
-        from_dict(): Creates a CommandResponse instance from a dictionary.
-    """
     success: bool
     data: Any = None
     error: Optional[str] = None
@@ -82,7 +70,4 @@ class CommandResponse(RemoveNoneBaseModel):
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "CommandResponse":
-        """
-        Create a CommandResponse instance from a given dictionary.
-        """
         return cls(**data)

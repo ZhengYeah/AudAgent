@@ -65,5 +65,5 @@ class McpCallEdge(Edge):
     payload: Optional[dict[str, Any]] = None
 
 GraphStructure: TypeAlias = tuple[list[Node], list[Edge]]
-
-graph_extractor_fm: FlavorManager[str, Type[GraphExtractor]] = FlavorManager() # Flavor manager for GraphExtractor class; refer to /llm/*.py
+# Flavor manager for GraphExtractor class; refer to /llm/*.py
+graph_extractor_fm: FlavorManager[str, Type[GraphExtractor]] = FlavorManager()
