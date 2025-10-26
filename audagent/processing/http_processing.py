@@ -42,6 +42,7 @@ class HttpProcessor(BaseProcessor):
         This is a brute-force approach that tries to match the body content to each model until one succeeds.
         """
         # Creat a list of graph extractor instances (of requests and responses) based on HttpModel enum; refer to llm/*_models.py for details.
+        # Actually, this is where the FlavorManager benefits us: Create instances based on a set of flavors (HttpModel enum here).
         models: list[type[GraphExtractor]] = [graph_extractor_fm[model] for model in HttpModel]
         body: Optional[str] = request.body
 
@@ -55,12 +56,13 @@ class HttpProcessor(BaseProcessor):
                 try:
                     req_model = model_type.model_validate_json(body)
                     return self._parse_nodes_and_edges(req_model, request=request)
+                # TODO: Check presidio info from edges, also return presidio info updates if any
                 except ValidationError:
                     continue
         logger.warning(f"Did not find a suitable model for: {body}")
         return None
 
-    def _parse_nodes_and_edges(self, payload: GraphExtractor, **kwargs: Any) -> Optional[GraphStructure]:
-        nodes, edges = payload.extract_graph_structure(**kwargs)
+    def _parse_nodes_and_edges(self, payload: GraphExtractor, **kwargs: Any) -> Optional[GraphStructure]: # payload = req_model, i.e. LLM data model
+        nodes, edges = payload.extract_graph_structure(**kwargs) # Refer to each LLM's extract_graph_structure() method
         logger.debug(f"Extracted {len(nodes)} nodes and {len(edges)} edges from HTTP payload")
         return nodes, edges

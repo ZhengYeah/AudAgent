@@ -38,7 +38,7 @@ class WebhookHandler(WebhookHandlerProto):
             edges_event = WebhookEvent(event_type=WebhookEventType.EDGES, data=[e.model_dump() for e in edges])
         tasks: list[asyncio.Task[None]] = []
 
-        # First notify about nodes, then edges. (TODO: sort them by create_at)
+        # First notify about nodes, then edges. (TODO: Ensure to sort them by create_at)
         if nodes_event:
             for webhook in self.get_webhooks():
                 tasks.append(asyncio.create_task(self._send_webhook(webhook, nodes_event)))
@@ -54,7 +54,7 @@ class WebhookHandler(WebhookHandlerProto):
 
     async def _send_webhook(self, webhook: Webhook, event: WebhookEvent) -> None:
         try:
-            # Send the webhook event and wait for response from the fastapi server
+            # Send the webhook (mainly graph info) and wait for response from the fastapi server
             async with self._session.request(webhook.method,
                                              webhook.url,
                                              headers=webhook.headers,

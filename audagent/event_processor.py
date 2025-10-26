@@ -81,6 +81,9 @@ class EventProcessor:
         logger.info("Audagent workers stopped")
 
     def _register_visualization_webhook(self) -> None:
+        """
+        Here is the http port to the FastAPI server for visualization.
+        """
         if self._webhook_handler is None:
             return
         webhook = Webhook(url=f"http://localhost:{VISUALIZATION_SERVER_PORT}/api/events",)
@@ -164,11 +167,13 @@ class EventProcessor:
             if processor.can_handle(event.event_type):
                 # Process the event data to extract graph structure, done by http hooks;
                 # refer to audagent/processing/http_processing.py for processing details
-                structure = await processor.process(event.event_type, event.data)
+                # TODO: Add presidio info processor and notify webhooks accordingly
+                structure = await processor.process(event.event_type, event.data) # Refer to HttpProcessor.process()
                 if structure:
                     self._graph_builder.append_structure(structure)
                     if self._webhook_handler is not None:
                         # Notify registered webhooks about the updated graph structure
+                        # TODO: Also notify presidio info updates
                         await self._webhook_handler.notify_webhooks(self._graph_builder.get_structure())
                 break
         return CommandResponse(success=True, callback_id=callback_id)

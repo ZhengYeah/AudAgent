@@ -1,3 +1,7 @@
+"""
+Unified graph models (sent to React) for representing nodes and edges.
+"""
+
 import time
 import uuid
 from abc import abstractmethod, ABC
@@ -40,6 +44,7 @@ class Edge(BaseModel):
     source_node_id: str
     target_node_id: str
     created_at: float = Field(default_factory=lambda: time.time())
+    # pii_info: Optional[dict[str, tuple[int, int]]] # PII information; for presidio annotations, it is dict[entity_type: (start, end)]
 
 class ModelGenerateEdge(Edge):
     """
@@ -47,8 +52,7 @@ class ModelGenerateEdge(Edge):
     """
     edge_type: EdgeType = EdgeType.MODEL_GENERATE
     prompt: str
-    class Config:
-        extra = "allow"
+    model_config = {"extra": "ignore"} # Allow extra fields for Pydantic
 
 class ToolCallEdge(Edge):
     edge_type: EdgeType = EdgeType.TOOL_CALL

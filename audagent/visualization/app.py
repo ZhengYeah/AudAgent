@@ -15,10 +15,5 @@ async def run_fastapi(server_path: str = "server:app") -> None:
     print(f"Running UI http://localhost:{VISUALIZATION_SERVER_PORT}/ui")
     await server.serve()
 
-async def main() -> None:
-    # TODO: Do we need to run Streamlit here as well?
-    """Run FastAPI and Streamlit concurrently"""
-    await run_fastapi()
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(run_fastapi())
