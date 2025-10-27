@@ -34,7 +34,7 @@ class AnthropicRequestModel(GraphExtractor):
                 model_generate_edge = ModelGenerateEdge(prompt=message.content,
                                                         source_node_id=APP_NODE_ID,
                                                         target_node_id=model.node_id,
-                                                        pii_info=pii_info)
+                                                        sensitive_info=pii_info)
                 edges.append(model_generate_edge)
             elif isinstance(message, AssistantMessage):
                 # May contain both ToolUse and TextContent in this stage
@@ -49,7 +49,7 @@ class AnthropicRequestModel(GraphExtractor):
                                                       target_node_id=content.name,
                                                       tool_input=content.input,
                                                       tool_name=content.name,
-                                                      pii_info=pii_info)
+                                                      sensitive_info=pii_info)
                         edges.append(tool_call_edge)
                     elif isinstance(content, TextContent):
                         results = analyzer.analyze(text=content.text, entities=[], language="en")
@@ -57,7 +57,7 @@ class AnthropicRequestModel(GraphExtractor):
                         model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                                 source_node_id=self.model,
                                                                 target_node_id=APP_NODE_ID,
-                                                                pii_info=pii_info)
+                                                                sensitive_info=pii_info)
                         edges.append(model_generate_edge)
         return nodes, edges
 
@@ -83,7 +83,7 @@ class AnthropicResponseModel(GraphExtractor):
                 tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                               target_node_id=content.name,
                                               tool_input=content.input,
-                                              pii_info=pii_info)
+                                              sensitive_info=pii_info)
                 edges.append(tool_call_edge)
             elif isinstance(content, TextContent):
                 results = analyzer.analyze(text=content.text, entities=[], language="en")
@@ -91,6 +91,6 @@ class AnthropicResponseModel(GraphExtractor):
                 model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                         source_node_id=self.model,
                                                         target_node_id=APP_NODE_ID,
-                                                        pii_info=pii_info)
+                                                        sensitive_info=pii_info)
                 edges.append(model_generate_edge)
         return [], edges

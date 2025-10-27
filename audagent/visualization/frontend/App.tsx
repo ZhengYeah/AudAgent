@@ -91,14 +91,14 @@ const initialEdges = [
     target: 'retrieve_user_emails-and-a-long-long-function-name',
     type: 'turbo',
     createdAt: 1629782400,
-    data: {prompt: 'Prompt 1', tool_input: 'Tool input 1'}
+    data: {prompt: 'Prompt 1', tool_input: 'Tool input 1', createdAt: 1629782400, source_node_id: 'llama3.1-very-long-model-name', target_node_id: 'retrieve_user_emails-and-a-long-long-function-name'}
   },
 ];
 
   // Nodes' and edges' visualization component
   const Flow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState([initialUserNode]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(graphEdges);
   const [selectedNodes, setSelectedNodes] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);
@@ -253,7 +253,7 @@ const initialEdges = [
               y = calculateYCoordinate(n);
             }
             icon = <LuDrill/>;
-            topIcon = <LuCodesandbox/>;
+            topIcon = <LuCloud/>;
             break;
           default:
             break;

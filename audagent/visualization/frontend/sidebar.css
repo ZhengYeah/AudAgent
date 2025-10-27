@@ -1,27 +1,22 @@
 /* Sidebar Styles */
 .sidebar {
   width: 25%;
-  /* 1/4 of the screen width */
   height: 100vh;
-  background-color: white;
+  background-color: #FCFAF2;
   color: #f3f4f6;
-  /* Text color similar to --text-color in react-flow */
   border-left: 1px solid #6c757d;
-  /* Border color similar to border-secondary */
   overflow: auto;
   font-family: 'Fira Mono', Monospace;
   font-weight: 500;
   letter-spacing: -0.2px;
   font-size: 0.875rem;
-  /* Bootstrap's small text size */
 }
 
 .sidebar h2 {
   padding: 1rem;
-  border-bottom: 1px solid #6c757d;
-  /* Border color for border-bottom */
   font-size: 1.25rem;
-  /* Bootstrap's h5 font size */
+  margin-block-start: 1em;
+  margin-block-end: 1em;
 }
 
 .table-responsive {
@@ -32,6 +27,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   background-color: rgba(200, 255, 190, 0.45);
+  border-bottom: #0C4842 1px solid;
 }
 
 /* Background for table header */
@@ -39,7 +35,6 @@ table thead {
   background-color: #c8ffbe;
   border-top: #0C4842 1px solid;
   border-bottom: #0C4842 1px solid;
-  /*box-sizing: border-box;*/
 }
 
 table th,
@@ -54,7 +49,6 @@ table td {
   text-overflow: ellipsis;
 }
 
-
 .table td:nth-child(3),
 .table th:nth-child(3),
 /* Source column */
@@ -62,13 +56,11 @@ table td {
 .table th:nth-child(4) {
   /* Target column */
   max-width: 150px;
-  /* Adjust width as needed */
 }
 
 .table td:nth-child(2), .table th:nth-child(2) { /* Time column */
   max-width: 80px; /* Narrow column for hh:mm:ss */
 }
-
 
 table th {
   font-size: 0.875rem;
@@ -105,7 +97,6 @@ table .table-primary {
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 200px;
-  /* Adjust this to your preference */
 }
 
 .text-truncate:hover {
@@ -114,4 +105,8 @@ table .table-primary {
 
 .small {
   font-size: 0.875rem;
+}
+
+table td .mb-2 {
+  margin-top: 0.6rem;
 }

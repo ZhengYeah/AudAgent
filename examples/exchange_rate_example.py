@@ -19,7 +19,7 @@ setup_logging(logging.DEBUG)
 logging.getLogger()
 load_dotenv()
 
-async def exchange_rate_tool(from_currency: str, to_currency: str, amount: float = 1.0) -> dict:
+async def currency_exchange_tool(from_currency: str, to_currency: str, amount: float = 1.0) -> dict:
     url = "https://api.frankfurter.app/latest"
     params = {"from": from_currency.upper(), "to": to_currency.upper()}
     async with aiohttp.ClientSession() as session:
@@ -53,7 +53,7 @@ async def main():
             "You must call the tool `exchange_rate_tool(from_currency, to_currency, amount)` and then "
             "report the result in human‐friendly text. "
         ),
-        tools=[exchange_rate_tool]
+        tools=[currency_exchange_tool]
     )
 
     print("Currency Agent ready — type 'exit' to quit.")
