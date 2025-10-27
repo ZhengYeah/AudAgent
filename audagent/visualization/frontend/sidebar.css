@@ -3,8 +3,7 @@
   width: 25%;
   /* 1/4 of the screen width */
   height: 100vh;
-  background-color: #111;
-  /* Dark background similar to --bg-color in react-flow */
+  background-color: white;
   color: #f3f4f6;
   /* Text color similar to --text-color in react-flow */
   border-left: 1px solid #6c757d;
@@ -32,12 +31,12 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #111;
+  background-color: white;
   /* Dark background like --bg-color */
 }
 
 table thead {
-  background-color: #343a40;
+  background-color: #c8ffbe;
   /* Darker background for table header */
 }
 
@@ -45,7 +44,7 @@ table th,
 table td {
   padding: 0.5rem;
   text-align: left;
-  color: #f3f4f6;
+  color: rgb(17, 17, 17);
   /* Text color like --text-color */
   white-space: nowrap;
   /* Prevent line breaks inside the cells */
@@ -80,7 +79,7 @@ table tbody tr {
 }
 
 table tbody tr:hover {
-  background-color: #495057;
+  background-color: #8dd3ff;
   /* Hover effect similar to table-hover */
 }
 
@@ -90,7 +89,8 @@ table .table-primary {
 }
 
 .text-muted {
-  color: #6c757d !important;
+  color: #318601 !important;
+    font-weight: bold;
 }
 
 .text-truncate {

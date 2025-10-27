@@ -43,7 +43,7 @@ interface WebSocketMessage {
 // Define initial (extra) node for the user
 const initialUserNode: Node<TurboNodeData> = {
   id: 'user',
-  position: {x: -300, y: 0},
+  position: {x: -100, y: 0},
   data: {icon: <LuUser/>, title: 'user', subline: 'using prompts', topIcon: <LuMessageSquareMore/>},
   type: 'turbo'
 };
@@ -97,8 +97,8 @@ const initialEdges = [
 
   // Nodes' and edges' visualization component
   const Flow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState([initialUserNode]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(graphEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNodes, setSelectedNodes] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);
