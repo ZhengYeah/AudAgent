@@ -31,13 +31,15 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
-  /* Dark background like --bg-color */
+  background-color: rgba(200, 255, 190, 0.45);
 }
 
+/* Background for table header */
 table thead {
   background-color: #c8ffbe;
-  /* Darker background for table header */
+  border-top: #0C4842 1px solid;
+  border-bottom: #0C4842 1px solid;
+  /*box-sizing: border-box;*/
 }
 
 table th,
@@ -89,8 +91,13 @@ table .table-primary {
 }
 
 .text-muted {
-  color: #318601 !important;
+  color: #0C4842 !important;
     font-weight: bold;
+}
+
+.text-metadata {
+  font-size: 1rem;
+    border-bottom: #0C4842 1px solid;
 }
 
 .text-truncate {

@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
 
   return (
     <div className="col-12 col-lg-3 bg-dark text-white border-left border-secondary h-100 overflow-auto">
-      <h2 className="h5 p-4 border-bottom border-secondary">Agent trace {isConnected ? (
+      <h2 className="h5 p-4 border-bottom border-secondary">AudAgent trace {isConnected ? (
             <LuLink2 className="text-green-500 inline-block ml-2" title="Receiving events" />
           ) : (
             <LuLink2Off className="text-red-500 inline-block ml-2" title="Disconnected from events server"/>
@@ -113,12 +113,12 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
                   <td colSpan={3} className="border-0 pt-0">
                     <div className="p-2 bg-dark border border-secondary rounded">
                       <div className="d-flex align-items-center justify-content-between mb-2">
-                        <small className="text-muted">Metadata</small>
+                        <small className="text-muted text-metadata">Metadata:</small>
                       </div>
                       {edge.data &&
                         Object.entries(edge.data).map(([key, value]) => (
                           !!(value) &&
-                          <div key={key} className="mb-2">
+                            <div key={key} className="mb-2">
                             <div className="d-flex align-items-center justify-content-between">
                               <small className="text-muted font-weight-bold">{key}</small>
                             </div>
