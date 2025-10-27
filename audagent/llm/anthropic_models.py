@@ -1,5 +1,4 @@
-from typing import Any, Optional
-from datetime import datetime
+from typing import Any
 
 from presidio_analyzer import AnalyzerEngine
 
@@ -7,7 +6,7 @@ from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import HttpModel
 from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node, ToolCallEdge, ToolNode, graph_extractor_fm)
 from audagent.llm.models import AssistantMessage, SystemMessage, TextContent, Tool, ToolUse, UserMessage
-from audagent.presidio.models import PresidioOut
+
 
 @graph_extractor_fm.flavor(HttpModel.ANTHROPIC_REQUEST)
 class AnthropicRequestModel(GraphExtractor):
@@ -29,44 +28,36 @@ class AnthropicRequestModel(GraphExtractor):
         # Parse all messages, worst case we'll have duplicate edges but that's fine
         for message in self.messages:
             if isinstance(message, UserMessage):
+                analyzer = AnalyzerEngine()
+                results = analyzer.analyze(text=message.content, language="en")
+                pii_info = {res.entity_type: (res.start, res.end) for res in results}
                 model_generate_edge = ModelGenerateEdge(prompt=message.content,
                                                         source_node_id=APP_NODE_ID,
-                                                        target_node_id=model.node_id)
+                                                        target_node_id=model.node_id,
+                                                        pii_info=pii_info)
                 edges.append(model_generate_edge)
             elif isinstance(message, AssistantMessage):
-                # May contain both ToolUse and TextContent
+                # May contain both ToolUse and TextContent in this stage
                 for content in message.content:
+                    analyzer = AnalyzerEngine()
                     if isinstance(content, ToolUse):
+                        results = analyzer.analyze(text=content.input, language="en")
+                        pii_info = {res.entity_type: (res.start, res.end) for res in results}
                         tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                                       target_node_id=content.name,
                                                       tool_input=content.input,
-                                                      tool_name=content.name)
+                                                      tool_name=content.name,
+                                                      pii_info=pii_info)
                         edges.append(tool_call_edge)
                     elif isinstance(content, TextContent):
+                        results = analyzer.analyze(text=content.text, language="en")
+                        pii_info = {res.entity_type: (res.start, res.end) for res in results}
                         model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                                 source_node_id=self.model,
-                                                                target_node_id=APP_NODE_ID)
+                                                                target_node_id=APP_NODE_ID,
+                                                                pii_info=pii_info)
                         edges.append(model_generate_edge)
         return nodes, edges
-
-    def presidio_annotate(self) -> Optional[PresidioOut]:
-        analyzer = AnalyzerEngine()
-        full_text = ""
-        for message in self.messages:
-            if isinstance(message, UserMessage):
-                full_text += message.content + " "
-            elif isinstance(message, AssistantMessage):
-                for content in message.content:
-                    if isinstance(content, TextContent):
-                        full_text += content.text + " "
-                    elif isinstance(content, ToolUse):
-                        full_text += f"Tool called: {content.name} with input {content.input} "
-            elif isinstance(message, SystemMessage):
-                full_text += message.content + " "
-        full_text = full_text.strip()
-        results = analyzer.analyze(text=full_text, language="en")
-        pii_output = [(res.entity_type, res.start, res.end) for res in results]
-        return PresidioOut(direction=("app", "llm"), pii_output=pii_output, timestamp=datetime.now().timestamp())
 
 @graph_extractor_fm.flavor(HttpModel.ANTHROPIC_RESPONSE)
 class AnthropicResponseModel(GraphExtractor):
@@ -80,27 +71,22 @@ class AnthropicResponseModel(GraphExtractor):
     def extract_graph_structure(self, **kwargs: Any) -> GraphStructure:
         edges: list[Edge] = []
         for content in self.content:
+            analyzer = AnalyzerEngine()
             if isinstance(content, ToolUse):
+                results = analyzer.analyze(text=content.input, language="en")
+                pii_info = {res.entity_type: (res.start, res.end) for res in results}
+
                 tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                               target_node_id=content.name,
-                                              tool_input=content.input)
+                                              tool_input=content.input,
+                                              pii_info=pii_info)
                 edges.append(tool_call_edge)
             elif isinstance(content, TextContent):
+                results = analyzer.analyze(text=content.text, language="en")
+                pii_info = {res.entity_type: (res.start, res.end) for res in results}
                 model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                         source_node_id=self.model,
-                                                        target_node_id=APP_NODE_ID)
+                                                        target_node_id=APP_NODE_ID,
+                                                        pii_info=pii_info)
                 edges.append(model_generate_edge)
         return [], edges
-
-    def presidio_annotate(self) -> Optional[PresidioOut]:
-        analyzer = AnalyzerEngine()
-        full_text = ""
-        for content in self.content:
-            if isinstance(content, TextContent):
-                full_text += content.text + " "
-            elif isinstance(content, ToolUse):
-                full_text += f"Tool called: {content.name} with input {content.input} "
-        full_text = full_text.strip()
-        results = analyzer.analyze(text=full_text, language="en")
-        pii_output = [(res.entity_type, res.start, res.end) for res in results]
-        return PresidioOut(direction=("llm", "app"), pii_output=pii_output, timestamp=datetime.now().timestamp())

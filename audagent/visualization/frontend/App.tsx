@@ -1,4 +1,3 @@
-// Make sure to install the `websockets` package in your Python environment
 import {
   addEdge,
   Controls,
@@ -11,14 +10,14 @@ import {
 } from '@xyflow/react';
 
 import * as React from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { LuAtom, LuBrainCog, LuCloud, LuCodesandbox, LuDrill, LuServerCog } from 'react-icons/lu';
+import {useCallback, useEffect, useRef, useState} from 'react';
+import {LuAtom, LuBrainCog, LuCloud, LuCodesandbox, LuDrill, LuServerCog} from 'react-icons/lu';
 
 import '@xyflow/react/dist/base.css';
 
 import CustomEdge from './components/CustomEdge';
 import Sidebar from './components/Sidebar';
-import TurboNode, { type TurboNodeData } from './components/TurboNode';
+import TurboNode, {type TurboNodeData} from './components/TurboNode';
 
 const graphNodes: Node<TurboNodeData>[] = []
 
@@ -45,20 +44,20 @@ interface WebSocketMessage {
 const initialNodes = [
   {
     id: 'llama3.1-very-long-model-name',
-    position: { x: 0, y: 0 },
-    data: { icon: <LuBrainCog />, title: 'llm', subline: '1', topIcon: <LuCloud /> },
+    position: {x: 0, y: 0},
+    data: {icon: <LuBrainCog/>, title: 'llm', subline: '1', topIcon: <LuCloud/>},
     type: 'turbo'
   },
   {
     id: 'app',
-    position: { x: 250, y: 0 },
-    data: { icon: <LuAtom />, title: 'app', subline: '2', topIcon: <LuCodesandbox /> },
+    position: {x: 250, y: 0},
+    data: {icon: <LuAtom/>, title: 'app', subline: '2', topIcon: <LuCodesandbox/>},
     type: 'turbo'
   },
   {
     id: 'retrieve_user_emails-and-a-long-long-function-name',
-    position: { x: 250, y: 0 },
-    data: { icon: <LuAtom />, title: 'tool', subline: '2', topIcon: <LuCodesandbox /> },
+    position: {x: 250, y: 0},
+    data: {icon: <LuAtom/>, title: 'tool', subline: '2', topIcon: <LuCodesandbox/>},
     type: 'turbo'
   }
 ];
@@ -71,7 +70,11 @@ const initialEdges = [
     target: 'llama3.1-very-long-model-name',
     type: 'turbo',
     createdAt: 1629782400,
-    data: { prompt: 'Prompt 1 lorem ipsum ha ha meh po la asdkj asldkjajsd kljasdjkl asd w  ads sad asd asd adskljdaskjas kljasdjklasd kljdasjkasdl jasdjklasd', tool_input: 'Tool input 1', kaka: 'pipi' }
+    data: {
+      prompt: 'Prompt 1 lorem ipsum ha ha meh po la asdkj asldkjajsd kljasdjkl asd w  ads sad asd asd adskljdaskjas kljasdjklasd kljdasjkasdl jasdjklasd',
+      tool_input: 'Tool input 1',
+      kaka: 'pipi'
+    }
   },
   {
     id: 'e2-3',
@@ -79,13 +82,16 @@ const initialEdges = [
     target: 'retrieve_user_emails-and-a-long-long-function-name',
     type: 'turbo',
     createdAt: 1629782400,
-    data: { prompt: 'Prompt 1', tool_input: 'Tool input 1' }
+    data: {prompt: 'Prompt 1', tool_input: 'Tool input 1'}
   },
 ];
 
+// Nodes' and edges' visualization component
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(graphNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(graphEdges);
+  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNodes, setSelectedNodes] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);
@@ -111,7 +117,7 @@ const Flow = () => {
       try {
         const message: WebSocketMessage = JSON.parse(event.data);
         console.log('Message from server:', message);
-        
+
         switch (message.type) {
           case 'add_node':
             handleAddNode(message.data);
@@ -153,13 +159,13 @@ const Flow = () => {
   const calculateAlternatingYCoordinate = (index) => {
     // Base multiplier
     const baseMultiplier = 200;
-    
+
     // Alternate between negative and positive
     const sign = index % 2 === 0 ? 1 : -1;
-    
+
     // Increase magnitude with each index
     const magnitude = baseMultiplier * Math.floor(index / 2);
-    
+
     // Calculate final y coordinate
     return sign * magnitude;
   };
@@ -167,14 +173,14 @@ const Flow = () => {
   const calculateYCoordinate = (index) => {
     // Base multiplier
     const baseMultiplier = 150;
-    
+
     // Special case for 0
     if (index === 0) return 0;
-    
+
     // Determine sign and magnitude
     const sign = index % 2 === 1 ? -1 : 1;
     const magnitude = baseMultiplier * Math.ceil(index / 2);
-    
+
     return sign * magnitude;
   };
 
@@ -185,22 +191,22 @@ const Flow = () => {
       setNodes(currentNodes => {
         let x = 0
         let y = 0
-        let icon = <LuBrainCog />;
-        let topIcon = <LuCloud />;
-        
+        let icon = <LuBrainCog/>;
+        let topIcon = <LuCloud/>;
+
         switch (n.node_type) {
           case 'llm':
-            icon = <LuBrainCog />;  
-            topIcon = <LuCloud />;  
+            icon = <LuBrainCog/>;
+            topIcon = <LuCloud/>;
             y = 300;
             break;
           case 'mcp_server':
-            icon = <LuServerCog />;
+            icon = <LuServerCog/>;
             y = -200;
             break;
           case 'app':
-            icon = <LuAtom />;
-            topIcon = <LuCodesandbox />;  
+            icon = <LuAtom/>;
+            topIcon = <LuCodesandbox/>;
             break;
           case 'tool':
             x = 600
@@ -211,8 +217,8 @@ const Flow = () => {
               y = calculateYCoordinate(n);
             }
 
-            icon = <LuDrill />;
-            topIcon = <LuCodesandbox />;  
+            icon = <LuDrill/>;
+            topIcon = <LuCodesandbox/>;
             break;
           default:
             break;
@@ -220,21 +226,21 @@ const Flow = () => {
 
         const node = {
           id: n.node_id,
-          position: { x, y },
-          data: { icon, title: n.node_type, subline: n.node_id, topIcon },
+          position: {x, y},
+          data: {icon, title: n.node_type, subline: n.node_id, topIcon},
           type: 'turbo',
           className: 'fade-in-anim'
         };
-  
+
         return [...currentNodes, node];
       });
     });
   };
 
   const handleUpdateNode = (nodeData: Partial<Node<TurboNodeData>> & { id: string }) => {
-    setNodes((nds) => 
-      nds.map((node) => 
-        node.id === nodeData.id ? { ...node, ...nodeData } : node
+    setNodes((nds) =>
+      nds.map((node) =>
+        node.id === nodeData.id ? {...node, ...nodeData} : node
       )
     );
   };
@@ -242,36 +248,36 @@ const Flow = () => {
   const handleAddEdge = (edgeData) => {
     edgeData.forEach(e => {
       console.log('Adding edge:', e);
-      
+
       // TODO: Some times the user uses a labeled model (i.e claude-3.5-latest) which in turn
-      // resolves to the tagged model i.e claude-3.5-20210901. So make sure we find the correct node
-      const findSimilarNode = (nodes, nodeId) => 
+      // TODO: resolves to the tagged model i.e claude-3.5-20210901. So make sure we find the correct node
+      const findSimilarNode = (nodes, nodeId) =>
         nodes.find(node => node.id.startsWith(nodeId.slice(0, 6)))?.id || nodeId;
-      
+
       // Ensure the target node exists or find a similar one
       let targetNodeId = e.target_node_id;
       if (!nodes.some(node => node.id === e.target_node_id)) {
         targetNodeId = findSimilarNode(nodes, e.target_node_id);
       }
-      
+
       // Ensure the source node exists or find a similar one
       let sourceNodeId = e.source_node_id;
       if (!nodes.some(node => node.id === e.source_node_id)) {
         sourceNodeId = findSimilarNode(nodes, e.source_node_id);
       }
-  
+
       // Using updated sourceNodeId and targetNodeId
       const edgeId = `e${sourceNodeId}-${targetNodeId}-${e.created_at}`;
-      
+
       setEdges(currentEdges => {
         // Check if edge already exists
         const edgeExists = currentEdges.some(edge => edge.id === edgeId);
-        
+
         if (edgeExists) {
           console.log(`Edge ${edgeId} already exists, skipping.`);
           return currentEdges;
         }
-        
+
         // Create the new edge
         const newEdge = {
           id: edgeId,
@@ -284,7 +290,7 @@ const Flow = () => {
           },
           className: 'fade-in-anim'
         };
-        
+
         // Return the updated edges array
         return [...currentEdges, newEdge];
       });
@@ -293,7 +299,7 @@ const Flow = () => {
 
   // Pass setSelectedNodes to the edges
   const edgeWithProps = useCallback(
-    (props) => <CustomEdge {...props} setSelectedNodes={setSelectedNodes} />,
+    (props) => <CustomEdge {...props} setSelectedNodes={setSelectedNodes}/>,
     []
   );
 
@@ -323,14 +329,14 @@ const Flow = () => {
           edgeTypes={customEdgeTypes}
           defaultEdgeOptions={defaultEdgeOptions}
         >
-          <Controls showInteractive={true} />
+          <Controls showInteractive={true}/>
           <svg>
             <defs>
               <linearGradient id="edge-gradient">
-                <stop offset="0%" stopColor="#ae53ba" />
-                <stop offset="100%" stopColor="#2a8af6" />
+                <stop offset="0%" stopColor="#ae53ba"/>
+                <stop offset="100%" stopColor="#2a8af6"/>
               </linearGradient>
-  
+
               <marker
                 id="edge-circle"
                 viewBox="-5 -5 10 10"
@@ -341,17 +347,17 @@ const Flow = () => {
                 markerHeight="10"
                 orient="auto"
               >
-                <circle stroke="#2a8af6" strokeOpacity="0.75" r="2" cx="0" cy="0" />
+                <circle stroke="#2a8af6" strokeOpacity="0.75" r="2" cx="0" cy="0"/>
               </marker>
             </defs>
           </svg>
         </ReactFlow>
-        </div>
-        <div className="sidebar react-flow">
-          <Sidebar edges={edges} selectedNodes={selectedNodes} isConnected={isConnected} />
-        </div>
+      </div>
+      <div className="sidebar react-flow">
+        <Sidebar edges={edges} selectedNodes={selectedNodes} isConnected={isConnected}/>
+      </div>
     </div>
-  );  
-};  
+  );
+};
 
 export default Flow;

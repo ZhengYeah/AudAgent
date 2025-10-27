@@ -2,7 +2,7 @@ import { type Edge } from '@xyflow/react';
 import { motion } from "framer-motion";
 import * as React from 'react';
 import { useState } from 'react';
-import { LuChevronDown, LuChevronRight, LuClipboardCopy, LuLink2, LuLink2Off } from 'react-icons/lu';
+import { LuChevronDown, LuChevronRight, LuLink2, LuLink2Off } from 'react-icons/lu';
 import '../sidebar.css'
 
 type EdgeData = Edge & {
@@ -21,7 +21,6 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) => {
-  const [copiedText, setCopiedText] = useState<string | null>(null);
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
   // Sort edges by createdAt timestamp (newest first)
   const sortedEdges = [...edges].sort((a, b) => {
@@ -35,12 +34,6 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
 
     return `${hours}:${minutes}:${seconds}`;
-  };
-
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedText(text); // Optionally display copied feedback
-    setTimeout(() => setCopiedText(null), 2000); // Reset copied feedback after 2 seconds
   };
 
   const toggleRow = (id: string) => {
@@ -61,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
           ) : (
             <LuLink2Off className="text-red-500 inline-block ml-2" title="Disconnected from events server"/>
           )}</h2>
-      
+
       <div className="table-responsive">
         <table className="table table-dark table-striped table-hover">
           <thead>
@@ -74,7 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
           </thead>
           <tbody>
             {sortedEdges.map((edge) => {
-              const isHighlighted = selectedNodes && 
+              const isHighlighted = selectedNodes &&
                 ((edge.source === selectedNodes.source && edge.target === selectedNodes.target) ||
                  (edge.source === selectedNodes.target && edge.target === selectedNodes.source));
               const isExpanded = expandedRows[edge.id] || false;
@@ -82,13 +75,13 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
 
               return (
                 <React.Fragment key={edge.id}>
-                  <tr 
+                  <tr
                     className={`${isHighlighted ? 'table-primary' : ''}`}
                   >
                     <td className="text-center">
                       {hasMetadataItems && (
-                        <span 
-                          onClick={() => toggleRow(edge.id)} 
+                        <span
+                          onClick={() => toggleRow(edge.id)}
                           style={{ cursor: 'pointer' }}
                         >
                           {isExpanded ? <LuChevronDown size={16} /> : <LuChevronRight size={16} />}
@@ -124,14 +117,6 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
                           <div key={key} className="mb-2">
                             <div className="d-flex align-items-center justify-content-between">
                               <small className="text-muted font-weight-bold">{key}</small>
-                              <LuClipboardCopy
-                                size={14}
-                                className="text-muted"
-                                style={{ cursor: "pointer" }}
-                                onClick={() =>
-                                  handleCopy(typeof value === "string" ? value : JSON.stringify(value, null, 2))
-                                }
-                              />
                             </div>
                             <div
                               className="small mt-1 text-wrap"
@@ -159,9 +144,6 @@ const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) 
                                 </pre>
                               )}
                             </div>
-                            {copiedText === (typeof value === "string" ? value : JSON.stringify(value, null, 2)) && (
-                              <small className="text-success">Copied!</small>
-                            )}
                           </div>
                         ))}
                       {(!edge.data || Object.keys(edge.data).length === 0) && <div className="small">No metadata available</div>}

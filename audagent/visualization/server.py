@@ -1,5 +1,5 @@
 """
-FastAPI server for
+FastAPI server for WebSocket connection and handling events from /api/events.
 """
 
 import logging
