@@ -73,25 +73,25 @@ body {
   border-radius: 100%;
 }
 
-.react-flow__node-turbo.selected .wrapper.gradient:before {
-  content: '';
-  background: conic-gradient(
-    from -160deg at 50% 50%,
-    #e92a67 0deg,
-    #a853ba 120deg,
-    #2a8af6 240deg,
-    rgba(42, 138, 246, 0) 360deg
-  );
-  animation: spinner 4s linear infinite;
-  transform: translate(-50%, -50%) rotate(0deg);
-  z-index: -1;
-}
+/*.react-flow__node-turbo.selected .wrapper.gradient:before {*/
+/*  content: '';*/
+/*  background: conic-gradient(*/
+/*    from -160deg at 50% 50%,*/
+/*    #e92a67 0deg,*/
+/*    #a853ba 120deg,*/
+/*    #2a8af6 240deg,*/
+/*    rgba(42, 138, 246, 0) 360deg*/
+/*  );*/
+/*  animation: spinner 4s linear infinite;*/
+/*  transform: translate(-50%, -50%) rotate(0deg);*/
+/*  z-index: -1;*/
+/*}*/
 
-@keyframes spinner {
-  100% {
-    transform: translate(-50%, -50%) rotate(-360deg);
-  }
-}
+/*@keyframes spinner {*/
+/*  100% {*/
+/*    transform: translate(-50%, -50%) rotate(-360deg);*/
+/*  }*/
+/*}*/
 
 .react-flow__node-turbo .inner {
   background: var(--bg-color);

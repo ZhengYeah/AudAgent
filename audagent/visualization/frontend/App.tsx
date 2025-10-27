@@ -11,7 +11,7 @@ import {
 
 import * as React from 'react';
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {LuAtom, LuBrainCog, LuCloud, LuCodesandbox, LuDrill, LuServerCog} from 'react-icons/lu';
+import {LuAtom, LuBrainCog, LuCloud, LuUser, LuMessageSquareMore, LuCodesandbox, LuDrill, LuServerCog} from 'react-icons/lu';
 
 import '@xyflow/react/dist/base.css';
 
@@ -20,8 +20,8 @@ import Sidebar from './components/Sidebar';
 import TurboNode, {type TurboNodeData} from './components/TurboNode';
 
 const graphNodes: Node<TurboNodeData>[] = []
-
 const graphEdges: Edge[] = []
+
 const nodeTypes = {
   turbo: TurboNode,
 };
@@ -40,8 +40,17 @@ interface WebSocketMessage {
   data: any;
 }
 
-// Define initial nodes: app and llm
+// Define initial (extra) node for the user
+const initialUserNode: Node<TurboNodeData> = {
+  id: 'user',
+  position: {x: -300, y: 0},
+  data: {icon: <LuUser/>, title: 'user', subline: 'using prompts', topIcon: <LuMessageSquareMore/>},
+  type: 'turbo'
+};
+
+// For testing purposes, define some initial nodes
 const initialNodes = [
+  initialUserNode,
   {
     id: 'llama3.1-very-long-model-name',
     position: {x: 0, y: 0},
@@ -86,12 +95,10 @@ const initialEdges = [
   },
 ];
 
-// Nodes' and edges' visualization component
-const Flow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState(graphNodes);
+  // Nodes' and edges' visualization component
+  const Flow = () => {
+  const [nodes, setNodes, onNodesChange] = useNodesState([initialUserNode]);
   const [edges, setEdges, onEdgesChange] = useEdgesState(graphEdges);
-  // const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNodes, setSelectedNodes] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);
@@ -156,6 +163,35 @@ const Flow = () => {
     };
   }, []);
 
+  // Ensure a single user->app edge once the backend adds the app node
+  const ensureUserToAppEdge = useCallback((appId: string) => {
+    setEdges((prev) => {
+      const exists = prev.some(
+        (edge) => edge.source === 'user' && edge.target === appId
+      );
+
+      if (exists) {return prev;}
+
+      const newEdge: Edge = {
+        id: `euser-${appId}-${Date.now()}`,
+        source: 'user',
+        target: appId,
+        type: 'turbo',
+        createdAt: Date.now(),
+        data: {hideIcon: true},
+      };
+      return [...prev, newEdge];
+    });
+  }, [setEdges]);
+
+  useEffect(() => {
+    const appNode = nodes.find((n) => n.id === 'app');
+    const userNode = nodes.find((n) => n.id === 'user');
+    if (appNode && userNode) {
+      ensureUserToAppEdge(appNode.id);
+    }
+  }, [nodes, ensureUserToAppEdge]);
+
   const calculateAlternatingYCoordinate = (index) => {
     // Base multiplier
     const baseMultiplier = 200;
@@ -216,7 +252,6 @@ const Flow = () => {
             } else {
               y = calculateYCoordinate(n);
             }
-
             icon = <LuDrill/>;
             topIcon = <LuCodesandbox/>;
             break;
@@ -318,6 +353,7 @@ const Flow = () => {
     <div className="container">
       <div className="main">
         <ReactFlow
+          colorMode="light"
           nodes={nodes}
           edges={edges}
           onNodesChange={onNodesChange}

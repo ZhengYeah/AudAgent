@@ -11,7 +11,6 @@ class Tool(BaseModel):
     name: str
     input_schema: dict[str, Any]
     description: str
-    # parameters: dict[str, Any]
 
 class ToolUse(BaseModel):
     type: str = "tool_use"

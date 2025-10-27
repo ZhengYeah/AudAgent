@@ -7,6 +7,7 @@ export type TurboNodeData = {
   title: string;
   icon?: ReactNode;
   topIcon?: ReactNode;
+  userIcon?: ReactNode;
   subline?: string;
 };
 

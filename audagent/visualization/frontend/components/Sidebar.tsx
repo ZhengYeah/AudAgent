@@ -1,7 +1,7 @@
 import { type Edge } from '@xyflow/react';
 import { motion } from "framer-motion";
 import * as React from 'react';
-import { useState } from 'react';
+import {useMemo, useState} from 'react';
 import { LuChevronDown, LuChevronRight, LuLink2, LuLink2Off } from 'react-icons/lu';
 import '../sidebar.css'
 
@@ -22,8 +22,12 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ edges, selectedNodes, isConnected }) => {
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+  // Remove the user-app edge, which contains no extra information
+  const purified_edges = useMemo(
+    () => edges.filter(edge => edge.source !== 'user' && edge.target !== 'user'),[edges]
+  )
   // Sort edges by createdAt timestamp (newest first)
-  const sortedEdges = [...edges].sort((a, b) => {
+  const sortedEdges = [...purified_edges].sort((a, b) => {
     return (b.createdAt || 0) - (a.createdAt || 0);
   });
 

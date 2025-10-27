@@ -1,23 +1,23 @@
-import { getBezierPath, getEdgeCenter } from '@xyflow/react';
+import {getBezierPath, getEdgeCenter} from '@xyflow/react';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { LuPackageOpen, LuPackageSearch } from 'react-icons/lu';
+import {useEffect, useState} from 'react';
+import {LuPackageOpen, LuPackageSearch} from 'react-icons/lu';
 
 const CustomEdge = ({
-  id,
-  sourceX,
-  sourceY,
-  targetX,
-  targetY,
-  sourcePosition,
-  targetPosition,
-  style = {},
-  markerEnd,
-  source,
-  target,
-  data,
-  setSelectedNodes, // New prop to communicate with parent
-}) => {
+                      id,
+                      sourceX,
+                      sourceY,
+                      targetX,
+                      targetY,
+                      sourcePosition,
+                      targetPosition,
+                      style = {},
+                      markerEnd,
+                      source,
+                      target,
+                      data,
+                      setSelectedNodes, // New prop to communicate with parent
+                    }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const xEqual = sourceX === targetX;
@@ -41,10 +41,13 @@ const CustomEdge = ({
     targetY,
   });
 
+  // Hide the icon for user-to-app edges
+  const hideIcon = Boolean(data?.hideIcon) || (source === 'user' && target === 'app');
+
   const handleIconClick = (e) => {
     e.stopPropagation();
     setShowPopup(!showPopup);
-    
+
     // Highlight relevant rows in the sidebar
     setSelectedNodes({
       source,
@@ -67,7 +70,7 @@ const CustomEdge = ({
         setShowPopup(false);
       }
     };
-    
+
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
@@ -83,32 +86,34 @@ const CustomEdge = ({
         d={edgePath}
         markerEnd={markerEnd}
       />
-      
+
       {/* Icon in the middle of the edge */}
-      <foreignObject
-        width={20}
-        height={20}
-        x={edgeCenterX - 10}
-        y={edgeCenterY - 10}
-        className="edge-icon-container"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onClick={handleIconClick}
-        style={{ overflow: 'visible' }}
-      >
-        <div className="flex items-center justify-center h-full z-50">
-        {isHovering ? 
-          <LuPackageOpen
-            size={20} 
-            className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`} 
-          /> :
-          <LuPackageSearch 
-            size={20} 
-            className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`} 
-          />
-        }  
-        </div>
-      </foreignObject>
+      {!hideIcon && (
+        <foreignObject
+          width={20}
+          height={20}
+          x={edgeCenterX - 10}
+          y={edgeCenterY - 10}
+          className="edge-icon-container"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleIconClick}
+          style={{overflow: 'visible'}}
+        >
+          <div className="flex items-center justify-center h-full z-50">
+            {isHovering ?
+              <LuPackageOpen
+                size={20}
+                className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`}
+              /> :
+              <LuPackageSearch
+                size={20}
+                className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`}
+              />
+            }
+          </div>
+        </foreignObject>
+      )}
     </>
   );
 };
