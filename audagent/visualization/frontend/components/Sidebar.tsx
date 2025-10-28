@@ -49,7 +49,7 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
 
   // Hide redundant keys from metadata display
   const HIDDEN_KEYS: Record<string, true> = {
-    createdAt: true,
+    created_at: true,
     source_node_id: true,
     target_node_id: true,
   };

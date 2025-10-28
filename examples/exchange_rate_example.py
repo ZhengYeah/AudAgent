@@ -38,6 +38,41 @@ async def currency_exchange_tool(from_currency: str, to_currency: str, amount: f
         "date": data.get("date")
     }
 
+# Institution search tool
+async def organization_search_tool(query: str) -> dict:
+    url = "https://api.openalex.org/institutions"
+    params = {"search": query, "per-page": 1}
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, params=params) as resp:
+            data = await resp.json()
+    results = data.get("results", [])
+    if not results:
+        return {"query": query, "result": None}
+    org = results[0]
+    return {
+        "query": query,
+        "result": {
+            "id": org.get("id"),
+            "display_name": org.get("display_name"),
+            "country_code": org.get("country_code"),
+            "type": org.get("type"),
+            "works_count": org.get("works_count")
+        }
+    }
+
+# Website search tool
+async def web_search_tool(query: str) -> dict:
+    url = "https://api.duckduckgo.com/"
+    params = {"q": query, "format": "json", "no_redirect": 1, "no_html": 1}
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, params=params) as resp:
+            data = await resp.json()
+    abstract = data.get("AbstractText", "")
+    return {
+        "query": query,
+        "abstract": abstract
+    }
+
 async def main():
     anthropic_client = AnthropicChatCompletionClient(
         model="claude-sonnet-4-5-20250929", # claude-haiku does not support tools
@@ -48,15 +83,14 @@ async def main():
         name="currency_agent",
         model_client=anthropic_client,
         system_message=(
-            "You are a currency exchange assistant. Users will ask things like "
-            "'Convert 150 USD to JPY', 'What is the rate for GBP to EUR?' "
-            "You must call the tool `exchange_rate_tool(from_currency, to_currency, amount)` and then "
-            "report the result in human‐friendly text. "
+            " You are a personal assistant. Users will ask things like 'Convert 150 USD to JPY', 'How do you know about Standford University?', or 'Search him' "
+            " You must call the tool `exchange_rate_tool(from_currency, to_currency, amount)`, `organization_search_tool(query)`, or `search_tool(query)` to get the information. "
+            " and then report the result in human‐friendly text. "
         ),
-        tools=[currency_exchange_tool]
+        tools=[currency_exchange_tool, organization_search_tool, web_search_tool]
     )
 
-    print("Currency Agent ready — type 'exit' to quit.")
+    print("AI agent ready — type 'exit' to quit.")
     while True:
         user_input = input("You: ")
         if user_input.lower() in ("exit", "quit"):
@@ -64,6 +98,9 @@ async def main():
         user_msg = TextMessage(content=user_input, source="user")
         result = await agent.run(task=user_msg)
         print("Agent:", result.messages[-1].content)
+
+# Example inputs to try:
+# My friend Bob, who lives in NYC, worked there before. His phone number is (1) 646 1234-5678. Can you search him and summarize his information for a contact record?
 
 
 if __name__ == "__main__":
