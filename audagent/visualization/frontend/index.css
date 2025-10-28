@@ -10,7 +10,8 @@
 
 .main {
   width: 75%; /* 3/4 of the screen width */
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 html,
