@@ -1,0 +1,117 @@
+{
+  "@context": {
+    "name": "https://schema.org/name",
+    "children": "https://schema.org/hasPart"
+  },
+  "name": "Technology Companies",
+  "children": [
+    {
+      "name": "Social Media Companies",
+      "children": [
+        { "name": "Meta Platforms", "children": [
+          { "name": "Facebook" },
+          { "name": "Instagram" },
+          { "name": "Threads" },
+          { "name": "WhatsApp" }
+        ]},
+        { "name": "X Corp", "children": [
+          { "name": "Twitter / X" }
+        ]},
+        { "name": "Snap Inc.", "children": [
+          { "name": "Snapchat" }
+        ]},
+        { "name": "ByteDance", "children": [
+          { "name": "TikTok" },
+          { "name": "CapCut" }
+        ]},
+        { "name": "LinkedIn Corporation" }
+      ]
+    },
+    {
+      "name": "Search and Advertising Companies",
+      "children": [
+        { "name": "Google LLC", "children": [
+          { "name": "Google Search" },
+          { "name": "YouTube" },
+          { "name": "Google Ads" },
+          { "name": "Google Analytics" }
+        ]},
+        { "name": "Microsoft Corporation", "children": [
+          { "name": "Bing" },
+          { "name": "LinkedIn Ads" }
+        ]},
+        { "name": "Yahoo Inc." },
+        { "name": "DuckDuckGo" }
+      ]
+    },
+    {
+      "name": "E-commerce and Retail Platforms",
+      "children": [
+        { "name": "Amazon.com, Inc.", "children": [
+          { "name": "Amazon Retail" },
+          { "name": "AWS" },
+          { "name": "Twitch" }
+        ]},
+        { "name": "Alibaba Group", "children": [
+          { "name": "AliExpress" },
+          { "name": "Taobao" },
+          { "name": "Tmall" }
+        ]},
+        { "name": "eBay Inc." },
+        { "name": "Shopify Inc." }
+      ]
+    },
+    {
+      "name": "Cloud Service Providers",
+      "children": [
+        { "name": "Amazon Web Services (AWS)" },
+        { "name": "Microsoft Azure" },
+        { "name": "Google Cloud Platform (GCP)" },
+        { "name": "IBM Cloud" },
+        { "name": "Oracle Cloud" },
+        { "name": "Cloudflare" }
+      ]
+    },
+    {
+      "name": "Mobile and Hardware Companies",
+      "children": [
+        { "name": "Apple Inc." },
+        { "name": "Samsung Electronics" },
+        { "name": "Huawei Technologies" },
+        { "name": "Xiaomi Corporation" },
+        { "name": "Sony Corporation" }
+      ]
+    },
+    {
+      "name": "AI and Analytics Companies",
+      "children": [
+        { "name": "OpenAI" },
+        { "name": "Anthropic" },
+        { "name": "Stability AI" },
+        { "name": "Hugging Face" },
+        { "name": "Palantir Technologies" }
+      ]
+    },
+    {
+      "name": "Communication and Collaboration Platforms",
+      "children": [
+        { "name": "Zoom Video Communications" },
+        { "name": "Slack Technologies" },
+        { "name": "Microsoft Teams" },
+        { "name": "Discord Inc." },
+        { "name": "Telegram" },
+        { "name": "Signal Foundation" }
+      ]
+    },
+    {
+      "name": "Financial Technology (FinTech) Companies",
+      "children": [
+        { "name": "PayPal Holdings" },
+        { "name": "Stripe Inc." },
+        { "name": "Square (Block Inc.)" },
+        { "name": "Robinhood Markets" },
+        { "name": "Coinbase" }
+      ]
+    }
+  ]
+}

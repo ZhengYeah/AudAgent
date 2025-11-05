@@ -1,0 +1,79 @@
+[
+  {
+    "types_of_data_collected": "Identity and Contact Data",
+    "methods_of_collection": "directly from users",
+    "data_usage": "relevant",
+    "data_disclosure": ["Affiliates and corporate partners", "Service providers and business partners", "Government authorities", "During corporate transactions", "With user consent"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Payment Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Payment processors and financial institutions", "Service providers handling billing and accounting", "Government authorities"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Inputs and Outputs (Prompts, Conversations, Generated Responses)",
+    "methods_of_collection": "directly from users",
+    "data_usage": "relevant",
+    "data_disclosure": ["Affiliates for research and development", "Service providers assisting in model training and maintenance", "Government authorities for lawful requests or safety reasons", "Third parties in cases of legal, fraud, or safety investigations", "With user consent"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Feedback (including ratings and suggestions)",
+    "methods_of_collection": "directly",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Affiliates and internal teams for research and model training", "Service providers supporting analytics or data storage"],
+    "retention_period": "as long as reasonably necessary; may be de-identified for model training and research"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": "relevant",
+    "data_disclosure": ["Service providers assisting with support operations", "Affiliates for internal business coordination", "Government authorities when required by law"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Device and Connection Information",
+    "methods_of_collection": "automatically collected through device or browser during service use",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Service providers for analytics and monitoring", "Affiliates for performance improvement", "Government authorities when required by law"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Usage Information",
+    "methods_of_collection": "indirectly",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Service providers and analytics vendors", "Affiliates for research and development", "Government authorities as required by law"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Log and Troubleshooting Information",
+    "methods_of_collection": "indirectly",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Service providers and infrastructure hosts for system maintenance", "Affiliates for technical support", "Government authorities in case of security or compliance matters"],
+    "retention_period": "as long as required"
+  },
+  {
+    "types_of_data_collected": "Cookies and Similar Technologies",
+    "methods_of_collection": "indirectly",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Analytics and advertising partners", "Service providers managing cookie data", "Affiliates for personalization and marketing"],
+    "retention_period": "as described in the Cookie Policy; typically until cookies expire or are deleted by the user"
+  },
+  {
+    "types_of_data_collected": "Training Data from Third Parties",
+    "methods_of_collection": "indirectly",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Affiliates and internal research teams", "Third-party data providers under commercial agreements", "Government or regulators where required by law"],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Aggregated or De-Identified Information",
+    "methods_of_collection": "indirectly",
+    "data_usage": "irrelevant",
+    "data_disclosure": ["Affiliates for research and analytics", "Service providers supporting aggregate analysis", "Public research or safety reports where individual users are not identifiable"],
+    "retention_period": "not specified"
+  }
+]

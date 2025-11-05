@@ -1,0 +1,79 @@
+[
+  {
+    "types_of_data_collected": "identity_and_contact_data",
+    "methods_of_collection": "directly from users during account signup or when requesting information",
+    "data_usage": "to provide and maintain services, create and administer accounts, communicate with users, prevent fraud and abuse, investigate disputes and security issues, enforce terms of service",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "payment_information",
+    "methods_of_collection": "directly from users when purchasing products and services",
+    "data_usage": "to facilitate payments for products and services",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "inputs_and_outputs",
+    "methods_of_collection": "directly from users through interactions with services including chat, coding, and agentic sessions, and third-party application integrations",
+    "data_usage": "to provide and maintain services, improve services and conduct research including training models (unless user opts out), prevent fraud and abuse, investigate security issues, debug and repair errors, enforce usage policy",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "feedback",
+    "methods_of_collection": "directly from users including ratings (thumbs up/down) and suggestions for improvement",
+    "data_usage": "to improve services and train models (disassociated from user ID), investigate and resolve disputes",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "communication_information",
+    "methods_of_collection": "directly from users when communicating with Anthropic including via chatbot on help site",
+    "data_usage": "to communicate with users, investigate and resolve disputes, enforce terms of service",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "device_and_connection_information",
+    "methods_of_collection": "automatically from user devices or browsers consistent with device or browser permissions",
+    "data_usage": "to provide and maintain services, prevent fraud and abuse, investigate security issues, debug and repair errors, improve services and conduct research",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "usage_information",
+    "methods_of_collection": "automatically collected from user interactions with services",
+    "data_usage": "to provide and maintain services, improve services and conduct research, analyze user behavior and usage data to improve user experience, prevent fraud and abuse",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "log_and_troubleshooting_information",
+    "methods_of_collection": "automatically collected when users or devices experience errors or during service performance monitoring",
+    "data_usage": "to debug and repair errors, investigate and resolve security issues, improve services",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "cookies_and_similar_technologies",
+    "methods_of_collection": "indirectly through cookies, scripts, and similar technologies from user devices",
+    "data_usage": "to manage services, recognize users, customize and personalize user experience, market additional products or services, analyze use of services for safety and functionality",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "training_data_from_third_party_sources",
+    "methods_of_collection": "from publicly available information via internet, commercial agreements with third party businesses, crowd workers, user-provided inputs and outputs (unless opted out), user feedback, materials flagged for safety review, internally generated data",
+    "data_usage": "to train AI models, improve services and conduct research, advance AI safety research",
+    "third_party_disclosure": "affiliates and corporate partners, service providers and business partners, third parties in corporate transactions, regulatory authorities as required by law, third parties with user consent",
+    "retention_period": "as long as reasonably necessary for purposes outlined in privacy policy"
+  },
+  {
+    "types_of_data_collected": "aggregated_or_deidentified_information",
+    "methods_of_collection": "derived from personal data by aggregating or de-identifying it",
+    "data_usage": "to analyze effectiveness of services, conduct research, study user behavior, train AI models, improve user experience",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  }
+]

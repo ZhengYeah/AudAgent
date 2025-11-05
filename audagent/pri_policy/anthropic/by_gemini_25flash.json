@@ -1,0 +1,174 @@
+[
+  {
+    "types_of_data_collected": "Identity and Contact Data (name, email address, phone number, indirect identifiers)",
+    "methods_of_collection": "Directly from users (when signing up for an Anthropic account or to receive information on Services)",
+    "data_usage": [
+      "To provide, maintain and facilitate any products and services offered to you with respect to your Anthropic account",
+      "To communicate with you, including to send you information about our Services and events",
+      "To create and administer your Anthropic account",
+      "To prevent and investigate fraud, abuse, and violations of our Usage Policy, unlawful or criminal activity, unauthorized access to or use of personal data or Anthropic systems and networks, to protect our rights and the rights of others, and to meet legal, governmental and institutional policy obligations",
+      "To investigate and resolve disputes",
+      "To investigate and resolve security issues",
+      "To enforce our Terms of Service and similar terms and agreements, including our Usage Policy"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners (between and among its affiliates and related entities)",
+      "Service providers & business partners (for business purposes, including website and data hosting, ensuring compliance with industry standards, research, auditing, data processing, and providing services)",
+      "As part of a significant corporate event (merger, corporate transaction, bankruptcy, or other transfer of business assets)",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms (to governmental regulatory authorities, in connection with claims, disputes or litigation, for safety/fraud/credit risk, to enforce legal/contractual rights)",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Payment Information",
+    "methods_of_collection": "Directly from users (if purchasing access to Anthropic’s products and services)",
+    "data_usage": [
+      "To facilitate payments for products and services provided by Anthropic"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including auditing and data processing)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Inputs and Outputs (Prompts, generated responses/actions, including personal data or external content included by the user)",
+    "methods_of_collection": "Directly from users (interactions with Services in chat, coding, agentic sessions, including third-party application integrations)",
+    "data_usage": [
+      "To provide, maintain and facilitate any products and services offered to you with respect to your Anthropic account",
+      "To provide, maintain and facilitate optional services and features that enhance platform functionality and user experience",
+      "To improve the Services and conduct research, including training our models (unless the user opts out)",
+      "Used for model improvement, even if the user opts out, when conversations are flagged for safety review or when materials are explicitly reported by the user"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including research, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Feedback on your use of our Services (ideas, suggestions, rating an Output, the entire related conversation if an Output is rated)",
+    "methods_of_collection": "Directly from users (explicitly provided feedback or rating an Output)",
+    "data_usage": [
+      "To provide, maintain and facilitate optional services and features that enhance platform functionality and user experience",
+      "To improve the Services and conduct research, including training our models"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including research, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Communication Information (name, contact information, contents of any messages sent via their chatbot or otherwise)",
+    "methods_of_collection": "Directly from users (when communicating with Anthropic, e.g., via their Help site chatbot)",
+    "data_usage": [
+      "To provide, maintain and facilitate optional services and features that enhance platform functionality and user experience",
+      "To communicate with you, including to send you information about our Services and events",
+      "To investigate and resolve disputes"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including website and data hosting, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Device and Connection Information (device type, operating system, browser info, web page referers, mobile network, connection info, ISP, time zone setting, IP address/location derived from it, various identifiers, device location)",
+    "methods_of_collection": "Automatically from your use of the Services (sent by your device or browser consistent with permissions)",
+    "data_usage": [
+      "To prevent and investigate fraud, abuse, and violations of our Usage Policy, unlawful or criminal activity, unauthorized access to or use of personal data or Anthropic systems and networks, to protect our rights and the rights of others, and to meet legal, governmental and institutional policy obligations",
+      "To investigate and resolve security issues",
+      "To debug and to identify and repair errors that impair existing functionality",
+      "To improve the Services and conduct research"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including website and data hosting, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Usage Information (dates and times of access, browsing history, search, links clicked, pages viewed, how you use the Services and technology)",
+    "methods_of_collection": "Automatically from your use of the Services",
+    "data_usage": [
+      "To provide, maintain and facilitate optional services and features that enhance platform functionality and user experience",
+      "To debug and to identify and repair errors that impair existing functionality",
+      "To improve the Services and conduct research"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including website and data hosting, research, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Log and Troubleshooting Information (log files, information about errors, time/feature/state of application/communications or content at time of error)",
+    "methods_of_collection": "Automatically from your use of the Services (about how Services are performing, or if an error occurs)",
+    "data_usage": [
+      "To prevent and investigate fraud, abuse, and violations of our Usage Policy, unlawful or criminal activity, unauthorized access to or use of personal data or Anthropic systems and networks, to protect our rights and the rights of others, and to meet legal, governmental and institutional policy obligations",
+      "To investigate and resolve security issues",
+      "To debug and to identify and repair errors that impair existing functionality"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including website and data hosting, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Personal data from Cookies & Similar Technologies (information about you and your use of the Services)",
+    "methods_of_collection": "Indirectly through Cookies, scripts, or similar technologies (used by Anthropic and service providers)",
+    "data_usage": [
+      "To recognize you",
+      "Customize or personalize your experience",
+      "Market additional products or services to you",
+      "Analyze the use of our Services to make them safer and more useful to you"
+    ],
+    "third_party_disclosure": [
+      "Service providers",
+      "Affiliates & corporate partners",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  },
+  {
+    "types_of_data_collected": "Personal data used to train models (Publicly available information, data from third party commercial agreements, data from users/crowd workers [including Inputs/Outputs if not opted out], Feedback, materials flagged for safety/security/policy review, internally generated data)",
+    "methods_of_collection": "From third party sources, users (unless opted out), and internally generated data",
+    "data_usage": [
+      "To improve the Services and conduct research, including training our models"
+    ],
+    "third_party_disclosure": [
+      "Affiliates & corporate partners",
+      "Service providers & business partners (for business purposes, including research, auditing, data processing, and providing services)",
+      "As part of a significant corporate event",
+      "Pursuant to regulatory or legal requirements, safety, rights of others, and to enforce our rights or our terms",
+      "With an individual's consent"
+    ],
+    "retention_period": "As long as reasonably necessary for the purposes and criteria outlined in this Privacy Policy and explained further in their privacy center"
+  }
+]

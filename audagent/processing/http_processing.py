@@ -55,9 +55,16 @@ class HttpProcessor(BaseProcessor):
             for model_type in models:
                 try:
                     req_model = model_type.model_validate_json(body)
-                    return self._parse_nodes_and_edges(req_model, request=request)
-                # TODO: Check presidio info from edges, also return presidio info updates if any
-                except ValidationError:
+                    nodes, edges = self._parse_nodes_and_edges(req_model, request=request)
+                    # TODO: Check presidio info from edges, also return presidio info updates if any
+                    # TODO: Wrap violation info in edge model
+                    # TODO: The automaton table is static, along with a retention stamp.
+                    check_presidio = any(edge.sensitive_info for edge in edges if edge.sensitive_info)
+                    if check_presidio:
+                        logger.debug("Presidio PII information found in edges")
+
+                    return nodes, edges
+                except ValidationError: # If validation fails, try the next model
                     continue
         logger.warning(f"Did not find a suitable model for: {body}")
         return None

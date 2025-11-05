@@ -1,0 +1,71 @@
+{
+  "@context": {
+    "name": "https://schema.org/name",
+    "children": "https://schema.org/hasPart"
+  },
+  "name": "Data Types in Privacy Policies",
+  "children": [
+    {
+      "name": "Personal Information",
+      "children": [
+        {
+          "name": "Contact Information",
+          "children": [
+            { "name": "EMAIL_ADDRESS" },
+            { "name": "PHONE_NUMBER" },
+            { "name": "Postal Address" }
+          ]
+        },
+        {
+          "name": "Biometric Information",
+          "children": [
+            { "name": "NRP" }
+          ]
+        },
+        {
+          "name": "Identifiers",
+          "children": [
+            { "name": "PERSON" },
+            { "name": "MEDICAL_LICENSE" },
+            { "name": "US_PASSPORT" },
+            { "name": "US_DRIVER_LICENSE" },
+            { "name": "US_ITIN" }
+          ]
+        },
+        { "name": "US_SSN" }
+      ]
+    },
+    {
+      "name": "Device Information",
+      "children": [
+        { "name": "IP_ADDRESS" },
+        { "name": "Device ID" },
+        { "name": "Cookie Identifier" },
+        { "name": "Browser Type" },
+        { "name": "Operating System" }
+      ]
+    },
+    {
+      "name": "Financial Information",
+      "children": [
+        { "name": "CREDIT_CARD" },
+        { "name": "IBAN_CODE" },
+        { "name": "US_BANK_NUMBER" }
+      ]
+    },
+    {
+      "name": "Location Information",
+      "children": [
+        { "name": "GPS" },
+        { "name": "LOCATION" }
+      ]
+    },
+    {
+      "name": "Behavioral and Usage Data",
+      "children": [
+        { "name": "URL" },
+        { "name": "Browsing History" }
+      ]
+    }
+  ]
+}
