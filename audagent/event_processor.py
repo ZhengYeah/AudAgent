@@ -20,6 +20,7 @@ from audagent.graph.graph import GraphBuilder
 from audagent.visualization.consts import VISUALIZATION_SERVER_PORT
 from audagent.webhooks.handler import WebhookHandler
 from audagent.webhooks.models import Webhook
+from audagent.auditing.checker import RuntimeChecker
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +49,8 @@ class EventProcessor:
         self._graph_builder = GraphBuilder()
         self._webhook_handler: Optional[WebhookHandler] = None
         self._supported_processors: list[type[BaseProcessor]] = [HttpProcessor]
+        # One runtime checker shared across http payloads
+        self._runtime_checker = RuntimeChecker(policies={})
 
     def start(self, pipe: Connection, init_event: Event) -> None:
         self._pipe = pipe
@@ -90,9 +93,12 @@ class EventProcessor:
         self._webhook_handler.register_webhook(webhook)
 
     async def _register_processors(self) -> None:
-        for processor in self._supported_processors:
-            self._processors.append(processor())
-            logger.debug(f"Registered processor: {processor.__name__}")
+        for processor_cls in self._supported_processors:
+            if processor_cls is HttpProcessor:
+                self._processors.append(processor_cls(runtime_checker=self._runtime_checker))
+            else:
+                self._processors.append(processor_cls())
+            logger.debug(f"Registered processor: {processor_cls.__name__}")
 
     async def _consume_events(self) -> None:
         logger.debug(f"Worker {asyncio.current_task().get_name()} started")
@@ -167,13 +173,11 @@ class EventProcessor:
             if processor.can_handle(event.event_type):
                 # Process the event data to extract graph structure, done by http hooks;
                 # refer to audagent/processing/http_processing.py for processing details
-                # TODO: Add presidio info processor and notify webhooks accordingly
                 structure = await processor.process(event.event_type, event.data) # Refer to HttpProcessor.process()
                 if structure:
                     self._graph_builder.append_structure(structure)
                     if self._webhook_handler is not None:
                         # Notify registered webhooks about the updated graph structure
-                        # TODO: Also notify presidio info updates
                         await self._webhook_handler.notify_webhooks(self._graph_builder.get_structure())
                 break
         return CommandResponse(success=True, callback_id=callback_id)

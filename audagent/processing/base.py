@@ -3,10 +3,11 @@ from typing import Any, Optional
 
 from audagent.enums import HookEventType
 from audagent.graph.graph import GraphStructure
+from audagent.auditing.checker import RuntimeChecker
 
 
 class BaseProcessor(ABC):
-    def __init__(self) -> None:
+    def __init__(self, runtime_checker: RuntimeChecker = None) -> None:
         self._supported_events: list[HookEventType] = []
 
     @property

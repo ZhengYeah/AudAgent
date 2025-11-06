@@ -44,7 +44,7 @@ class Edge(BaseModel):
     source_node_id: str
     target_node_id: str
     created_at: float = Field(default_factory=lambda: time.time())
-    sensitive_info: Optional[dict[str, str]] # PII information; for presidio annotations, it is dict[entity_type: str]
+    violation_info: Optional[str] # Information about any policy violations
 
 class ModelGenerateEdge(Edge):
     """

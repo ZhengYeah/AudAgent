@@ -1,6 +1,6 @@
 """
 Used in `httpcore_hook.py` to wrap async iterators for HTTP response streaming.
-TODO: UNDERSTAND AND DOCUMENT MORE DEEPLY.
+TODO: Where do we use this class?
 """
 from collections.abc import AsyncIterator
 from typing import AsyncIterator as AsyncIterType

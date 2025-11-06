@@ -1,60 +1,68 @@
 import time
-from typing import Any, Type, Optional
 import logging
 
-from pydantic import BaseModel
+from pydantic import ValidationError
 
-from audagent.auditing.models import PolicyChecking
+from audagent.auditing.models import PolicyChecking, PolicyTarget
 
 logger = logging.getLogger(__name__)
 
 class RuntimeChecker:
-    def __init__(self) -> None:
-        self.data_types: list[PolicyChecking] = []
+    def __init__(self, policies) -> None:
+        self._data_types: dict[str, PolicyChecking] = {}
+        self._target_policies: dict[str, PolicyTarget] = {}
+        self._load_target_policies(policies)
+        self.issues: list[str] = []
 
-    def add_data_type(self, data_type: str) -> None:
-        data_type = PolicyChecking(data_type=data_type, collection=None, processing=None, disclosure=None, retention=time.time())
-        self.data_types.append(data_type)
-        logger.debug(f"Added data type {data_type.data_type} to runtime checker.")
+    def _load_target_policies(self, policies: dict[str, PolicyTarget]) -> None:
+        try:
+            self._target_policies = policies
+            logger.debug("Loaded target policies into runtime checker.")
+        except ValidationError:
+            logger.error("Failed to load target policies.")
 
-    def update_collection_con(self, data_type: str) -> None:
-        for dt in self.data_types:
-            if dt.data_type == data_type:
-                dt.collection = "direct"
+    def add_data_type(self, data_name: str) -> None:
+        if data_name in self._data_types:
+            dt = self._data_types[data_name]
+            logger.debug(f"Data type {data_name} already exists in runtime checker, updated retention time.")
+            # Update retention time to current time (collected timestamp)
+            dt.retention = time.time()
+            return
+        # Add new data type to the runtime checker
+        new_data_type = PolicyChecking(data_type=data_name, collection="direct", processing="irrelevant", disclosure=None, retention=time.time())
+        self._data_types[data_name] = new_data_type
+        logger.debug(f"Added data type {data_name} to runtime checker.")
+        self.check_collection_con(data_name)
 
-    def update_processing_con(self, data_type: str) -> None:
-        # Update processing constraint to "relevant" when this data type used in response or tool call
-        for dt in self.data_types:
-            if dt.data_type == data_type:
-                dt.processing = "relevant"
-                logger.debug(f"Updated processing constraint for data type {data_type} to 'relevant'.")
+    def check_collection_con(self, data_name: str) -> None:
+        # Check whether this data type is allowed to be collected
+        # For each new data type found in all stages (in addition to the collection), we should check whether it's allowed to be collected
+        if data_name not in self._target_policies:
+            self.issues.append(f"Data type {data_name} not found in target policies.")
+            return
 
-    def update_disclosure(self, data_type: str, disclosure: str) -> None:
-        for dt in self.data_types:
-            if dt.data_type == data_type:
-                dt.disclosure = disclosure
-                logger.debug(f"Updated disclosure for data type {data_type} to '{disclosure}'.")
+    def update_processing_con(self, data_name: str) -> None:
+        try:
+            self._data_types[data_name].processing = "relevant"
+        except KeyError:
+            self.issues.append(f"Data type {data_name} not found in runtime checker for processing update.")
+            return
+        # Check retention time compliance with target policy
+        retention_con = self._target_policies[data_name].retention
+        if retention_con and time.time() - self._data_types[data_name].retention > retention_con:
+            self.issues.append(f"Data type {data_name} retention time exceeded target policy limit.")
 
-    def update_retention(self, data_type: str) -> None:
-        for dt in self.data_types:
-            if dt.data_type == data_type:
-                dt.retention = time.time() - dt.retention
-
-
-    def instant_checker(self, target_policy: Type[BaseModel], data_type:str) -> bool:
-        for dt in self.data_types:
-            if dt.data_type == data_type:
-                target = target_policy.model_validate({'data_type': dt.data_type,
-                                                      'collection': dt.collection,
-                                                      'processing': dt.processing,
-                                                      'disclosure': dt.disclosure,
-                                                      'retention': dt.retention})
-                if dt == target:
-                    logger.debug(f"Data type {data_type} complies with the target policy.")
-                    return True
-                else:
-                    logger.warning(f"Data type {data_type} does not comply with the target policy.")
-                    return False
-        logger.warning(f"Data type {data_type} not found in runtime checker.")
-        return False
-
+    def update_disclosure(self, data_name: str, disclosure_name: str) -> None:
+        try:
+            self._data_types[data_name].disclosure = disclosure_name
+        except KeyError:
+            self.issues.append(f"Data type {data_name} not found in runtime checker for disclosure update.")
+            return
+        # Check disclosure compliance with target policy
+        target_disclosure = self._target_policies[data_name].disclosure
+        if disclosure_name != target_disclosure:
+            self.issues.append(f"Data type {data_name} disclosure {disclosure_name} is not allowed in the target policy.")
+        # Check retention time compliance with target policy
+        retention_con = self._target_policies[data_name].retention
+        if retention_con and time.time() - self._data_types[data_name].retention > retention_con:
+            self.issues.append(f"Data type {data_name} retention time exceeded target policy limit.")

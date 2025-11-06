@@ -12,11 +12,12 @@ from audagent.processing.normalizer.base import BaseHttpContentNormalizer
 from audagent.processing.normalizer.event_stream_normalizer import EventStreamNormalizer
 from audagent.processing.normalizer.ndjson_normalizer import NdjsonContentNormalizer
 from audagent.llm.ollama_models import graph_extractor_fm # This import all the graph extractor models; refer to llm/__init__.py
+from audagent.auditing.checker import RuntimeChecker
 
 logger = logging.getLogger(__name__)
 
 class HttpProcessor(BaseProcessor):
-    def __init__(self) -> None:
+    def __init__(self, runtime_checker: Optional[RuntimeChecker] = None) -> None:
         super().__init__()
         self._supported_events = [
             HookEventType.HTTP_REQUEST,
@@ -26,6 +27,7 @@ class HttpProcessor(BaseProcessor):
             NdjsonContentNormalizer(),
             EventStreamNormalizer(),
         ]
+        self._runtime_checker = runtime_checker
 
     async def process(self, event_type: HookEventType, data: dict[str, Any]) -> Optional[GraphStructure]:
         model_mapping: dict[HookEventType, type[HttpRequestData | HttpResponseData]] = {
@@ -55,21 +57,15 @@ class HttpProcessor(BaseProcessor):
             for model_type in models:
                 try:
                     req_model = model_type.model_validate_json(body)
-                    nodes, edges = self._parse_nodes_and_edges(req_model, request=request)
-                    # TODO: Check presidio info from edges, also return presidio info updates if any
-                    # TODO: Wrap violation info in edge model
-                    # TODO: The automaton table is static, along with a retention stamp.
-                    check_presidio = any(edge.sensitive_info for edge in edges if edge.sensitive_info)
-                    if check_presidio:
-                        logger.debug("Presidio PII information found in edges")
-
+                    nodes, edges = self._parse_nodes_and_edges(req_model, request=request, runtime_checker=self._runtime_checker)
+                    # Violation info wrapped in edge model
                     return nodes, edges
                 except ValidationError: # If validation fails, try the next model
                     continue
         logger.warning(f"Did not find a suitable model for: {body}")
         return None
 
-    def _parse_nodes_and_edges(self, payload: GraphExtractor, **kwargs: Any) -> Optional[GraphStructure]: # payload = req_model, i.e. LLM data model
-        nodes, edges = payload.extract_graph_structure(**kwargs) # Refer to each LLM's extract_graph_structure() method
+    def _parse_nodes_and_edges(self, payload: GraphExtractor, runtime_checker: Optional[RuntimeChecker] = None, **kwargs: Any) -> Optional[GraphStructure]: # payload = req_model, i.e. LLM data model
+        nodes, edges = payload.extract_graph_structure(runtime_checker=runtime_checker, **kwargs) # Refer to each LLM's extract_graph_structure() method
         logger.debug(f"Extracted {len(nodes)} nodes and {len(edges)} edges from HTTP payload")
         return nodes, edges
