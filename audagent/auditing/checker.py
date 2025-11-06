@@ -1,3 +1,7 @@
+"""
+Runtime policy checker to monitor data handling compliance.
+Used in `llm/*_models.py` during graph extraction. The violation info will be attached to edges.
+"""
 import time
 import logging
 
@@ -37,6 +41,7 @@ class RuntimeChecker:
     def check_collection_con(self, data_name: str) -> None:
         # Check whether this data type is allowed to be collected
         # For each new data type found in all stages (in addition to the collection), we should check whether it's allowed to be collected
+        # TODO: Consider similar data types mapping in the future
         if data_name not in self._target_policies:
             self.issues.append(f"Data type {data_name} not found in target policies.")
             return

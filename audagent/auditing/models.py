@@ -16,7 +16,9 @@ class PolicyChecking(BaseModel):
 
 class PolicyTarget(BaseModel):
     data_type: str
-    collection: constr(pattern="^(direct|indirect)$")
-    processing: constr(pattern="^(relevant|irrelevant)$")
-    disclosure: str
+    prohibited_col: bool = False
+    collection: Optional[constr(pattern="^(direct|indirect)$")]
+    processing: Optional[constr(pattern="^(relevant|irrelevant)$")]
+    disclosure: Optional[str]
+    prohibited_dis: bool = False
     retention: Optional[float]

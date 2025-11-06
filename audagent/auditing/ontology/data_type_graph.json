@@ -12,8 +12,7 @@
           "name": "Contact Information",
           "children": [
             { "name": "EMAIL_ADDRESS" },
-            { "name": "PHONE_NUMBER" },
-            { "name": "Postal Address" }
+            { "name": "PHONE_NUMBER" }
           ]
         },
         {
@@ -38,11 +37,7 @@
     {
       "name": "Device Information",
       "children": [
-        { "name": "IP_ADDRESS" },
-        { "name": "Device ID" },
-        { "name": "Cookie Identifier" },
-        { "name": "Browser Type" },
-        { "name": "Operating System" }
+        { "name": "IP_ADDRESS" }
       ]
     },
     {
@@ -63,8 +58,7 @@
     {
       "name": "Behavioral and Usage Data",
       "children": [
-        { "name": "URL" },
-        { "name": "Browsing History" }
+        { "name": "URL" }
       ]
     }
   ]
