@@ -10,14 +10,17 @@ from autogen_agentchat.messages import TextMessage
 from autogen_ext.models.anthropic import AnthropicChatCompletionClient
 from audagent.utils.custom_logging_formatter import setup_logging
 
-# --- Initialize Audagent with privacy policy ---
-import audagent
-audagent.initialize_with_privacy_policy(policies_path="../pri_policy/anthropic/simplified_privacy_model.json")
-# --- End of Audagent initialization ---
-
 setup_logging(logging.DEBUG)
 logging.getLogger()
 load_dotenv()
+
+# --- Initialize Audagent with privacy policy ---
+privacy_path = "../pri_policy/anthropic/simplified_privacy_model.json"
+if not os.path.exists(privacy_path):
+    logging.warning(f"Privacy policy not found at {privacy_path}")
+os.environ["AUDAGENT_PRIVACY_POLICIES"] = privacy_path
+import audagent
+# --- End of Audagent initialization ---
 
 async def currency_exchange_tool(from_currency: str, to_currency: str, amount: float = 1.0) -> dict:
     url = "https://api.frankfurter.app/latest"
