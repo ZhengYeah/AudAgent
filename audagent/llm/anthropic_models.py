@@ -61,16 +61,18 @@ class AnthropicRequestModel(GraphExtractor):
     @staticmethod
     def helper_checker_add(runtime_checker: RuntimeChecker, text: str) -> Optional[str]:
         # This is data collection stage, so we just add data types to runtime checker (check collection compliance automatically)
+        if not text: return None
         analyzer = AnalyzerEngine()
         results = analyzer.analyze(text=text, entities=[], language="en")
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
-            runtime_checker.add_data_name(data_name=pii, data_type=pii)
+            runtime_checker.add_data_name(data_name=pii, data_type=data_type)
         edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
         return edge_issues
 
     @staticmethod
     def helper_checker_switch(runtime_checker: RuntimeChecker, text: str, switch_dis: bool, name_dis: str = None) -> Optional[str]:
+        if not text: return None
         analyzer = AnalyzerEngine()
         results = analyzer.analyze(text=text, entities=[], language="en")
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}

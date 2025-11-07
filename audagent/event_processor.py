@@ -58,12 +58,9 @@ class EventProcessor:
     @staticmethod
     def _load_policies_from_env() -> Optional[list[PolicyTarget]]:
         path_env = os.getenv("AUDAGENT_PRIVACY_POLICIES")
-        # if not path_env:
-        #     logger.error("AUDAGENT_PRIVACY_POLICIES not set.")
-        #     return None
-        # if not os.path.exists(path_env):
-        #     logger.error(f"Privacy policies file does not exist at '{path_env}'")
-        #     return None
+        if not path_env:
+            logger.info("AUDAGENT_PRIVACY_POLICIES not set.")
+            return None
         try:
             with open(path_env, "r", encoding="utf-8") as f:
                 data = json.load(f)

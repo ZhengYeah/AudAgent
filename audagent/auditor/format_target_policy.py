@@ -4,6 +4,7 @@ Output: `PolicyTarget` class instances after applying ontology graphs
 """
 import json
 import re
+from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set
 
 from audagent.auditor.models import PolicyTarget
@@ -139,13 +140,13 @@ def _normalize_retention(s: Any) -> Optional[float]:
         return 10**5  # Assume very long retention
     return 10**5 # If not specified or ambiguous, assume infinite retention
 
-ONTOLOGY_PATH = "./ontology/data_type_graph.json" # Path to ontology file
+ONTOLOGY_PATH = (Path(__file__).resolve().parent / "ontology" / "data_type_graph.json").resolve()
 
 """
 Main class to format target policy
 """
 class PolicyTargetFormatter:
-    def __init__(self, simplified_json: List[Dict[str, Any]] , ontology=ONTOLOGY_PATH) -> None:
+    def __init__(self, simplified_json: List[Dict[str, Any]] , ontology=str(ONTOLOGY_PATH)) -> None:
         self.simplified_json = simplified_json
         with open(ontology, "r") as f:
             ontology_json = json.load(f)

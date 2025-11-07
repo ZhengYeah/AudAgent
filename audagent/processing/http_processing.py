@@ -65,7 +65,7 @@ class HttpProcessor(BaseProcessor):
         logger.warning(f"Did not find a suitable model for: {body}")
         return None
 
-    def _parse_nodes_and_edges(self, payload: GraphExtractor, runtime_checker: Optional[RuntimeChecker] = None, **kwargs: Any) -> Optional[GraphStructure]: # payload = req_model, i.e. LLM data model
+    def _parse_nodes_and_edges(self, payload: GraphExtractor, request, runtime_checker: Optional[RuntimeChecker] = None, **kwargs: Any) -> Optional[GraphStructure]: # payload = req_model, i.e. LLM data model
         nodes, edges = payload.extract_graph_structure(runtime_checker=runtime_checker, **kwargs) # Refer to each LLM's extract_graph_structure() method
         logger.debug(f"Extracted {len(nodes)} nodes and {len(edges)} edges from HTTP payload")
         return nodes, edges

@@ -1,9 +1,16 @@
 import asyncio
 import logging
 import os
+from pathlib import Path
 
 import aiohttp
 from dotenv import load_dotenv
+
+# --- Initialize Audagent with privacy policy ---
+PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "audagent" / "pri_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
+import audagent
+# --- End of Audagent initialization ---
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
@@ -12,15 +19,8 @@ from audagent.utils.custom_logging_formatter import setup_logging
 
 setup_logging(logging.DEBUG)
 logging.getLogger()
-load_dotenv()
+load_dotenv(override=True)
 
-# --- Initialize Audagent with privacy policy ---
-privacy_path = "../pri_policy/anthropic/simplified_privacy_model.json"
-if not os.path.exists(privacy_path):
-    logging.warning(f"Privacy policy not found at {privacy_path}")
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = privacy_path
-import audagent
-# --- End of Audagent initialization ---
 
 async def currency_exchange_tool(from_currency: str, to_currency: str, amount: float = 1.0) -> dict:
     url = "https://api.frankfurter.app/latest"
