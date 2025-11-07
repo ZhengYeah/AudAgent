@@ -185,7 +185,7 @@ class EventProcessor:
                     self._set_verbose()
                     return CommandResponse(success=True, callback_id=cmd.callback_id)
         except Exception as e:
-            logger.error(f"Error decoding command: {e}")
+            logger.error(f"Error in decoding command; somewhere at keyword {e}")
         return None
 
     async def _handle_event(self, callback_id: str, event: HookEvent) -> Optional[CommandResponse]:
