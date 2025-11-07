@@ -42,7 +42,11 @@ class AnthropicRequestModel(GraphExtractor):
                     if isinstance(content, ToolUse):
                         # convert input dict to string for PII analysis
                         text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
-                        edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
+                        try:
+                            edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
+                        except Exception:
+                            print(f"Error in auditing tool use content: {content}")
+                            edge_issues = None
                         tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                                       target_node_id=content.name,
                                                       tool_input=content.input,
@@ -77,7 +81,7 @@ class AnthropicRequestModel(GraphExtractor):
         results = analyzer.analyze(text=text, entities=[], language="en")
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
-            runtime_checker.check_collection_con(pii)
+            runtime_checker.check_collection_allowed(pii)
             runtime_checker.update_processing_con(pii)
             if switch_dis:
                 runtime_checker.update_disclosure(pii, name_dis)
@@ -121,7 +125,7 @@ class AnthropicResponseModel(GraphExtractor):
         results = analyzer.analyze(text=text, entities=[], language="en")
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
-            runtime_checker.check_collection_con(pii)
+            runtime_checker.check_collection_allowed(pii)
             runtime_checker.update_processing_con(pii)
             if switch_dis:
                 runtime_checker.update_disclosure(pii, name_dis)

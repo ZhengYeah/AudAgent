@@ -21,12 +21,12 @@ class RuntimeChecker:
         self._load_target_policies(policies)
         self.issues: list[str] = []
 
-    def _load_target_policies(self, policies: dict[str, PolicyTarget]) -> None:
+    def _load_target_policies(self, policies: list[PolicyTarget]) -> None:
         try:
-            self._target_policies = policies
-            logger.debug("Loaded target policies into runtime checker.")
-        except ValidationError:
-            logger.error("Failed to load target policies.")
+            for policy in policies:
+                self._target_policies[policy.data_type] = policy
+        except ValidationError as e:
+            logger.error(f"Error loading target policies into runtime checker: {e}")
 
     def add_data_name(self, data_name: str, data_type: str) -> None:
         if data_name in self._data_names:
@@ -35,13 +35,8 @@ class RuntimeChecker:
             # Update retention time to current time (collected timestamp)
             dt.retention = time.time()
             return
-        # Check whether data type is prohibited to be collected
-        data_type_for_check = self._data_names[data_name].data_type
-        prohibited_col = self._target_policies[data_type_for_check].prohibited_col
-        if prohibited_col:
-            self.issues.append(f"Data name {data_name} collection is prohibited in the target policy.")
-            return
-        # Add new data name to the runtime checker
+        self.check_collection_allowed(data_type) # Not found violation
+        # If it is found and not prohibited, add to runtime checker
         new_data_name = PolicyChecking(
             data_name=data_name,
             data_type=data_type,
@@ -51,20 +46,22 @@ class RuntimeChecker:
             retention=time.time())
         self._data_names[data_name] = new_data_name
         logger.debug(f"Added data name {data_name} to runtime checker.")
-        self.check_collection_con(data_name)
 
-    def check_collection_con(self, data_name: str) -> None:
+    def check_collection_allowed(self, data_type: str) -> None:
         # Check whether this data type is allowed to be collected
         # For each new data type found in all stages (in addition to the collection), we should check whether it's allowed to be collected
-        if self._data_names[data_name].data_type not in self._target_policies:
-            self.issues.append(f"Data type {data_name} not found in target policies.")
-            return
+        if data_type not in self._target_policies:
+            self.issues.append(f"Data type {data_type} not found in target policies.")
+        elif self._target_policies[data_type].prohibited_col: # Prohibited violation
+            self.issues.append(f"Data type {data_type} collection is prohibited in the target policy.")
+        else:
+            logger.debug(f"Data type {data_type} collection is allowed in the target policy.")
 
     def update_processing_con(self, data_name: str) -> None:
         try:
             self._data_names[data_name].processing = "relevant"
         except KeyError:
-            self.issues.append(f"Data name {data_name} not found in runtime checker for processing update.")
+            logger.error(f"Data name {data_name} not found in runtime checker for processing update.")
             return
         # Check retention time compliance with target policy
         data_type_for_check = self._data_names[data_name].data_type
@@ -76,7 +73,7 @@ class RuntimeChecker:
         try:
             self._data_names[data_name].disclosure = disclosure_name
         except KeyError:
-            self.issues.append(f"Data name {data_name} not found in runtime checker for disclosure update.")
+            logger.error(f"Data name {data_name} not found in runtime checker for disclosure update.")
             return
         # Check disclosure compliance with target policy
         data_type_for_check = self._data_names[data_name].data_type
