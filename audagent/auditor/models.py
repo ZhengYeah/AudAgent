@@ -8,7 +8,8 @@ import time
 from pydantic import BaseModel, constr, Field
 
 class PolicyChecking(BaseModel):
-    data_type: str
+    data_name: str # An instance of category data type
+    data_type: Optional[str]
     collection: Optional[constr(pattern="^(direct|indirect)$")]
     processing: Optional[constr(pattern="^(relevant|irrelevant)$")]
     disclosure: Optional[str]

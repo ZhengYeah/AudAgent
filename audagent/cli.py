@@ -64,7 +64,7 @@ def run_ui(args: argparse.Namespace) -> None:
         pass
     
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="AudAgent", description="AudAgent - A privacy auditing framework for AI agents.")
+    parser = argparse.ArgumentParser(prog="AudAgent", description="AudAgent - A privacy auditor framework for AI agents.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # UI Command

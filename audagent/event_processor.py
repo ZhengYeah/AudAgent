@@ -3,7 +3,9 @@ Event Processor for handling HookEvents in the pipe,
 including worker management and command processing.
 """
 import asyncio
+import json
 import logging
+import os
 from multiprocessing.connection import Connection
 from multiprocessing.synchronize import Event
 from typing import Optional
@@ -20,7 +22,8 @@ from audagent.graph.graph import GraphBuilder
 from audagent.visualization.consts import VISUALIZATION_SERVER_PORT
 from audagent.webhooks.handler import WebhookHandler
 from audagent.webhooks.models import Webhook
-from audagent.auditing.checker import RuntimeChecker
+from audagent.auditor.checker import RuntimeChecker
+from audagent.auditor.format_target_policy import PolicyTargetFormatter, PolicyTarget
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +53,20 @@ class EventProcessor:
         self._webhook_handler: Optional[WebhookHandler] = None
         self._supported_processors: list[type[BaseProcessor]] = [HttpProcessor]
         # One runtime checker shared across http payloads
-        self._runtime_checker = RuntimeChecker(policies={})
+        self._runtime_checker = RuntimeChecker(policies=self._load_policies_from_env())
+
+    @staticmethod
+    def _load_policies_from_env() -> Optional[list[PolicyTarget]]:
+        path_env = os.getenv("AUDAGENT_PRIVACY_POLICIES")
+        try:
+            with open(path_env, "r", encoding="utf-8") as f:
+                # Load to PolicyTarget models
+                policy_targets = PolicyTargetFormatter(simplified_json=json.load(f)).format_target_policy()
+                logger.debug(f"Loaded privacy policies from '{path_env}'.")
+                return policy_targets
+        except Exception as e:
+            logger.error(f"Failed to read AUDAGENT_POLICIES_PATH '{path_env}': {e}", exc_info=True)
+            return None
 
     def start(self, pipe: Connection, init_event: Event) -> None:
         self._pipe = pipe

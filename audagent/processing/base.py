@@ -3,7 +3,7 @@ from typing import Any, Optional
 
 from audagent.enums import HookEventType
 from audagent.graph.graph import GraphStructure
-from audagent.auditing.checker import RuntimeChecker
+from audagent.auditor.checker import RuntimeChecker
 
 
 class BaseProcessor(ABC):

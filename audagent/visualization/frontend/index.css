@@ -27,13 +27,10 @@ body {
 }
 
 .react-flow {
-  /*--bg-color: rgb(17, 17, 17);*/
-    --bg-color: white;
+  --bg-color: white;
   --text-color: rgb(17, 17, 17);
   --node-border-radius: 10px;
-  --node-box-shadow: 10px 0 15px rgba(42, 138, 246, 0.3),
-    -10px 0 15px rgba(233, 42, 103, 0.3);
-  /*background-color: var(--bg-color);*/
+  --node-box-shadow: 10px 0 15px rgba(42, 138, 246, 0.3), -10px 0 15px rgba(233, 42, 103, 0.3);
   color: var(--text-color);
 }
 

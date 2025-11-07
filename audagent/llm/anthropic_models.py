@@ -1,8 +1,8 @@
-from typing import Any
+from typing import Any, Optional
 
 from presidio_analyzer import AnalyzerEngine
 
-from audagent.auditing.checker import RuntimeChecker
+from audagent.auditor.checker import RuntimeChecker
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import HttpModel
 from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, LLMNode, ModelGenerateEdge, Node, ToolCallEdge, ToolNode, graph_extractor_fm)
@@ -29,13 +29,8 @@ class AnthropicRequestModel(GraphExtractor):
         # Parse all messages, worst case we'll have duplicate edges but that's fine
         for message in self.messages:
             if isinstance(message, UserMessage):
-                analyzer = AnalyzerEngine()
-                results = analyzer.analyze(text=message.content, entities=[], language="en")
-                pii_info = {res.entity_type: message.content[res.start:res.end] for res in results}
-                for pii in pii_info.values():
-                    # This is data collection stage, so we just add data types to runtime checker (check collection compliance automatically)
-                    runtime_checker.add_data_type(pii)
-                edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                # Note that `runtime_checker` may be None if no policies are provided
+                edge_issues = self.helper_checker_add(runtime_checker, text=message.content) if runtime_checker else None
                 model_generate_edge = ModelGenerateEdge(prompt=message.content,
                                                         source_node_id=APP_NODE_ID,
                                                         target_node_id=model.node_id,
@@ -44,18 +39,10 @@ class AnthropicRequestModel(GraphExtractor):
             elif isinstance(message, AssistantMessage):
                 # May contain both ToolUse and TextContent in this stage
                 for content in message.content:
-                    analyzer = AnalyzerEngine()
                     if isinstance(content, ToolUse):
                         # convert input dict to string for PII analysis
                         text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
-                        results = analyzer.analyze(text=text, entities=[], language="en")
-                        pii_info = {res.entity_type: text[res.start:res.end] for res in results}
-                        for pii in pii_info.values():
-                            # This is data processing stage and involves tool use, so we also need to update the disclosure field
-                            runtime_checker.check_collection_con(pii)
-                            runtime_checker.update_processing_con(pii)
-                            runtime_checker.update_disclosure(pii, content.id)
-                        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                        edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
                         tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                                       target_node_id=content.name,
                                                       tool_input=content.input,
@@ -63,19 +50,37 @@ class AnthropicRequestModel(GraphExtractor):
                                                       violation_info=edge_issues)
                         edges.append(tool_call_edge)
                     elif isinstance(content, TextContent):
-                        results = analyzer.analyze(text=content.text, entities=[], language="en")
-                        pii_info = {res.entity_type: content.text[res.start:res.end] for res in results}
-                        for pii in pii_info.values():
-                            # This is data processing stage, so we check the collection compliance first, then update processing constraint if allowed
-                            runtime_checker.check_collection_con(pii)
-                            runtime_checker.update_processing_con(pii)
-                        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                        edge_issues = self.helper_checker_switch(runtime_checker, text=content.text, switch_dis=False) if runtime_checker else None
                         model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                                 source_node_id=self.model,
                                                                 target_node_id=APP_NODE_ID,
                                                                 violation_info=edge_issues)
                         edges.append(model_generate_edge)
         return nodes, edges
+
+    @staticmethod
+    def helper_checker_add(runtime_checker: RuntimeChecker, text: str) -> Optional[str]:
+        # This is data collection stage, so we just add data types to runtime checker (check collection compliance automatically)
+        analyzer = AnalyzerEngine()
+        results = analyzer.analyze(text=text, entities=[], language="en")
+        pii_info = {res.entity_type: text[res.start:res.end] for res in results}
+        for data_type, pii in pii_info.items():
+            runtime_checker.add_data_name(data_name=pii, data_type=pii)
+        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+        return edge_issues
+
+    @staticmethod
+    def helper_checker_switch(runtime_checker: RuntimeChecker, text: str, switch_dis: bool, name_dis: str = None) -> Optional[str]:
+        analyzer = AnalyzerEngine()
+        results = analyzer.analyze(text=text, entities=[], language="en")
+        pii_info = {res.entity_type: text[res.start:res.end] for res in results}
+        for data_type, pii in pii_info.items():
+            runtime_checker.check_collection_con(pii)
+            runtime_checker.update_processing_con(pii)
+            if switch_dis:
+                runtime_checker.update_disclosure(pii, name_dis)
+        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+        return edge_issues
 
 
 @graph_extractor_fm.flavor(HttpModel.ANTHROPIC_RESPONSE)
@@ -90,34 +95,33 @@ class AnthropicResponseModel(GraphExtractor):
     def extract_graph_structure(self, runtime_checker: RuntimeChecker, **kwargs: Any) -> GraphStructure:
         edges: list[Edge] = []
         for content in self.content:
-            analyzer = AnalyzerEngine()
             if isinstance(content, ToolUse):
                 # convert input dict to string for PII analysis
                 text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
-                results = analyzer.analyze(text=text, entities=[], language="en")
-                pii_info = {res.entity_type: text[res.start:res.end] for res in results}
-                for pii in pii_info.values():
-                    # This is data processing stage and involves tool use, so we also need to update the disclosure field
-                    runtime_checker.check_collection_con(pii)
-                    runtime_checker.update_processing_con(pii)
-                    runtime_checker.update_disclosure(pii, content.id)
-                edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
                 tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                               target_node_id=content.name,
                                               tool_input=content.input,
                                               violation_info=edge_issues)
                 edges.append(tool_call_edge)
             elif isinstance(content, TextContent):
-                results = analyzer.analyze(text=content.text, entities=[], language="en")
-                pii_info = {res.entity_type: content.text[res.start:res.end] for res in results}
-                for pii in pii_info.values():
-                    # This is data processing stage, so we check the collection compliance first, then update processing constraint if allowed
-                    runtime_checker.check_collection_con(pii)
-                    runtime_checker.update_processing_con(pii)
-                edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                edge_issues = self.helper_checker_switch(runtime_checker, text=content.text, switch_dis=False) if runtime_checker else None
                 model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                         source_node_id=self.model,
                                                         target_node_id=APP_NODE_ID,
                                                         violation_info=edge_issues)
                 edges.append(model_generate_edge)
         return [], edges
+
+    @staticmethod
+    def helper_checker_switch(runtime_checker: RuntimeChecker, text: str, switch_dis: bool, name_dis: str = None) -> Optional[str]:
+        analyzer = AnalyzerEngine()
+        results = analyzer.analyze(text=text, entities=[], language="en")
+        pii_info = {res.entity_type: text[res.start:res.end] for res in results}
+        for data_type, pii in pii_info.items():
+            runtime_checker.check_collection_con(pii)
+            runtime_checker.update_processing_con(pii)
+            if switch_dis:
+                runtime_checker.update_disclosure(pii, name_dis)
+        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+        return edge_issues

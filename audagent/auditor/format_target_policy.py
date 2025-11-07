@@ -6,7 +6,7 @@ import json
 import re
 from typing import Any, Dict, Iterable, List, Optional, Set
 
-from audagent.auditing.models import PolicyTarget
+from audagent.auditor.models import PolicyTarget
 
 
 # --- Ontology helpers ---
@@ -139,14 +139,16 @@ def _normalize_retention(s: Any) -> Optional[float]:
         return 10**5  # Assume very long retention
     return 10**5 # If not specified or ambiguous, assume infinite retention
 
+ONTOLOGY_PATH = "./ontology/data_type_graph.json" # Path to ontology file
 
 """
 Main class to format target policy
 """
 class PolicyTargetFormatter:
-    def __init__(self, simplified_json: str, ontology_json: str) -> None:
+    def __init__(self, simplified_json: List[Dict[str, Any]] , ontology=ONTOLOGY_PATH) -> None:
         self.simplified_json = simplified_json
-        self.ontology_json = ontology_json
+        with open(ontology, "r") as f:
+            ontology_json = json.load(f)
         self.ontology_map = build_ontology_map(ontology_json)
 
     def format_target_policy(self) -> List[PolicyTarget]:
@@ -188,41 +190,34 @@ class PolicyTargetFormatter:
             prohibited_col = entry.get("prohibited_col", False)
             prohibited_dis = entry.get("prohibited_dis", False)
 
-
             for dt in sorted(matched):
-                results.append(
-                    PolicyTarget(
-                        data_type=dt,
-                        prohibited_col=prohibited_col,
-                        collection=collection,
-                        processing=processing,
-                        disclosure=disclosure,
-                        prohibited_dis=prohibited_dis,
-                        retention=retention,
-                    )
-                )
+                results.append(PolicyTarget(
+                    data_type=dt,
+                    prohibited_col=prohibited_col,
+                    collection=collection,
+                    processing=processing,
+                    disclosure=disclosure,
+                    prohibited_dis=prohibited_dis,
+                    retention=retention))
         return results
 
 
-if __name__ == "__main__":
-    pri_policy_path = "../pri_policy/anthropic/simplified_privacy_model.json"
-    ontology_path = "./ontology/data_type_graph.json"
-
-    with open(pri_policy_path, "r") as f:
-        simplified_json = json.load(f)
-    with open(ontology_path, "r") as f:
-        ontology_json = json.load(f)
-
-    formatter = PolicyTargetFormatter(simplified_json, ontology_json)
-    policy_targets = formatter.format_target_policy()
-
-    # user defined policy targets
-    user_policy_path = "../pri_policy/user_defined/prohibited_policy.json"
-    with open(user_policy_path, "r") as f:
-        user_policy_json = json.load(f)
-    new_formatter = PolicyTargetFormatter(user_policy_json, ontology_json)
-    user_policy_targets = new_formatter.format_target_policy()
-    policy_targets.extend(user_policy_targets)
-
-    for pt in policy_targets:
-        print(pt.model_dump_json())
+# if __name__ == "__main__":
+#     pri_policy_path = "../pri_policy/anthropic/simplified_privacy_model.json"
+#
+#     with open(pri_policy_path, "r") as f:
+#         simplified_json = json.load(f)
+#
+#     formatter = PolicyTargetFormatter(simplified_json)
+#     policy_targets = formatter.format_target_policy()
+#
+#     # user defined policy targets
+#     user_policy_path = "../pri_policy/user_defined/prohibited_policy.json"
+#     with open(user_policy_path, "r") as f:
+#         user_policy_json = json.load(f)
+#     new_formatter = PolicyTargetFormatter(user_policy_json)
+#     user_policy_targets = new_formatter.format_target_policy()
+#     policy_targets.extend(user_policy_targets)
+#
+#     for pt in policy_targets:
+#         print(pt.model_dump_json())

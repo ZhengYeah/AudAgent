@@ -12,7 +12,7 @@ from audagent.processing.normalizer.base import BaseHttpContentNormalizer
 from audagent.processing.normalizer.event_stream_normalizer import EventStreamNormalizer
 from audagent.processing.normalizer.ndjson_normalizer import NdjsonContentNormalizer
 from audagent.llm.ollama_models import graph_extractor_fm # This import all the graph extractor models; refer to llm/__init__.py
-from audagent.auditing.checker import RuntimeChecker
+from audagent.auditor.checker import RuntimeChecker
 
 logger = logging.getLogger(__name__)
 

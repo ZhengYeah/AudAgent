@@ -10,10 +10,10 @@ from autogen_agentchat.messages import TextMessage
 from autogen_ext.models.anthropic import AnthropicChatCompletionClient
 from audagent.utils.custom_logging_formatter import setup_logging
 
-"""
-Import Audagent to monitor LLM interactions
-"""
+# --- Initialize Audagent with privacy policy ---
 import audagent
+audagent.initialize_with_privacy_policy(policies_path="../pri_policy/anthropic/simplified_privacy_model.json")
+# --- End of Audagent initialization ---
 
 setup_logging(logging.DEBUG)
 logging.getLogger()
@@ -100,7 +100,7 @@ async def main():
         print("Agent:", result.messages[-1].content)
 
 # Example inputs to try:
-# My friend Bob, who lives in NYC, worked there before. His phone number is (1) 646 1234-5678. Can you search him and summarize his information for a contact record?
+# My friend Bob, who lives in New York City, worked there before. His email address is bob@gmail.com; can you search him and summarize his information for a contact record?
 
 
 if __name__ == "__main__":
