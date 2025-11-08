@@ -83,13 +83,13 @@ class RuntimeChecker:
         data_type_for_check = self._data_names[data_name].data_type
         prohibited_dis = self._target_policies[data_type_for_check].prohibited_dis
         if prohibited_dis:
-            self.issues.append(f"Data name {data_name} disclosure is prohibited in the target policy.")
+            self.issues.append(f"Data name {data_name} disclosure is prohibited in the privacy policy.")
             return
         target_disclosure = self._target_policies[data_type_for_check].disclosure
         if disclosure_name != target_disclosure:
             # Raise issue if disclosure is not allowed; but in fact "service provider" covers all disclosures
             if target_disclosure != "service provider":
-                self.issues.append(f"Data name {data_name} disclosure {disclosure_name} is not allowed in the target policy.")
+                self.issues.append(f"Data name {data_name} disclosure to {disclosure_name} is not specified in the privacy policy.")
         # Check retention time compliance with target policy
         retention_con = self._target_policies[data_type_for_check].retention
         if retention_con and time.time() - self._data_names[data_name].retention > retention_con:

@@ -19,9 +19,6 @@ import CustomEdge from './components/CustomEdge';
 import Sidebar from './components/Sidebar';
 import TurboNode, {type TurboNodeData} from './components/TurboNode';
 
-const graphNodes: Node<TurboNodeData>[] = []
-const graphEdges: Edge[] = []
-
 const nodeTypes = {
   turbo: TurboNode,
 };
@@ -98,8 +95,8 @@ const initialEdges = [
 
   // Nodes' and edges' visualization component
   const Flow = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState([initialUserNode]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNodes, setSelectedNodes] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);

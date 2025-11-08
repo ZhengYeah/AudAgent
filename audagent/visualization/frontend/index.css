@@ -210,9 +210,8 @@ body {
   position: absolute;
   left: 25px;
   top: -40px;
-  width: 200px;
-  max-width: 250px;
-  max-height: 160px;
+  width: 250px;
+  max-width: 400px;
   border-radius: 10px;
   background-color: rgb(237, 122, 105);
   font-size: 16px;
