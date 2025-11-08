@@ -77,7 +77,7 @@ def test_update_disclosure_prohibited_reports_issue_and_returns():
         disclosure=None,
         retention=time.time(),
     )
-    checker.update_disclosure("loc", "partner")
+    checker.update_disclosure_con("loc", "partner")
     assert any("Data name loc disclosure is prohibited in the target policy." in i
                for i in checker.issues)
 
@@ -91,7 +91,7 @@ def test_update_disclosure_mismatch_reports_issue_when_not_service_provider():
         disclosure=None,
         retention=time.time() - 100.0,  # also triggers retention exceeded
     )
-    checker.update_disclosure("profile_1", "other")
+    checker.update_disclosure_con("profile_1", "other")
     assert any("Data name profile_1 disclosure other is not allowed in the target policy." in i
                for i in checker.issues)
     # retention should also have been checked and reported

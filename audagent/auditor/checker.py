@@ -22,11 +22,11 @@ class RuntimeChecker:
         self.issues: list[str] = []
 
     def _load_target_policies(self, policies: list[PolicyTarget]) -> None:
-        try:
+        if policies:
             for policy in policies:
                 self._target_policies[policy.data_type] = policy
-        except ValidationError as e:
-            logger.error(f"Error loading target policies into runtime checker: {e}")
+        else:
+            logger.info("No target policies provided to runtime checker yet.")
 
     def add_data_name(self, data_name: str, data_type: str) -> None:
         if data_name in self._data_names:
@@ -69,7 +69,7 @@ class RuntimeChecker:
         if retention_con and time.time() - self._data_names[data_name].retention > retention_con:
             self.issues.append(f"Data name {data_name} retention time exceeded target policy limit.")
 
-    def update_disclosure(self, data_name: str, disclosure_name: str) -> None:
+    def update_disclosure_con(self, data_name: str, disclosure_name: str) -> None:
         try:
             self._data_names[data_name].disclosure = disclosure_name
         except KeyError:

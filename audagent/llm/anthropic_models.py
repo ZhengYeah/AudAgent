@@ -30,7 +30,11 @@ class AnthropicRequestModel(GraphExtractor):
         for message in self.messages:
             if isinstance(message, UserMessage):
                 # Note that `runtime_checker` may be None if no policies are provided
-                edge_issues = self.helper_checker_add(runtime_checker, text=message.content) if runtime_checker else None
+                try:
+                    edge_issues = self.helper_checker_add(runtime_checker, text=message.content) if runtime_checker else None
+                except Exception as e:
+                    print(f"Error in auditing user message content: {message.content} with error {e}")
+                    edge_issues = None
                 model_generate_edge = ModelGenerateEdge(prompt=message.content,
                                                         source_node_id=APP_NODE_ID,
                                                         target_node_id=model.node_id,
@@ -44,8 +48,8 @@ class AnthropicRequestModel(GraphExtractor):
                         text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
                         try:
                             edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
-                        except Exception:
-                            print(f"Error in auditing tool use content: {content}")
+                        except Exception as e:
+                            print(f"Error in auditing tool use content: {content} with error {e}")
                             edge_issues = None
                         tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                                       target_node_id=content.name,
@@ -71,7 +75,8 @@ class AnthropicRequestModel(GraphExtractor):
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
             runtime_checker.add_data_name(data_name=pii, data_type=data_type)
-        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+        edge_issues = ' '.join(runtime_checker.issues) if runtime_checker.issues else None
+        runtime_checker.issues.clear()  # Clear issues after reporting for this edge
         return edge_issues
 
     @staticmethod
@@ -81,11 +86,12 @@ class AnthropicRequestModel(GraphExtractor):
         results = analyzer.analyze(text=text, entities=[], language="en")
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
-            runtime_checker.check_collection_allowed(pii)
+            runtime_checker.check_collection_allowed(data_type) # Privacy policy often focuses on data types
             runtime_checker.update_processing_con(pii)
             if switch_dis:
-                runtime_checker.update_disclosure(pii, name_dis)
-        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                runtime_checker.update_disclosure_con(pii, name_dis)
+        edge_issues = ' '.join(runtime_checker.issues) if runtime_checker.issues else None
+        runtime_checker.issues.clear()
         return edge_issues
 
 
@@ -104,14 +110,22 @@ class AnthropicResponseModel(GraphExtractor):
             if isinstance(content, ToolUse):
                 # convert input dict to string for PII analysis
                 text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
-                edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
+                try:
+                    edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
+                except Exception as e:
+                    print(f"Error in auditing tool use content: {content} with error {e}")
+                    edge_issues = None
                 tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                               target_node_id=content.name,
                                               tool_input=content.input,
                                               violation_info=edge_issues)
                 edges.append(tool_call_edge)
             elif isinstance(content, TextContent):
-                edge_issues = self.helper_checker_switch(runtime_checker, text=content.text, switch_dis=False) if runtime_checker else None
+                try:
+                    edge_issues = self.helper_checker_switch(runtime_checker, text=content.text, switch_dis=False) if runtime_checker else None
+                except Exception as e:
+                    print(f"Error in auditing text content: {content} with error {e}")
+                    edge_issues = None
                 model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                         source_node_id=self.model,
                                                         target_node_id=APP_NODE_ID,
@@ -125,9 +139,10 @@ class AnthropicResponseModel(GraphExtractor):
         results = analyzer.analyze(text=text, entities=[], language="en")
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
-            runtime_checker.check_collection_allowed(pii)
+            runtime_checker.check_collection_allowed(data_type)
             runtime_checker.update_processing_con(pii)
             if switch_dis:
-                runtime_checker.update_disclosure(pii, name_dis)
-        edge_issues = '; '.join(runtime_checker.issues) if runtime_checker.issues else None
+                runtime_checker.update_disclosure_con(pii, name_dis)
+        edge_issues = ' '.join(runtime_checker.issues) if runtime_checker.issues else None
+        runtime_checker.issues.clear()
         return edge_issues
