@@ -45,11 +45,11 @@ class AnthropicRequestModel(GraphExtractor):
                 for content in message.content:
                     if isinstance(content, ToolUse):
                         # convert input dict to string for PII analysis
-                        text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
+                        text = ' '.join(f"{value}" for _, value in content.input.items())
                         try:
                             edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
                         except Exception as e:
-                            print(f"Error in auditing tool use content: {content} with error {e}")
+                            print(f"Error in auditing tool use content: {text} with error {e}")
                             edge_issues = None
                         tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                                       target_node_id=content.name,
@@ -109,11 +109,11 @@ class AnthropicResponseModel(GraphExtractor):
         for content in self.content:
             if isinstance(content, ToolUse):
                 # convert input dict to string for PII analysis
-                text = ' '.join(f"{key}: {value}" for key, value in content.input.items())
+                text = ' '.join(f"{value}" for _, value in content.input.items())
                 try:
                     edge_issues = self.helper_checker_switch(runtime_checker, text=text, switch_dis=True, name_dis=content.id) if runtime_checker else None
                 except Exception as e:
-                    print(f"Error in auditing tool use content: {content} with error {e}")
+                    print(f"Error in auditing tool use content: {text} with error {e}")
                     edge_issues = None
                 tool_call_edge = ToolCallEdge(source_node_id=APP_NODE_ID,
                                               target_node_id=content.name,
@@ -124,7 +124,7 @@ class AnthropicResponseModel(GraphExtractor):
                 try:
                     edge_issues = self.helper_checker_switch(runtime_checker, text=content.text, switch_dis=False) if runtime_checker else None
                 except Exception as e:
-                    print(f"Error in auditing text content: {content} with error {e}")
+                    print(f"Error in auditing text content: {content.text} with error {e}")
                     edge_issues = None
                 model_generate_edge = ModelGenerateEdge(prompt=content.text,
                                                         source_node_id=self.model,

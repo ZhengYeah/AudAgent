@@ -1,4 +1,4 @@
-import {getBezierPath, getEdgeCenter} from '@xyflow/react';
+import {getBezierPath, getEdgeCenter, EdgeLabelRenderer} from '@xyflow/react';
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import {LuPackageOpen, LuPackageSearch, LuX} from 'react-icons/lu';
@@ -80,89 +80,61 @@ const CustomEdge = ({
 
   return (
     <>
-      <path
-        id={id}
-        style={style}
-        className="react-flow__edge-path"
-        d={edgePath}
-        markerEnd={markerEnd}
-      />
+      <path id={id} style={style} className="react-flow__edge-path" d={edgePath} markerEnd={markerEnd}/>
 
-      {/* Icon in the middle of the edge */}
-      {!hideIcon && (
-        <foreignObject
-          width={20}
-          height={20}
-          x={edgeCenterX - 10}
-          y={edgeCenterY - 10}
-          className="edge-icon-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={handleIconClick}
-          style={{overflow: 'visible'}}
-        >
-          <div className="flex items-center justify-center h-full z-50">
-            {isHovering ?
-              <LuPackageOpen
-                size={20}
-                className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`}
-                style={{color: iconColor}}
-              /> :
-              <LuPackageSearch
-                size={20}
-                className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`}
-                style={{color: iconColor}}
-              />
-            }
-          </div>
-        </foreignObject>
-      )}
-
-      {/* Popup on icon click */}
-      {!hideIcon && showPopup && hasViolation && (
-        <foreignObject
-          width={popupWidth}
-          height={popupHeight}
-          x={popupX}
-          y={popupY}
-          className="edge-popup-container"
-          style={{overflow: 'visible', pointerEvents: 'auto'}}
-        >
+      <EdgeLabelRenderer>
+        {!hideIcon && (
           <div
-            role="dialog"
-            aria-label="violation info"
-            onClick={(e) => e.stopPropagation()}
-            className="violation-box"
+            style={{
+              position: 'absolute',
+              transform: `translate(-50%, -50%) translate(${edgeCenterX}px, ${edgeCenterY}px)`,
+              pointerEvents: 'auto',
+              zIndex: 1000,
+            }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            onClick={handleIconClick}
           >
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6}}>
-              <strong style={{color: 'black'}}>violation_info</strong>
-              <button
-                onClick={() => setShowPopup(false)}
-                style={{
-                  background: 'transparent',
-                  border: 0,
-                  color: 'black',
-                  cursor: 'pointer',
-                  fontSize: 16,
-                  lineHeight: 1,
-                }}
-                aria-label="Close"
-                title="Close"
+            {isHovering ? (
+              <LuPackageOpen size={20} style={{ color: iconColor, cursor: 'pointer' }} />
+            ) : (
+              <LuPackageSearch size={20} style={{ color: iconColor, cursor: 'pointer' }} />
+            )}
+
+            {showPopup && hasViolation && (
+              <div
+                role="dialog"
+                aria-label="violation info"
+                className="violation-box"
+                onClick={(e) => e.stopPropagation()}
               >
-                <i style={{fontSize: 20}}>×</i>
-              </button>
-            </div>
-            <div
-              style={{color: 'red', fontSize: 12, maxHeight: popupHeight - 40, overflow: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word'}}>
-              {typeof violationInfo === 'string' ? (
-                violationInfo
-              ) : (
-                <pre style={{margin: 0, color: 'white'}}>{JSON.stringify(violationInfo, null, 2)}</pre>
-              )}
-            </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <span style={{ color: 'black' }}>violation_info</span>
+                  <button
+                    onClick={() => setShowPopup(false)}
+                    style={{ background: 'transparent', border: 0, cursor: 'pointer', color: 'black', fontSize: 18 }}
+                    aria-label="Close"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div
+                  style={{
+                    color: 'red',
+                    fontSize: 12,
+                    maxHeight: 100,
+                    overflow: 'auto',
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  {typeof violationInfo === 'string' ? violationInfo : JSON.stringify(violationInfo, null, 2)}
+                </div>
+              </div>
+            )}
           </div>
-        </foreignObject>
-      )}
+        )}
+      </EdgeLabelRenderer>
     </>
   );
 };

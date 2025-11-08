@@ -35,7 +35,8 @@ class RuntimeChecker:
             # Update retention time to current time (collected timestamp)
             dt.retention = time.time()
             return
-        self.check_collection_allowed(data_type) # Not found violation
+        if not self.check_collection_allowed(data_type):
+            return
         # If it is found and not prohibited, add to runtime checker
         new_data_name = PolicyChecking(
             data_name=data_name,
@@ -47,15 +48,18 @@ class RuntimeChecker:
         self._data_names[data_name] = new_data_name
         logger.debug(f"Added data name {data_name} to runtime checker.")
 
-    def check_collection_allowed(self, data_type: str) -> None:
+    def check_collection_allowed(self, data_type: str) -> bool:
         # Check whether this data type is allowed to be collected
         # For each new data type found in all stages (in addition to the collection), we should check whether it's allowed to be collected
         if data_type not in self._target_policies:
             self.issues.append(f"Data type {data_type} not found in target policies.")
+            return False
         elif self._target_policies[data_type].prohibited_col: # Prohibited violation
             self.issues.append(f"Data type {data_type} collection is prohibited in the target policy.")
+            return False
         else:
             logger.debug(f"Data type {data_type} collection is allowed in the target policy.")
+            return True
 
     def update_processing_con(self, data_name: str) -> None:
         try:
