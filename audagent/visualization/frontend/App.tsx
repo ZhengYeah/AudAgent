@@ -71,7 +71,7 @@ const initialNodes = [
   }
 ];
 
-// define initial edges: from app to llm
+// For testing purposes, define initial edges: from app to llm
 const initialEdges = [
   {
     id: 'eapp-llm',
@@ -82,7 +82,8 @@ const initialEdges = [
     data: {
       prompt: 'Prompt 1 lorem ipsum ha ha meh po la asdkj asldkjajsd kljasdjkl asd w  ads sad asd asd adskljdaskjas kljasdjklasd kljdasjkasdl jasdjklasd',
       tool_input: 'Tool input 1',
-      kaka: 'pipi'
+      kaka: 'pipi',
+      violation_info: 'This action violated policy XYZ because of reasons ABC and 123. Please review the guidelines to ensure compliance in future actions.'
     }
   },
   {
@@ -98,7 +99,7 @@ const initialEdges = [
   // Nodes' and edges' visualization component
   const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState([initialUserNode]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(graphEdges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [selectedNodes, setSelectedNodes] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const socketRef = useRef<WebSocket | null>(null);
@@ -179,6 +180,7 @@ const initialEdges = [
         type: 'turbo',
         createdAt: Date.now(),
         data: {hideIcon: true},
+        position: {x: -200, y: 0},
       };
       return [...prev, newEdge];
     });

@@ -78,8 +78,8 @@ table tbody tr:hover {
 }
 
 table .table-primary {
-  background-color: #2a8af6;
-  /* Blue background for highlighted rows */
+  background-color: #2a8af6 !important;
+  /* Blue background for highlighted rows; important to cover bg-danger */
 }
 
 .text-muted {
@@ -109,4 +109,9 @@ table .table-primary {
 
 table td .mb-2 {
   margin-top: 0.6rem;
+}
+
+.bg-danger {
+  background-color: rgba(255, 0, 0, 0.5);
+  color: #ffffff;
 }

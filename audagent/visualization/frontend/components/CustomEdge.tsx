@@ -1,7 +1,7 @@
 import {getBezierPath, getEdgeCenter} from '@xyflow/react';
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {LuPackageOpen, LuPackageSearch} from 'react-icons/lu';
+import {LuPackageOpen, LuPackageSearch, LuX} from 'react-icons/lu';
 
 const CustomEdge = ({
                       id,
@@ -34,25 +34,21 @@ const CustomEdge = ({
   });
 
   // Get the center point of the edge for positioning the icon
-  const [edgeCenterX, edgeCenterY] = getEdgeCenter({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-  });
+  const [edgeCenterX, edgeCenterY] = getEdgeCenter({sourceX, sourceY, targetX, targetY});
 
   // Hide the icon for user-to-app edges
   const hideIcon = Boolean(data?.hideIcon) || (source === 'user' && target === 'app');
 
+  // Flag icon red when edge.data has 'violation_info'
+  const violationInfo = data?.violation_info;
+  const hasViolation = !!data && Object.prototype.hasOwnProperty.call(data, 'violation_info') && data.violation_info;
+  const iconColor = hasViolation ? '#dc3545' /* bootstrap danger */ : '#198754';
+
   const handleIconClick = (e) => {
     e.stopPropagation();
     setShowPopup(!showPopup);
-
     // Highlight relevant rows in the sidebar
-    setSelectedNodes({
-      source,
-      target
-    });
+    setSelectedNodes({source, target});
   };
 
   const handleMouseEnter = () => {
@@ -76,6 +72,11 @@ const CustomEdge = ({
       document.removeEventListener('click', handleClickOutside);
     };
   }, [showPopup]);
+
+  const popupWidth = 250;
+  const popupHeight = 160;
+  const popupX = edgeCenterX + 15;
+  const popupY = edgeCenterY - popupHeight / 2;
 
   return (
     <>
@@ -105,12 +106,60 @@ const CustomEdge = ({
               <LuPackageOpen
                 size={20}
                 className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`}
+                style={{color: iconColor}}
               /> :
               <LuPackageSearch
                 size={20}
                 className={`cursor-pointer text-blue-500 transition-all duration-200 ${isHovering ? 'animate-pulse' : ''}`}
+                style={{color: iconColor}}
               />
             }
+          </div>
+        </foreignObject>
+      )}
+
+      {/* Popup on icon click */}
+      {!hideIcon && showPopup && hasViolation && (
+        <foreignObject
+          width={popupWidth}
+          height={popupHeight}
+          x={popupX}
+          y={popupY}
+          className="edge-popup-container"
+          style={{overflow: 'visible', pointerEvents: 'auto'}}
+        >
+          <div
+            role="dialog"
+            aria-label="violation info"
+            onClick={(e) => e.stopPropagation()}
+            className="violation-box"
+          >
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6}}>
+              <strong style={{color: 'black'}}>violation_info</strong>
+              <button
+                onClick={() => setShowPopup(false)}
+                style={{
+                  background: 'transparent',
+                  border: 0,
+                  color: 'black',
+                  cursor: 'pointer',
+                  fontSize: 16,
+                  lineHeight: 1,
+                }}
+                aria-label="Close"
+                title="Close"
+              >
+                <i style={{fontSize: 20}}>×</i>
+              </button>
+            </div>
+            <div
+              style={{color: 'red', fontSize: 12, maxHeight: popupHeight - 40, overflow: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word'}}>
+              {typeof violationInfo === 'string' ? (
+                violationInfo
+              ) : (
+                <pre style={{margin: 0, color: 'white'}}>{JSON.stringify(violationInfo, null, 2)}</pre>
+              )}
+            </div>
           </div>
         </foreignObject>
       )}

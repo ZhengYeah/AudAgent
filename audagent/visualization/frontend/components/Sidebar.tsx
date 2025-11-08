@@ -33,10 +33,9 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
 
   const getTime = (epochTime: number) => {
     const date = new Date(epochTime * 1000); // Convert epoch time to milliseconds
-    const hours = String(date.getUTCHours()).padStart(2, '0');
-    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+    const hours = String(date.getUTCHours()).padStart(2, '0'); // @ts-ignore
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0'); // @ts-ignore
     const seconds = String(date.getUTCSeconds()).padStart(2, '0');
-
     return `${hours}:${minutes}:${seconds}`;
   };
 
@@ -61,11 +60,6 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
       return !(value === undefined || value === null);
     });
     return Object.fromEntries(entries);
-  };
-
-  const hasMetadata = (edge: EdgeData) => {
-    const visible = getVisibleData(edge.data);
-    return Object.keys(visible).length > 0;
   };
 
   return (
@@ -94,11 +88,13 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
             const isExpanded = expandedRows[edge.id] || false;
             const visibleData = getVisibleData(edge.data);
             const hasMetadataItems = Object.keys(visibleData).length > 0;
+            // Check if violation_info exists in visibleData
+            const hasViolation = Object.prototype.hasOwnProperty.call(visibleData, 'violation_info');
 
             return (
               <React.Fragment key={edge.id}>
                 <tr
-                  className={`${isHighlighted ? 'table-primary' : ''}`}
+                  className={`${isHighlighted ? 'table-primary' : ''} ${hasViolation ? 'bg-danger' : ''}`}
                 >
                   <td className="text-center">
                     {hasMetadataItems && (
@@ -106,22 +102,17 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
                         onClick={() => toggleRow(edge.id)}
                         style={{cursor: 'pointer'}}
                       >
-                          {isExpanded ? <LuChevronDown size={16}/> : <LuChevronRight size={16}/>}
-                        </span>
+                        {isExpanded ? <LuChevronDown size={16}/> : <LuChevronRight size={16}/>}
+                      </span>
                     )}
                   </td>
-                  <td>
-                    {edge.createdAt ? getTime(edge.createdAt) : 'N/A'}
-                  </td>
-                  <td>
-                    {edge.source}
-                  </td>
-                  <td>
-                    {edge.target}
-                  </td>
+                  <td>{edge.createdAt ? getTime(edge.createdAt) : 'N/A'}</td>
+                  <td>{edge.source}</td>
+                  <td>{edge.target}</td>
                 </tr>
                 {isExpanded && (
                   <motion.tr
+                    className={hasViolation ? 'bg-danger' : ''}
                     initial={{opacity: 0, height: 0}}
                     animate={{opacity: 1, height: "auto"}}
                     exit={{opacity: 0, height: 0}}
