@@ -234,11 +234,30 @@ body {
   z-index: -1;
 }
 
-.violation-box::-webkit-scrollbar {
-  width: 8px; /* width of the scrollbar */
+/* Scrollbar styling for the scrollable content inside the popup */
+.violation-content {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #b91c1c #ffe1df; /* thumb color, track color */
 }
 
-.violation-box::-webkit-scrollbar-track {
-  background: #eee;  /* track color */
+/* Chromium/WebKit */
+.violation-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.violation-content::-webkit-scrollbar-track {
+  background: rgb(237, 122, 105); /* light red track */
   border-radius: 8px;
+}
+
+.violation-content::-webkit-scrollbar-thumb {
+  background: #b91c1c; /* dark red thumb */
+  border-radius: 8px;
+  border: 2px solid #ffe1df; /* creates a gap look */
+}
+
+.violation-content::-webkit-scrollbar-thumb:hover {
+  background: #991b1b;
 }

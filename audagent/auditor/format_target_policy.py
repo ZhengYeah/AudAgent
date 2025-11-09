@@ -127,7 +127,7 @@ def _normalize_disclosure(d: Optional[str]) -> Optional[str]:
     if d is None:
         return None
     if isinstance(d, list):
-        if any("service providers" in str(x).lower() for x in d):
+        if any(_token_overlap_match("service providers", x.lower()) for x in d):
             return "service providers"
         else:
             return ", ".join(str(x) for x in d)
@@ -182,7 +182,7 @@ class PolicyTargetFormatter:
                         matched.update(leaves)
             # Fallback: keep the original coarse-grained type if nothing matched
             if not matched:
-                pass
+                matched.add(raw_type.strip())
 
             collection = _normalize_collection(entry.get("methods_of_collection"))
             processing = _normalize_processing(entry.get("data_usage"))
@@ -190,6 +190,7 @@ class PolicyTargetFormatter:
             retention = _normalize_retention(entry.get("retention_period"))
             prohibited_col = entry.get("prohibited_col", False)
             prohibited_dis = entry.get("prohibited_dis", False)
+
 
             for dt in sorted(matched):
                 results.append(PolicyTarget(

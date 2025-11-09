@@ -5,8 +5,6 @@ Used in `llm/*_models.py` during graph extraction. The violation info will be at
 import time
 import logging
 
-from pydantic import ValidationError
-
 from audagent.auditor.models import PolicyChecking, PolicyTarget
 
 logger = logging.getLogger(__name__)
@@ -38,6 +36,8 @@ class RuntimeChecker:
         if not self.check_collection_allowed(data_type):
             return
         # If it is found and not prohibited, add to runtime checker
+        if data_name in self._target_policies: # If there is a more fine-grained data spec in target policies, we should use that instead
+            data_type = data_name
         new_data_name = PolicyChecking(
             data_name=data_name,
             data_type=data_type,
@@ -51,6 +51,7 @@ class RuntimeChecker:
     def check_collection_allowed(self, data_type: str) -> bool:
         # Check whether this data type is allowed to be collected
         # For each new data type found in all stages (in addition to the collection), we should check whether it's allowed to be collected
+        # TODO: Use data name instead of data type here?
         if data_type not in self._target_policies:
             self.issues.append(f"Data type {data_type} not found in target policies.")
             return False
@@ -88,7 +89,7 @@ class RuntimeChecker:
         target_disclosure = self._target_policies[data_type_for_check].disclosure
         if disclosure_name != target_disclosure:
             # Raise issue if disclosure is not allowed; but in fact "service provider" covers all disclosures
-            if target_disclosure != "service provider":
+            if target_disclosure != "service providers":
                 self.issues.append(f"Data name {data_name} disclosure is not specified in the privacy policy.")
         # Check retention time compliance with target policy
         retention_con = self._target_policies[data_type_for_check].retention

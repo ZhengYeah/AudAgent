@@ -85,12 +85,7 @@ const CustomEdge = ({
       <EdgeLabelRenderer>
         {!hideIcon && (
           <div
-            style={{
-              position: 'absolute',
-              transform: `translate(-50%, -50%) translate(${edgeCenterX}px, ${edgeCenterY}px)`,
-              pointerEvents: 'auto',
-              zIndex: 1000,
-            }}
+            style={{ position: 'absolute', transform: `translate(-50%, -50%) translate(${edgeCenterX}px, ${edgeCenterY}px)`, pointerEvents: 'auto', zIndex: 1000 }}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
             onClick={handleIconClick}
@@ -112,21 +107,15 @@ const CustomEdge = ({
                   <span style={{ color: 'black' }}>violation_info</span>
                   <button
                     onClick={() => setShowPopup(false)}
-                    style={{ background: 'transparent', border: 0, cursor: 'pointer', color: 'black', fontSize: 18 }}
+                    style={{ background: 'transparent', border: 0, cursor: 'pointer', color: 'black', fontSize: 18, paddingRight: 0.5 }}
                     aria-label="Close"
                   >
                     ×
                   </button>
                 </div>
                 <div
-                  style={{
-                    color: 'red',
-                    fontSize: 12,
-                    maxHeight: 100,
-                    overflow: 'auto',
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: 'break-word',
-                  }}
+                  className="violation-content"
+                  style={{color: 'red', fontSize: 12, maxHeight: 100, overflow: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
                 >
                   {typeof violationInfo === 'string' ? violationInfo : JSON.stringify(violationInfo, null, 2)}
                 </div>

@@ -132,26 +132,14 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
                               </div>
                               <div
                                 className="small mt-1 text-wrap"
-                                style={{
-                                  wordWrap: "break-word",
-                                  whiteSpace: "pre-wrap",
-                                  overflowWrap: "break-word",
-                                  maxWidth: "100%", // Ensure text does not overflow
-                                }}
+                                style={{wordWrap: "break-word", whiteSpace: "pre-wrap", overflowWrap: "break-word", maxWidth: "100%"}} // Ensure text does not overflow
                               >
                                 {typeof value === "string" ? (
                                   value || "-"
                                 ) : (
                                   <pre
                                     className="text-white-50 mb-0"
-                                    style={{
-                                      fontSize: "0.75rem",
-                                      wordWrap: "break-word",
-                                      whiteSpace: "pre-wrap",
-                                      overflowWrap: "break-word",
-                                      maxWidth: "100%",
-                                      margin: 0,
-                                    }}
+                                    style={{fontSize: "0.75rem", wordWrap: "break-word", whiteSpace: "pre-wrap", overflowWrap: "break-word", maxWidth: "100%", margin: 0, padding: 0}}
                                   >
                                   {JSON.stringify(value, null, 2)}
                                 </pre>

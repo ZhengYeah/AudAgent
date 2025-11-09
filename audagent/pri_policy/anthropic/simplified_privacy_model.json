@@ -75,5 +75,12 @@
     "data_usage": "irrelevant",
     "data_disclosure": ["Affiliates for research and analytics", "Service providers supporting aggregate analysis", "Public research or safety reports where individual users are not identifiable"],
     "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "bob@gmail.com",
+    "methods_of_collection": "directly from users",
+    "data_usage": "relevant",
+    "prohibited_dis": "True",
+    "retention_period": "as long as necessary for marketing purposes or until the user opts out"
   }
 ]

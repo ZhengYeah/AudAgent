@@ -40,7 +40,7 @@ interface WebSocketMessage {
 // Define initial (extra) node for the user
 const initialUserNode: Node<TurboNodeData> = {
   id: 'user',
-  position: {x: -100, y: 0},
+  position: {x: -200, y: 0},
   data: {icon: <LuUser/>, title: 'user', subline: 'using prompts', topIcon: <LuMessageSquareMore/>},
   type: 'turbo'
 };
@@ -80,7 +80,8 @@ const initialEdges = [
       prompt: 'Prompt 1 lorem ipsum ha ha meh po la asdkj asldkjajsd kljasdjkl asd w  ads sad asd asd adskljdaskjas kljasdjklasd kljdasjkasdl jasdjklasd',
       tool_input: 'Tool input 1',
       kaka: 'pipi',
-      violation_info: 'This action violated policy XYZ because of reasons ABC and 123. Please review the guidelines to ensure compliance in future actions.'
+      violation_info: 'This action violated policy XYZ because of reasons ABC and 123. Please review the guidelines to ensure compliance in future actions.' +
+        'This action violated policy XYZ because of reasons ABC and 123. Please review the guidelines to ensure compliance in future actions.',
     }
   },
   {
@@ -177,7 +178,6 @@ const initialEdges = [
         type: 'turbo',
         createdAt: Date.now(),
         data: {hideIcon: true},
-        position: {x: -200, y: 0},
       };
       return [...prev, newEdge];
     });
