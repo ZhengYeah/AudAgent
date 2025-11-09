@@ -75,7 +75,7 @@ class AnthropicRequestModel(GraphExtractor):
         pii_info = {res.entity_type: text[res.start:res.end] for res in results}
         for data_type, pii in pii_info.items():
             runtime_checker.add_data_name(data_name=pii, data_type=data_type)
-        edge_issues = ' '.join(runtime_checker.issues) if runtime_checker.issues else None
+        edge_issues = "\n".join(runtime_checker.issues) if runtime_checker.issues else None
         runtime_checker.issues.clear()  # Clear issues after reporting for this edge
         return edge_issues
 
@@ -90,7 +90,7 @@ class AnthropicRequestModel(GraphExtractor):
             runtime_checker.update_processing_con(pii)
             if switch_dis:
                 runtime_checker.update_disclosure_con(pii, name_dis)
-        edge_issues = ' '.join(runtime_checker.issues) if runtime_checker.issues else None
+        edge_issues = "\n".join(runtime_checker.issues) if runtime_checker.issues else None
         runtime_checker.issues.clear()
         return edge_issues
 
@@ -143,6 +143,6 @@ class AnthropicResponseModel(GraphExtractor):
             runtime_checker.update_processing_con(pii)
             if switch_dis:
                 runtime_checker.update_disclosure_con(pii, name_dis)
-        edge_issues = ' '.join(runtime_checker.issues) if runtime_checker.issues else None
+        edge_issues = "\n".join(runtime_checker.issues) if runtime_checker.issues else None
         runtime_checker.issues.clear()
         return edge_issues

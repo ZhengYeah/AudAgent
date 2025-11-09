@@ -233,3 +233,12 @@ body {
   );
   z-index: -1;
 }
+
+.violation-box::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+.violation-box::-webkit-scrollbar-track {
+  background: #eee;  /* track color */
+  border-radius: 8px;
+}

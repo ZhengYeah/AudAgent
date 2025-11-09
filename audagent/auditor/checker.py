@@ -65,7 +65,7 @@ class RuntimeChecker:
         try:
             self._data_names[data_name].processing = "relevant"
         except KeyError:
-            logger.error(f"Data name {data_name} not found in runtime checker for processing update.")
+            self.issues.append(f"Data name {data_name} not collected from user input before processing.")
             return
         # Check retention time compliance with target policy
         data_type_for_check = self._data_names[data_name].data_type
@@ -77,7 +77,7 @@ class RuntimeChecker:
         try:
             self._data_names[data_name].disclosure = disclosure_name
         except KeyError:
-            logger.error(f"Data name {data_name} not found in runtime checker for disclosure update.")
+            self.issues.append(f"Data name {data_name} not collected from user input before disclosure.")
             return
         # Check disclosure compliance with target policy
         data_type_for_check = self._data_names[data_name].data_type
@@ -89,7 +89,7 @@ class RuntimeChecker:
         if disclosure_name != target_disclosure:
             # Raise issue if disclosure is not allowed; but in fact "service provider" covers all disclosures
             if target_disclosure != "service provider":
-                self.issues.append(f"Data name {data_name} disclosure to {disclosure_name} is not specified in the privacy policy.")
+                self.issues.append(f"Data name {data_name} disclosure is not specified in the privacy policy.")
         # Check retention time compliance with target policy
         retention_con = self._target_policies[data_type_for_check].retention
         if retention_con and time.time() - self._data_names[data_name].retention > retention_con:
