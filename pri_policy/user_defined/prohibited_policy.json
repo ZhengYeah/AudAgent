@@ -1,12 +1,11 @@
 [
   {
-    "types_of_data_collected": "US_SSN",
-    "prohibited_col": true,
+    "types_of_data_collected": "bob@gmail.com",
     "prohibited_dis": true
   },
   {
-      "types_of_data_collected": "EMAIL_ADDRESS",
-      "prohibited_col": false,
-      "prohibited_dis": true
+    "types_of_data_collected": "US_SSN",
+    "prohibited_col": true,
+    "prohibited_dis": true
   }
 ]
