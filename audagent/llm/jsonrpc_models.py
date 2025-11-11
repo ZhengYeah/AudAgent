@@ -1,7 +1,9 @@
-from typing import Annotated, Any, Literal, Optional, Union
+from typing import Any, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from presidio_analyzer import AnalyzerEngine
 
+from audagent.auditor.checker import RuntimeChecker
 from audagent.graph.consts import APP_NODE_ID
 from audagent.graph.enums import HttpModel
 from audagent.graph.models import (Edge, GraphExtractor, GraphStructure, McpCallEdge, MCPMethodType, MCPServerNode, Node, ToolCallEdge, ToolNode, graph_extractor_fm)
@@ -41,7 +43,7 @@ class JSONRPCRequest(GraphExtractor):
     jsonrpc: str
     id: int | str 
 
-    def extract_graph_structure(self, reqres: HttpRequestData | HttpResponseData, **kwargs: Any) -> GraphStructure:
+    def extract_graph_structure(self, reqres: HttpRequestData | HttpResponseData, runtime_checker: RuntimeChecker, **kwargs: Any) -> GraphStructure:
         if self.method == MCPMethodType.TOOL_CALL:
             return self._extract_tool_call_graph_structure(reqres)
         elif self.method == MCPMethodType.TOOL_LIST:
@@ -77,6 +79,7 @@ class JSONRPCRequest(GraphExtractor):
         )
         edges.append(mcp_call_edge)
 
+        # Add privacy auditing edge for tool call
         tool_call_edge = ToolCallEdge(
             source_node_id=host,
             target_node_id=self.params.name if self.params else str(),
@@ -100,7 +103,7 @@ class JSONRPCResponse(GraphExtractor):
     def extract_graph_structure(self, reqres: HttpRequestData | HttpResponseData, **kwargs: Any) -> GraphStructure:
         if isinstance(self.result, ToolCallResult):
             if self.result.isError:
-                return ([], [])
+                return [], []
             return self._extract_tool_call_graph_structure(reqres)
         elif isinstance(self.result, ToolListResult):
             return self._extract_tool_list_graph_structure(reqres)

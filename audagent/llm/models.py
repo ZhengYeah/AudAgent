@@ -1,7 +1,8 @@
 """
 Parse Agents' messages and tool uses based on their request and response.
+See *_models.py files in each agent integration for more specific data models.
 """
-from typing import Any, Optional
+from typing import Any
 
 from pydantic import BaseModel
 

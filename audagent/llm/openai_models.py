@@ -49,7 +49,7 @@ class OpenAIRequestModel(GraphExtractor):
         for message in self.messages:
             if isinstance(message, ToolMessage):
                 pass
-                # Not sure I want this, it includes the actual tool call result from the app
+                # Not sure if I want this, it includes the actual tool call result from the app
                 # edges.append(ToolCallEdge(source_node_id=APP_NODE_ID,
                 #                           target_node_id=self.model,
                 #                           tool_input={"input": message.content}))
