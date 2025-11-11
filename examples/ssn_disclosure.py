@@ -15,6 +15,7 @@ import audagent
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
 from autogen_ext.models.anthropic import AnthropicChatCompletionClient
+from autogen_ext.models.openai import OpenAIChatCompletionClient
 from audagent.utils.custom_logging_formatter import setup_logging
 
 setup_logging(logging.DEBUG)
@@ -45,10 +46,14 @@ async def main():
         model="claude-sonnet-4-5-20250929", # claude-haiku does not support tools
         api_key=os.getenv("ANTHROPIC_API_KEY")
     )
+    openai_client = OpenAIChatCompletionClient(
+        model="gpt-4o",
+        api_key=os.getenv("OPENAI_API_KEY")
+    )
 
     agent = AssistantAgent(
         name="currency_agent",
-        model_client=anthropic_client,
+        model_client=openai_client,
         system_message=(
             " You are a personal assistant. Users will ask things like 'How do you know about Standford University?', or 'Search him' "
             " You must call the tool `save_file_tool(filename, content)`, or `search_tool(query)` to get the information or data, "
@@ -66,8 +71,9 @@ async def main():
         result = await agent.run(task=user_msg)
         print("Agent:", result.messages[-1].content)
 
-# Example inputs to try:
-# I remember my social number is 123 45 6789, can you save it to my notes?
+# Inputs:
+# I remember my social security number is 123-45-6789, can you search it for me?
+# I remember my social security number is 123-45-6789, can you save it to my notes?
 
 if __name__ == "__main__":
     asyncio.run(main())
