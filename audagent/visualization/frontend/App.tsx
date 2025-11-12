@@ -261,7 +261,7 @@ const initialEdges = [
         const node = {
           id: n.node_id,
           position: {x, y},
-          data: {icon, title: n.node_type === 'app' ? 'agent interface' : n.node_type, subline: n.node_id, topIcon},
+          data: {icon, title: n.node_type === 'app' ? 'agent orchestrator' : n.node_type, subline: n.node_id, topIcon},
           type: 'turbo',
           className: 'fade-in-anim'
         };

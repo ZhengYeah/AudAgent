@@ -43,12 +43,30 @@ async def web_search_tool(query: str) -> dict:
 
 async def main():
     anthropic_client = AnthropicChatCompletionClient(
-        model="claude-sonnet-4-5-20250929", # claude-haiku does not support tools
+        model="claude-sonnet-4-5-20250929",  # claude-haiku does not support tools
         api_key=os.getenv("ANTHROPIC_API_KEY")
     )
     openai_client = OpenAIChatCompletionClient(
         model="gpt-4o",
         api_key=os.getenv("OPENAI_API_KEY")
+    )
+    gemini_client = OpenAIChatCompletionClient(
+        model="gemini-2.5-flash",
+        # gemini can use the same OpenAI API interface,
+        # see https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/tutorial/models.html
+        api_key=os.getenv("GEMINI_API_KEY")
+    )
+    deepseek_client = OpenAIChatCompletionClient(
+        model="deepseek-chat",
+        base_url="https://api.deepseek.com/v1",
+        api_key=os.getenv("DEEPSEEK_API_KEY"),
+        model_info={
+            "vision": True,
+            "function_calling": True,
+            "json_output": True,
+            "family": "deepseek",
+            "structured_output": True,
+        },
     )
 
     agent = AssistantAgent(

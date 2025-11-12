@@ -202,24 +202,3 @@ class PolicyTargetFormatter:
                     prohibited_dis=prohibited_dis,
                     retention=retention))
         return results
-
-
-# if __name__ == "__main__":
-#     pri_policy_path = "../pri_policy/anthropic/simplified_privacy_model.json"
-#
-#     with open(pri_policy_path, "r") as f:
-#         simplified_json = json.load(f)
-#
-#     formatter = PolicyTargetFormatter(simplified_json)
-#     policy_targets = formatter.format_target_policy()
-#
-#     # user defined policy targets
-#     user_policy_path = "../pri_policy/user_defined/prohibited_policy.json"
-#     with open(user_policy_path, "r") as f:
-#         user_policy_json = json.load(f)
-#     new_formatter = PolicyTargetFormatter(user_policy_json)
-#     user_policy_targets = new_formatter.format_target_policy()
-#     policy_targets.extend(user_policy_targets)
-#
-#     for pt in policy_targets:
-#         print(pt.model_dump_json())

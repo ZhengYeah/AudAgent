@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 import os
 from pathlib import Path
@@ -70,7 +71,8 @@ async def web_search_tool(query: str) -> dict:
     async with aiohttp.ClientSession() as session:
         async with session.get(url, params=params) as resp:
             data = await resp.json()
-    abstract = data.get("AbstractText", "")
+    data = json.loads(data.text) # Force parse JSON even if the mimetype is application/x-javascript
+    abstract = data.get("Abstract", "")
     return {
         "query": query,
         "abstract": abstract
@@ -102,7 +104,7 @@ async def main():
         result = await agent.run(task=user_msg)
         print("Agent:", result.messages[-1].content)
 
-# Example inputs to try:
+# Input for testing:
 # My friend Bob, who lives in New York City, worked there before. His email address is bob@gmail.com; can you search him and summarize his information for a contact record?
 
 
