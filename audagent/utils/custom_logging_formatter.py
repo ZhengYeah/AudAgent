@@ -27,6 +27,10 @@ class ColorFormatter(logging.Formatter):
 def setup_logging(level=logging.DEBUG) -> None:
     root_logger = logging.getLogger()
     root_logger.setLevel(level)
+    # Disable noisy loggers
+    for noisy_logger_name in ["presidio"]:
+        noisy_logger = logging.getLogger(noisy_logger_name)
+        noisy_logger.setLevel(logging.ERROR)
     # Remove any existing handlers (to avoid duplicates)
     for h in root_logger.handlers[:]:
         root_logger.removeHandler(h)
