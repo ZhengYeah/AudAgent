@@ -1,0 +1,72 @@
+[
+  {
+    "types_of_data_collected": "Identity and Contact Data",
+    "methods_of_collection": "direct",
+    "data_usage": ["relevant", "relevant", "relevant", "irrelevant", "irrelevant", "relevant", "irrelevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities", "as part of corporate events", "with user's consent"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Payment Information",
+    "methods_of_collection": "direct",
+    "data_usage": ["relevant", "relevant", "irrelevant", "irrelevant"],
+    "third_party_disclosure": ["service providers", "regulatory or legal authorities", "as part of corporate events", "affiliates"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Inputs and Outputs",
+    "methods_of_collection": "direct",
+    "data_usage": ["relevant", "relevant", "relevant", "irrelevant", "relevant", "irrelevant"],
+    "third_party_disclosure": ["service providers", "affiliates", "regulatory or legal authorities", "as part of corporate events", "with user's consent"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Feedback",
+    "methods_of_collection": "direct",
+    "data_usage": ["relevant", "relevant", "relevant", "irrelevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities", "as part of corporate events"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "direct",
+    "data_usage": ["relevant", "relevant", "irrelevant", "relevant", "irrelevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities", "as part of corporate events", "with user's consent"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Device and Connection Information",
+    "methods_of_collection": "indirect",
+    "data_usage": ["relevant", "relevant", "relevant", "irrelevant", "relevant", "relevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities", "as part of corporate events"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Usage Information",
+    "methods_of_collection": "indirect",
+    "data_usage": ["relevant", "relevant", "relevant", "relevant", "irrelevant", "relevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities", "as part of corporate events"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Log and Troubleshooting Information",
+    "methods_of_collection": "indirect",
+    "data_usage": ["relevant", "relevant", "relevant", "irrelevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities"],
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Cookies and Tracking Data",
+    "methods_of_collection": "indirect",
+    "data_usage": ["relevant", "relevant", "irrelevant", "relevant", "relevant"],
+    "third_party_disclosure": ["service providers", "affiliates"],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Training Data",
+    "methods_of_collection": "indirect",
+    "data_usage": ["relevant", "irrelevant", "relevant"],
+    "third_party_disclosure": ["affiliates", "service providers", "regulatory or legal authorities", "as part of corporate events"],
+    "retention_period": "not specified"
+  }
+]

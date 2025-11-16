@@ -1,175 +1,182 @@
 [
   {
     "types_of_data_collected": "Identity and Contact Data",
-    "methods_of_collection": "directly from users when they sign up for an account or request information",
+    "methods_of_collection": "directly from users when signing up or communicating",
     "data_usage": [
-      "to create and administer user accounts",
-      "to provide and facilitate services",
-      "to communicate with users",
-      "to enforce terms of service",
-      "to prevent fraud and unauthorized access"
+      "provide and maintain services",
+      "communicate with users",
+      "create and administer accounts",
+      "prevent fraud and abuse",
+      "investigate disputes",
+      "improve services and train models",
+      "enforce terms and policies"
     ],
-    "data_disclosure": [
-      "Affiliates and corporate partners for operational purposes",
-      "Service providers and business partners for hosting, auditing, and data processing",
-      "Government authorities as required by law or for regulatory compliance",
-      "During corporate transactions (e.g., mergers or acquisitions)",
-      "With user consent"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "with user's consent"
     ],
-    "retention_period": "as long as reasonably necessary for the purposes outlined in the Privacy Policy"
+    "retention_period": "retained as long as necessary for stated purposes; deletion or anonymization when no longer required"
   },
   {
     "types_of_data_collected": "Payment Information",
-    "methods_of_collection": "directly from users when purchasing products or services",
+    "methods_of_collection": "directly from users when making purchases",
     "data_usage": [
-      "to process payments",
-      "to facilitate purchases",
-      "to comply with financial and legal obligations"
+      "facilitate payments",
+      "provide and maintain services",
+      "prevent fraud and abuse",
+      "meet legal obligations"
     ],
-    "data_disclosure": [
-      "Payment processors and financial institutions",
-      "Service providers handling billing and accounting",
-      "Government authorities for tax and legal compliance"
+    "third_party_disclosure": [
+      "service providers and business partners (e.g., payment processors)",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "affiliates"
     ],
-    "retention_period": "as long as necessary for financial, accounting, and legal compliance; otherwise destroyed or anonymized"
+    "retention_period": "retained as long as necessary for stated purposes; deletion or anonymization when no longer required"
   },
   {
     "types_of_data_collected": "Inputs and Outputs (Prompts, Conversations, Generated Responses)",
-    "methods_of_collection": "directly from users through interactions with services such as chat or coding interfaces",
+    "methods_of_collection": "directly from users through interactions with Services; indirectly through integrated third-party applications",
     "data_usage": [
-      "to provide and improve AI services",
-      "to train AI models (unless users opt out)",
-      "for safety, security, and policy enforcement",
-      "to debug and identify errors"
+      "provide and maintain services",
+      "improve services and train models",
+      "debug and identify errors",
+      "investigate violations of policies",
+      "research",
+      "safety and security review"
     ],
-    "data_disclosure": [
-      "Affiliates for research and development",
-      "Service providers assisting in model training and maintenance",
-      "Government authorities for lawful requests or safety reasons",
-      "Third parties in cases of legal, fraud, or safety investigations",
-      "With user consent"
+    "third_party_disclosure": [
+      "service providers and business partners",
+      "affiliates",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "with user's consent"
     ],
-    "retention_period": "as long as reasonably necessary for service improvement and safety purposes"
+    "retention_period": "retained as long as necessary; may be de-identified for model training and research"
   },
   {
-    "types_of_data_collected": "Feedback (including ratings and suggestions)",
-    "methods_of_collection": "directly from users through rating or feedback mechanisms",
+    "types_of_data_collected": "Feedback (explicit ratings, suggestions, conversations associated with ratings)",
+    "methods_of_collection": "directly from users when providing feedback",
     "data_usage": [
-      "to improve services and train models",
-      "to understand user satisfaction",
-      "to enhance user experience"
+      "improve services",
+      "train models",
+      "analyze service effectiveness",
+      "trust and safety classification"
     ],
-    "data_disclosure": [
-      "Affiliates and internal teams for research and model training",
-      "Service providers supporting analytics or data storage"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
     ],
-    "retention_period": "as long as reasonably necessary; may be de-identified for model training and research"
+    "retention_period": "retained as long as necessary; may be de-identified for analysis and training"
   },
   {
-    "types_of_data_collected": "Communication Information",
-    "methods_of_collection": "directly from users during communication via chatbot, help desk, or contact forms",
+    "types_of_data_collected": "Communication Information (messages to support, chatbot messages)",
+    "methods_of_collection": "directly from users when communicating",
     "data_usage": [
-      "to respond to user inquiries",
-      "to provide customer support",
-      "to improve communication systems"
+      "provide support",
+      "communicate with users",
+      "investigate issues",
+      "improve services",
+      "ensure compliance and security"
     ],
-    "data_disclosure": [
-      "Service providers assisting with support operations",
-      "Affiliates for internal business coordination",
-      "Government authorities when required by law"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "with user's consent"
     ],
-    "retention_period": "as long as reasonably necessary for customer support and operational purposes"
+    "retention_period": "retained as long as necessary; deletion or anonymization when no longer required"
   },
   {
     "types_of_data_collected": "Device and Connection Information",
-    "methods_of_collection": "automatically collected through device or browser during service use",
+    "methods_of_collection": "automatically collected from devices and browsers",
     "data_usage": [
-      "to provide, maintain, and secure services",
-      "to improve service performance",
-      "for analytics and troubleshooting",
-      "to detect and prevent fraud"
+      "provide and maintain services",
+      "personalize experience",
+      "analyze usage",
+      "detect fraud and security issues",
+      "improve services",
+      "debug and repair errors"
     ],
-    "data_disclosure": [
-      "Service providers for analytics and monitoring",
-      "Affiliates for performance improvement",
-      "Government authorities when required by law"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
     ],
-    "retention_period": "as long as necessary for operational, analytical, and security purposes"
+    "retention_period": "retained as long as necessary; deletion or anonymization when no longer required"
   },
   {
-    "types_of_data_collected": "Usage Information",
-    "methods_of_collection": "automatically collected through user activity logs and analytics tools",
+    "types_of_data_collected": "Usage Information (browsing history, interactions, page views, clicks)",
+    "methods_of_collection": "automatically collected through use of services",
     "data_usage": [
-      "to understand service usage",
-      "to improve user experience",
-      "to detect issues and errors",
-      "to train AI models"
+      "analyze usage",
+      "improve services",
+      "debug and repair errors",
+      "research",
+      "detect fraud and abuse",
+      "train models"
     ],
-    "data_disclosure": [
-      "Service providers and analytics vendors",
-      "Affiliates for research and development",
-      "Government authorities as required by law"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
     ],
-    "retention_period": "as long as reasonably necessary for analytics and service improvement"
+    "retention_period": "retained as long as necessary; may be aggregated or de-identified"
   },
   {
     "types_of_data_collected": "Log and Troubleshooting Information",
-    "methods_of_collection": "automatically collected through system logs when errors occur",
+    "methods_of_collection": "automatically collected when errors occur",
     "data_usage": [
-      "to debug and identify system issues",
-      "to improve reliability and security"
+      "debugging",
+      "identify and repair errors",
+      "improve functionality",
+      "investigate security issues"
     ],
-    "data_disclosure": [
-      "Service providers and infrastructure hosts for system maintenance",
-      "Affiliates for technical support",
-      "Government authorities in case of security or compliance matters"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities"
     ],
-    "retention_period": "as long as required for debugging and operational monitoring"
+    "retention_period": "retained as long as necessary; deletion or anonymization when no longer needed"
   },
   {
-    "types_of_data_collected": "Cookies and Similar Technologies",
-    "methods_of_collection": "indirectly through browser cookies, scripts, and similar tracking technologies",
+    "types_of_data_collected": "Cookies and Similar Tracking Data",
+    "methods_of_collection": "indirectly through cookies, scripts, and similar technologies",
     "data_usage": [
-      "to manage and personalize services",
-      "to analyze usage and performance",
-      "to market additional products or services"
+      "recognize users",
+      "customize experience",
+      "marketing",
+      "analyze usage",
+      "improve services"
     ],
-    "data_disclosure": [
-      "Analytics and advertising partners",
-      "Service providers managing cookie data",
-      "Affiliates for personalization and marketing"
+    "third_party_disclosure": [
+      "service providers and business partners",
+      "affiliates"
     ],
-    "retention_period": "as described in the Cookie Policy; typically until cookies expire or are deleted by the user"
+    "retention_period": "not specified (see cookie policy)"
   },
   {
-    "types_of_data_collected": "Training Data from Third Parties",
-    "methods_of_collection": "indirectly from public sources, commercial datasets, user-provided data, and feedback",
+    "types_of_data_collected": "Training Data (public data, licensed datasets, user data, feedback, safety-review data, internally generated data)",
+    "methods_of_collection": "from public sources, commercial datasets, user submissions, and internal generation",
     "data_usage": [
-      "to train AI models",
-      "to conduct AI research",
-      "to enhance service safety and quality"
+      "train and improve models",
+      "safety and policy enforcement",
+      "research"
     ],
-    "data_disclosure": [
-      "Affiliates and internal research teams",
-      "Third-party data providers under commercial agreements",
-      "Government or regulators where required by law"
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
     ],
-    "retention_period": "not specified"
-  },
-  {
-    "types_of_data_collected": "Aggregated or De-Identified Information",
-    "methods_of_collection": "derived from processing or transforming collected personal data",
-    "data_usage": [
-      "to analyze service effectiveness",
-      "to conduct research",
-      "to improve AI models",
-      "to study user behavior"
-    ],
-    "data_disclosure": [
-      "Affiliates for research and analytics",
-      "Service providers supporting aggregate analysis",
-      "Public research or safety reports where individual users are not identifiable"
-    ],
-    "retention_period": "not specified; retained as de-identified data for ongoing research and improvement"
+    "retention_period": "not specified; may be processed in de-identified or aggregated form"
   }
 ]

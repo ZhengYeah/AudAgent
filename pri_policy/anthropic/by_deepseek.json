@@ -1,0 +1,72 @@
+[
+  {
+    "types_of_data_collected": "Identity and Contact Data",
+    "methods_of_collection": "directly from users",
+    "data_usage": ["create and administer account", "communicate with users", "provide services"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Payment Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": ["facilitate payments for products and services"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Inputs and Outputs",
+    "methods_of_collection": "directly from users",
+    "data_usage": ["provide services", "train models", "improve services", "safety review"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Feedback",
+    "methods_of_collection": "directly from users",
+    "data_usage": ["improve services", "train models", "research"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": ["communicate with users", "customer support"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Device and Connection Information",
+    "methods_of_collection": "automatically from device use",
+    "data_usage": ["provide services", "security", "analytics"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Usage Information",
+    "methods_of_collection": "automatically from service use",
+    "data_usage": ["improve services", "analytics", "research"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Log and Troubleshooting Information",
+    "methods_of_collection": "automatically from service use",
+    "data_usage": ["debug errors", "security", "improve services"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  },
+  {
+    "types_of_data_collected": "Cookie Data",
+    "methods_of_collection": "cookies and similar technologies",
+    "data_usage": ["personalization", "marketing", "analytics", "security"],
+    "third_party_disclosure": ["service providers & business partners"],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Training Data from Third Parties",
+    "methods_of_collection": "third party sources",
+    "data_usage": ["train models", "research"],
+    "third_party_disclosure": ["affiliates & corporate partners", "service providers & business partners"],
+    "retention_period": "as long as reasonably necessary"
+  }
+]
