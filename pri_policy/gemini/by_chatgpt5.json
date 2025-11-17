@@ -1,0 +1,227 @@
+[
+  {
+    "types_of_data_collected": "prompts and user-provided content",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "provide services",
+      "maintain and improve services",
+      "develop new services",
+      "personalization",
+      "customization",
+      "communication",
+      "performance measurement",
+      "protect Google, users, and the public"
+    ],
+    "third_party_disclosure": [
+      "human reviewers (including service providers)",
+      "other Google services and infrastructure",
+      "connected apps and third-party services accessed through Gemini Apps"
+    ],
+    "retention_period": "user-controlled auto-delete (default 18 months, configurable to 3/18/36 months or indefinite); manually deletable; reviewer-reviewed data retained up to 3 years"
+  },
+  {
+    "types_of_data_collected": "files, videos, screens, photos, and browser page content shared with Gemini Apps",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "provide services",
+      "maintain and improve services",
+      "develop new services",
+      "personalization",
+      "customization",
+      "communication",
+      "performance measurement",
+      "protect Google, users, and the public"
+    ],
+    "third_party_disclosure": [
+      "human reviewers (including service providers)",
+      "connected apps and third-party services if user interacts with them"
+    ],
+    "retention_period": "same as above; reviewer-reviewed data retained up to 3 years"
+  },
+  {
+    "types_of_data_collected": "transcripts and recordings from Gemini Live (audio, video, screens shared)",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "provide services",
+      "maintain and improve services",
+      "develop new services",
+      "personalization",
+      "performance measurement",
+      "improvement of Gemini models and AI technologies"
+    ],
+    "third_party_disclosure": [
+      "human reviewers (including service providers)"
+    ],
+    "retention_period": "same retention policy; reviewer-reviewed data retained up to 3 years"
+  },
+  {
+    "types_of_data_collected": "user feedback",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "improve services",
+      "train and improve AI models",
+      "performance measurement"
+    ],
+    "third_party_disclosure": [
+      "human reviewers (including service providers)"
+    ],
+    "retention_period": "reviewed feedback retained up to 3 years; otherwise follows standard auto-delete settings"
+  },
+  {
+    "types_of_data_collected": "names and custom instructions of Gems; saved instructions",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "personalization",
+      "improving services",
+      "providing customized interactions"
+    ],
+    "third_party_disclosure": [
+      "not specified beyond general Google service provider access"
+    ],
+    "retention_period": "follows Gemini Apps Activity auto-delete or user deletion"
+  },
+  {
+    "types_of_data_collected": "Gemini-generated content (text, code, images, audio, video, citations, summaries, insights)",
+    "methods_of_collection": "generated indirectly during usage",
+    "data_usage": [
+      "provide services",
+      "maintain and improve services",
+      "develop new services",
+      "personalization",
+      "performance measurement",
+      "protect Google, users, and the public"
+    ],
+    "third_party_disclosure": [
+      "may be reviewed by human reviewers",
+      "used by Google services and infrastructure"
+    ],
+    "retention_period": "follows Gemini Apps Activity auto-delete settings"
+  },
+  {
+    "types_of_data_collected": "information from connected apps and other Google services (Search history, YouTube history, Chrome page context, URLs)",
+    "methods_of_collection": "indirectly from connected apps and Google services",
+    "data_usage": [
+      "provide and improve Gemini Apps",
+      "personalization",
+      "performance measurement",
+      "cross-service functionality"
+    ],
+    "third_party_disclosure": [
+      "Google services per their own policies",
+      "third-party services if user interacts with them"
+    ],
+    "retention_period": "governed by respective services’ retention policies; Gemini copies follow Gemini retention settings"
+  },
+  {
+    "types_of_data_collected": "device, app, and browser information (identifiers, settings, OS, logs, performance metrics, crash info)",
+    "methods_of_collection": "indirectly through device interactions and system permissions",
+    "data_usage": [
+      "service functionality",
+      "performance measurement",
+      "debugging",
+      "improving services",
+      "security and fraud prevention"
+    ],
+    "third_party_disclosure": [
+      "not specified beyond general Google service provider access"
+    ],
+    "retention_period": "varies; some retained until account deletion; some retained for legal or business purposes"
+  },
+  {
+    "types_of_data_collected": "system permissions and device data (call/message logs, contacts, installed apps, language preferences, screen content)",
+    "methods_of_collection": "indirectly through system permissions",
+    "data_usage": [
+      "provide Gemini mobile app functionality",
+      "contextual assistance",
+      "personalization",
+      "improvement of services"
+    ],
+    "third_party_disclosure": [
+      "not specified beyond general Google service provider access"
+    ],
+    "retention_period": "not specified; follows general Gemini retention rules"
+  },
+  {
+    "types_of_data_collected": "contextual data from devices and services (smart home device names, playlists)",
+    "methods_of_collection": "indirectly from connected devices/services",
+    "data_usage": [
+      "provide services",
+      "personalization",
+      "improve services"
+    ],
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "interaction data with public Gemini Apps content",
+    "methods_of_collection": "indirectly through usage",
+    "data_usage": [
+      "improve services",
+      "performance measurement"
+    ],
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "supplemental info from opt-in Gemini Apps features",
+    "methods_of_collection": "indirectly through optional features",
+    "data_usage": "improve services",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "location information (general area, IP-based location, Home/Work account addresses)",
+    "methods_of_collection": "indirectly from device, IP, and account settings",
+    "data_usage": [
+      "provide services",
+      "personalization",
+      "security and fraud prevention"
+    ],
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "subscription information for paid Gemini",
+    "methods_of_collection": "directly from users and account systems",
+    "data_usage": [
+      "manage subscription",
+      "provide services"
+    ],
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "accidental audio activations and related audio data",
+    "methods_of_collection": "indirectly through audio features",
+    "data_usage": [
+      "improve services",
+      "improve Gemini models",
+      "reduce unintended activations"
+    ],
+    "third_party_disclosure": [
+      "not specified beyond general service provider access"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Canvas app data shared with user-generated apps",
+    "methods_of_collection": "directly from users to Canvas apps",
+    "data_usage": "determined by the Canvas app creator; Google provides storage infrastructure",
+    "third_party_disclosure": [
+      "Canvas app creators",
+      "anyone with the public link"
+    ],
+    "retention_period": "controlled by app creator; not specified by Google"
+  },
+  {
+    "types_of_data_collected": "Gemini usage frequency and similar behavioral analytics",
+    "methods_of_collection": "indirectly via usage logs",
+    "data_usage": [
+      "maintain services",
+      "improve services",
+      "performance measurement"
+    ],
+    "third_party_disclosure": "not specified",
+    "retention_period": "retained until user deletes Google Account"
+  }
+]

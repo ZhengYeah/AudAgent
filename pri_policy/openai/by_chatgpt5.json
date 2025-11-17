@@ -1,0 +1,200 @@
+[
+  {
+    "types_of_data_collected": "Account Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "provide services",
+      "analyze and maintain services",
+      "improve and develop services",
+      "communicate with users",
+      "prevent fraud and illegal activity",
+      "comply with legal obligations"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "business transfer participants",
+      "government authorities",
+      "affiliates",
+      "business account administrators"
+    ],
+    "retention_period": "not specified (general retention: as long as needed for services or legal obligations)"
+  },
+  {
+    "types_of_data_collected": "User Content",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "provide services",
+      "maintain and improve services",
+      "train and develop AI models (unless user opts out)",
+      "conduct research",
+      "communicate with users",
+      "protect security and prevent misuse"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates",
+      "business administrators",
+      "other users and third parties user chooses to share with"
+    ],
+    "retention_period": "not specified (general retention rules apply)"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "communicate with users",
+      "provide services",
+      "respond to inquiries",
+      "prevent fraud and illegal activity",
+      "comply with legal obligations"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates",
+      "business account administrators"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Other Information You Provide",
+    "methods_of_collection": "directly from users",
+    "data_usage": [
+      "provide services",
+      "verify identity or age",
+      "improve and develop services",
+      "conduct research",
+      "ensure security and prevent misuse",
+      "comply with legal obligations"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates",
+      "business account administrators"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Log Data",
+    "methods_of_collection": "indirectly through browser or device",
+    "data_usage": [
+      "provide, analyze, and maintain services",
+      "improve and develop services",
+      "prevent fraud and illegal activity",
+      "protect security",
+      "comply with legal obligations"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Usage Data",
+    "methods_of_collection": "indirectly through user interactions",
+    "data_usage": [
+      "analyze service usage",
+      "improve and develop services",
+      "provide services",
+      "ensure security and detect misuse",
+      "comply with legal obligations",
+      "research and model training (if applicable)"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Device Information",
+    "methods_of_collection": "indirectly through device",
+    "data_usage": [
+      "provide services",
+      "optimize user experience",
+      "ensure security",
+      "detect unusual login activity",
+      "improve services"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location Information",
+    "methods_of_collection": "indirectly through IP address and optionally directly through device GPS",
+    "data_usage": [
+      "provide accurate responses",
+      "protect account security",
+      "detect unusual login activity",
+      "improve product experience"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "government authorities",
+      "affiliates"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Cookies and Similar Technologies Data",
+    "methods_of_collection": "indirectly through cookies and similar technologies",
+    "data_usage": [
+      "operate and administer services",
+      "maintain preferences",
+      "improve user experience"
+    ],
+    "third_party_disclosure": [
+      "vendors and service providers",
+      "affiliates",
+      "government authorities"
+    ],
+    "retention_period": "not specified (cookie-specific details not provided)"
+  },
+  {
+    "types_of_data_collected": "Information from Security Partners",
+    "methods_of_collection": "indirectly from third-party partners",
+    "data_usage": [
+      "prevent fraud and abuse",
+      "protect security",
+      "prevent threats"
+    ],
+    "third_party_disclosure": [
+      "government authorities",
+      "affiliates"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Information from Marketing Vendors",
+    "methods_of_collection": "indirectly from marketing vendors",
+    "data_usage": [
+      "identify potential customers",
+      "marketing and sales purposes"
+    ],
+    "third_party_disclosure": [
+      "affiliates"
+    ],
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Publicly Available Information",
+    "methods_of_collection": "indirectly from public sources",
+    "data_usage": [
+      "develop AI models",
+      "research and improve services"
+    ],
+    "third_party_disclosure": [
+      "not specified"
+    ],
+    "retention_period": "not specified"
+  }
+]

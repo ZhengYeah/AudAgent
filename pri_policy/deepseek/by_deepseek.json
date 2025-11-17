@@ -1,0 +1,79 @@
+[
+  {
+    "types_of_data_collected": "Account Personal Data",
+    "methods_of_collection": "Personal Data You Provide",
+    "data_usage": "To provide, administer and maintain the Services; create accounts; deliver logging-in experience",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "as long as you have an account"
+  },
+  {
+    "types_of_data_collected": "User Input/Prompts",
+    "methods_of_collection": "Personal Data You Provide",
+    "data_usage": "To provide Services; improve and develop Services; train and improve machine learning models",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "as long as you have an account"
+  },
+  {
+    "types_of_data_collected": "Contact Personal Data",
+    "methods_of_collection": "Personal Data You Provide",
+    "data_usage": "Customer support; investigate violations of Terms of Service",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "as long as you have an account"
+  },
+  {
+    "types_of_data_collected": "Device and Network Personal Data",
+    "methods_of_collection": "Automatically Collected Personal Data",
+    "data_usage": "Provide Services; security purposes; seamless log-in experience; service improvement",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Log Personal Data",
+    "methods_of_collection": "Automatically Collected Personal Data",
+    "data_usage": "Improve and develop Services; analyze usage; train and improve technology",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location Personal Data",
+    "methods_of_collection": "Automatically Collected Personal Data",
+    "data_usage": "Security purposes; detect unusual login activity",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Cookies Data",
+    "methods_of_collection": "Automatically Collected Personal Data",
+    "data_usage": "Operate and provide Service; security purposes; understand Service usage",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Payment Personal Data",
+    "methods_of_collection": "Automatically Collected Personal Data",
+    "data_usage": "Provide paid services; order placement; payment processing; customer service",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "as long as you have an account"
+  },
+  {
+    "types_of_data_collected": "Third-party Service Data",
+    "methods_of_collection": "Personal Data from Other Sources",
+    "data_usage": "Account creation; log-in services; security",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Security Data",
+    "methods_of_collection": "Personal Data from Other Sources",
+    "data_usage": "Protect against fraud, abuse, and security threats",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Public Personal Data",
+    "methods_of_collection": "Personal Data from Other Sources",
+    "data_usage": "Train models; provide Services",
+    "third_party_disclosure": "Service Providers; Our Corporate Group; Parties to a Corporate Transaction; Law Enforcement",
+    "retention_period": "not specified"
+  }
+]

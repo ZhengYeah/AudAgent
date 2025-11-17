@@ -1,0 +1,79 @@
+[
+  {
+    "types_of_data_collected": "Account Information",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "User Content",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Other Information",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Log Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Usage Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Device Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Cookie Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Partner Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Temporary Chat Data",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "30 days"
+  }
+]

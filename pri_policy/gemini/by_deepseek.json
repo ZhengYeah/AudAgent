@@ -1,0 +1,86 @@
+[
+  {
+    "types_of_data_collected": "User-provided content (prompts, spoken input)",
+    "methods_of_collection": "Directly from users",
+    "data_usage": "Provide services, improve services, develop new services, personalize services, measure performance, protect Google and users",
+    "third_party_disclosure": "Human reviewers (including trained reviewers from service providers)",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Files, videos, photos, screen content",
+    "methods_of_collection": "Directly from users",
+    "data_usage": "Provide services, improve services, develop new services, personalize services, measure performance, protect Google and users",
+    "third_party_disclosure": "Human reviewers (including trained reviewers from service providers)",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collection": "Gemini Live transcripts and recordings (audio, video, shared screens)",
+    "methods_of_collection": "Directly from users",
+    "data_usage": "Provide services, improve services, develop new services, personalize services, measure performance, protect Google and users",
+    "third_party_disclosure": "Human reviewers (including trained reviewers from service providers)",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Gem names and custom instructions",
+    "methods_of_collection": "Directly from users",
+    "data_usage": "Provide services, improve services, develop new services, personalize services",
+    "third_party_disclosure": "Human reviewers (including trained reviewers from service providers)",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Gemini-generated content (text, code, audio, images, video)",
+    "methods_of_collection": "Indirectly through service usage",
+    "data_usage": "Provide services, improve services, develop new services, personalize services, measure performance",
+    "third_party_disclosure": "Human reviewers (including trained reviewers from service providers)",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Information from connected Google services (Search history, YouTube history, Chrome context)",
+    "methods_of_collection": "Indirectly through connected services",
+    "data_usage": "Provide services, improve services, personalize services",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Device and browser information (identifiers, type, settings, operating system)",
+    "methods_of_collection": "Indirectly through service usage",
+    "data_usage": "Provide services, improve services, measure performance, security",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "System permissions and device data (call logs, message logs, contacts, installed apps)",
+    "methods_of_collection": "Indirectly through mobile app usage",
+    "data_usage": "Provide services, improve services, personalize services",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Location information",
+    "methods_of_collection": "Indirectly from device, IP address, or Google Account",
+    "data_usage": "Provide services, improve services, personalize services",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Default 18 months (configurable to 3/36 months or indefinite); if reviewed by humans: up to 3 years"
+  },
+  {
+    "types_of_data_collected": "Subscription information",
+    "methods_of_collection": "Directly from users",
+    "data_usage": "Provide services, financial record-keeping",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Until Google Account deletion or longer for legal purposes"
+  },
+  {
+    "types_of_data_collected": "Canvas app interaction data",
+    "methods_of_collection": "Directly from users",
+    "data_usage": "Provide Canvas app functionality",
+    "third_party_disclosure": "Canvas app creators (who may store data elsewhere)",
+    "retention_period": "Determined by Canvas app creators"
+  },
+  {
+    "types_of_data_collected": "Service usage frequency data",
+    "methods_of_collection": "Indirectly through service usage",
+    "data_usage": "Improve services, measure performance",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Until Google Account deletion"
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "types_of_data_collected": "User inputs",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Shared media",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Live interaction recordings",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "User feedback",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "3 years"
+  },
+  {
+    "types_of_data_collected": "Custom configurations",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "User instructions",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Generated content",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Connected services data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Device information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "3 years"
+  },
+  {
+    "types_of_data_collected": "Technical logs",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "System permissions data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Connected device data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Interaction data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Opt-in feature data",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "3 years"
+  },
+  {
+    "types_of_data_collected": "Subscription information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Communication history",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "18 months"
+  },
+  {
+    "types_of_data_collected": "Unintended activation data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Canvas app data",
+    "methods_of_collection": "direct",
+    "data_usage": "irrelevant",
+    "third_party_disclosure": "app creators",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Usage frequency",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "as long as necessary"
+  }
+]

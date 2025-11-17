@@ -1,0 +1,79 @@
+[
+  {
+    "types_of_data_collected": "Account Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": "providing services, account management, payment processing",
+    "third_party_disclosure": "vendors and service providers, affiliates, business account administrators, potential successors in business transactions",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "User Content",
+    "methods_of_collection": "directly from users",
+    "data_usage": "providing services, improving services, training models",
+    "third_party_disclosure": "vendors and service providers, affiliates, business account administrators, other users via shared links, third-party applications",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "directly from users",
+    "data_usage": "communicating with users, customer support",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Other Information You Provide",
+    "methods_of_collection": "directly from users",
+    "data_usage": "identity verification, event participation, research",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Log Data",
+    "methods_of_collection": "indirectly through user interaction with services",
+    "data_usage": "service operation, security, analytics",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Usage Data",
+    "methods_of_collection": "indirectly through user interaction with services",
+    "data_usage": "service improvement, analytics, feature development",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Device Information",
+    "methods_of_collection": "indirectly through user interaction with services",
+    "data_usage": "service optimization, security, compatibility",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location Information",
+    "methods_of_collection": "indirectly through IP address or directly from device GPS",
+    "data_usage": "security, account protection, service personalization",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Cookie Information",
+    "methods_of_collection": "indirectly through cookies and similar technologies",
+    "data_usage": "service operation, preference maintenance, user experience improvement",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Information from Partners",
+    "methods_of_collection": "from trusted partners and publicly available sources",
+    "data_usage": "fraud prevention, security, model development, marketing",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Temporary Chat Data",
+    "methods_of_collection": "directly from users",
+    "data_usage": "providing services, safety purposes",
+    "third_party_disclosure": "vendors and service providers, affiliates",
+    "retention_period": "up to 30 days"
+  }
+]

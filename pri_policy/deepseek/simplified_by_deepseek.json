@@ -1,0 +1,79 @@
+[
+  {
+    "types_of_data_collected": "Account Data",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "User Input",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Contact Data",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Device Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Log Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Cookies Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Payment Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Third-party Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Security Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Public Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  }
+]

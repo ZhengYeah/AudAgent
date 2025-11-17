@@ -1,0 +1,72 @@
+[
+  {
+    "types_of_data_collected": "Account Information (name, contact information, credentials, date of birth, payment information, transaction history)",
+    "methods_of_collection": "Directly from users (when creating an account)",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services, to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers (for hosting, customer service, cloud services, payment processing, etc.), Business Transfers (to counterparties/successors during a Transaction), Government Authorities or Other Third Parties (for legal compliance, fraud prevention, safety/security, etc.), Affiliates, Business Account Administrators (if joined to a business account)",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "User Content (prompts, uploaded files, images, audio)",
+    "methods_of_collection": "Directly from users (input to services)",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services and conduct research (e.g., to train models), to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates, Business Account Administrators (can access content), Other Users and Third Parties You Interact or Share Information With (e.g., shared links, custom actions)",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations). Note: ChatGPT temporary chats are kept up to 30 days for safety purposes."
+  },
+  {
+    "types_of_data_collected": "Communication Information (name, contact information, message contents)",
+    "methods_of_collection": "Directly from users (when communicating via email or social media)",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services, to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "Other Information You Provide (e.g., event/survey participation, identity/age verification info)",
+    "methods_of_collection": "Directly from users (when participating in events/surveys or providing identity info)",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services, to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "Log Data (IP address, browser type/settings, date/time of request, service interaction)",
+    "methods_of_collection": "Automatically received from your browser or device (when you use the Services)",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services, to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "Usage Data (types of content viewed/engaged with, features used, actions taken, time zone, country, access dates/times, user agent/version, device type, connection type)",
+    "methods_of_collection": "Automatically collected about your use of the Services",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services, to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers (e.g., web analytics services), Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "Device Information (name of device, operating system, device identifiers, browser)",
+    "methods_of_collection": "Automatically collected about the device you use to access the Services",
+    "data_usage": "To provide, analyze, and maintain services, to improve and develop services, to communicate with you, to prevent fraud, illegal activity, or misuses, to protect the security of systems and services, to comply with legal obligations and to protect the rights, privacy, safety, or property of users, OpenAI, or third parties",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "Location Information (general area from IP address, precise location from GPS if chosen)",
+    "methods_of_collection": "Automatically determined (general area from IP address) or directly provided (precise location from device's GPS if chosen)",
+    "data_usage": "Security reasons (e.g., detecting unusual login activity), to make product experience better (e.g., providing more accurate responses)",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  },
+  {
+    "types_of_data_collected": "Data stored via Cookies and Similar Technologies (may include information described in the policy, e.g., preferences)",
+    "methods_of_collection": "Indirectly through cookies and similar technologies",
+    "data_usage": "To operate and administer services, to improve your experience, to help maintain preferences across browsing sessions (if used without an account)",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Not specified (depends on the technology, but mentioned that it helps maintain preferences across browsing sessions)"
+  },
+  {
+    "types_of_data_collected": "Information from Other Sources (from security partners, marketing vendors, publicly available internet data)",
+    "methods_of_collection": "Indirectly from trusted partners and public internet sources",
+    "data_usage": "To protect against fraud, abuse, and other security threats (from security partners), to provide information about potential customers of business services (from marketing vendors), to develop the models that power the Services (from publicly available internet data)",
+    "third_party_disclosure": "Vendors and Service Providers, Business Transfers, Government Authorities or Other Third Parties, Affiliates",
+    "retention_period": "Only as long as needed to provide services, or for other legitimate business purposes (resolving disputes, safety/security, legal obligations)"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "types_of_data_collected": "Identity and Contact Data",
+    "methods_of_collection": "directly from users when signing up or communicating",
+    "data_usage": [
+      "provide and maintain services",
+      "communicate with users",
+      "create and administer accounts",
+      "prevent fraud and abuse",
+      "investigate disputes",
+      "improve services and train models",
+      "enforce terms and policies"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "with user's consent"
+    ],
+    "retention_period": "retained as long as necessary for stated purposes; deletion or anonymization when no longer required"
+  },
+  {
+    "types_of_data_collected": "Payment Information",
+    "methods_of_collection": "directly from users when making purchases",
+    "data_usage": [
+      "facilitate payments",
+      "provide and maintain services",
+      "prevent fraud and abuse",
+      "meet legal obligations"
+    ],
+    "third_party_disclosure": [
+      "service providers and business partners (e.g., payment processors)",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "affiliates"
+    ],
+    "retention_period": "retained as long as necessary for stated purposes; deletion or anonymization when no longer required"
+  },
+  {
+    "types_of_data_collected": "Inputs and Outputs (Prompts, Conversations, Generated Responses)",
+    "methods_of_collection": "directly from users through interactions with Services; indirectly through integrated third-party applications",
+    "data_usage": [
+      "provide and maintain services",
+      "improve services and train models",
+      "debug and identify errors",
+      "investigate violations of policies",
+      "research",
+      "safety and security review"
+    ],
+    "third_party_disclosure": [
+      "service providers and business partners",
+      "affiliates",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "with user's consent"
+    ],
+    "retention_period": "retained as long as necessary; may be de-identified for model training and research"
+  },
+  {
+    "types_of_data_collected": "Feedback (explicit ratings, suggestions, conversations associated with ratings)",
+    "methods_of_collection": "directly from users when providing feedback",
+    "data_usage": [
+      "improve services",
+      "train models",
+      "analyze service effectiveness",
+      "trust and safety classification"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
+    ],
+    "retention_period": "retained as long as necessary; may be de-identified for analysis and training"
+  },
+  {
+    "types_of_data_collected": "Communication Information (messages to support, chatbot messages)",
+    "methods_of_collection": "directly from users when communicating",
+    "data_usage": [
+      "provide support",
+      "communicate with users",
+      "investigate issues",
+      "improve services",
+      "ensure compliance and security"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events",
+      "with user's consent"
+    ],
+    "retention_period": "retained as long as necessary; deletion or anonymization when no longer required"
+  },
+  {
+    "types_of_data_collected": "Device and Connection Information",
+    "methods_of_collection": "automatically collected from devices and browsers",
+    "data_usage": [
+      "provide and maintain services",
+      "personalize experience",
+      "analyze usage",
+      "detect fraud and security issues",
+      "improve services",
+      "debug and repair errors"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
+    ],
+    "retention_period": "retained as long as necessary; deletion or anonymization when no longer required"
+  },
+  {
+    "types_of_data_collected": "Usage Information (browsing history, interactions, page views, clicks)",
+    "methods_of_collection": "automatically collected through use of services",
+    "data_usage": [
+      "analyze usage",
+      "improve services",
+      "debug and repair errors",
+      "research",
+      "detect fraud and abuse",
+      "train models"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
+    ],
+    "retention_period": "retained as long as necessary; may be aggregated or de-identified"
+  },
+  {
+    "types_of_data_collected": "Log and Troubleshooting Information",
+    "methods_of_collection": "automatically collected when errors occur",
+    "data_usage": [
+      "debugging",
+      "identify and repair errors",
+      "improve functionality",
+      "investigate security issues"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities"
+    ],
+    "retention_period": "retained as long as necessary; deletion or anonymization when no longer needed"
+  },
+  {
+    "types_of_data_collected": "Cookies and Similar Tracking Data",
+    "methods_of_collection": "indirectly through cookies, scripts, and similar technologies",
+    "data_usage": [
+      "recognize users",
+      "customize experience",
+      "marketing",
+      "analyze usage",
+      "improve services"
+    ],
+    "third_party_disclosure": [
+      "service providers and business partners",
+      "affiliates"
+    ],
+    "retention_period": "not specified (see cookie policy)"
+  },
+  {
+    "types_of_data_collected": "Training Data (public data, licensed datasets, user data, feedback, safety-review data, internally generated data)",
+    "methods_of_collection": "from public sources, commercial datasets, user submissions, and internal generation",
+    "data_usage": [
+      "train and improve models",
+      "safety and policy enforcement",
+      "research"
+    ],
+    "third_party_disclosure": [
+      "affiliates",
+      "service providers and business partners",
+      "regulatory or legal authorities",
+      "as part of corporate events"
+    ],
+    "retention_period": "not specified; may be processed in de-identified or aggregated form"
+  }
+]

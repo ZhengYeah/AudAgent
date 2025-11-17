@@ -1,0 +1,86 @@
+[
+  {
+    "types_of_data_collected": "Account Information",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "User Content",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Communication Information",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Other Information You Provide",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Log Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Usage Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Device Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Location Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Cookies and Similar Technologies Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Information from Security Partners",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "government authorities",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Information from Marketing Vendors",
+    "methods_of_collection": "indirect",
+    "data_usage": "irrelevant",
+    "third_party_disclosure": "affiliates",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "Publicly Available Information",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  }
+]

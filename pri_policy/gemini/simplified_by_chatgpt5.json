@@ -1,0 +1,121 @@
+[
+  {
+    "types_of_data_collected": "user content",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "shared files and media",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "live interaction recordings",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "user feedback",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "custom instructions",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "generated content",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "connected app data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "Google services",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "device and browser info",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "system permissions data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "contextual device data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "interaction data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "supplemental opt-in info",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "location data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "subscription info",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "accidental audio activations",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "canvas app data",
+    "methods_of_collection": "direct",
+    "data_usage": "irrelevant",
+    "third_party_disclosure": "Canvas app creators",
+    "retention_period": "not specified"
+  },
+  {
+    "types_of_data_collected": "usage analytics",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "not specified",
+    "retention_period": "as long as necessary"
+  }
+]

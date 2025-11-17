@@ -1,0 +1,86 @@
+[
+  {
+    "types_of_data_collected": "Account Personal Data (date of birth, username, email address, telephone number, password)",
+    "methods_of_collection": "Directly from users when creating an account",
+    "data_usage": "To provide, administer and maintain the Services, deliver fast and convenient logging-in experience, create accounts, provide user support",
+    "third_party_disclosure": "Service providers (as necessary to enable their services), Corporate group entities (for storage, content delivery, security, research and development, analytics, customer and technical support), Parties to corporate transactions, Law enforcement and parties with legal rights (when legally required or necessary to protect rights and safety)",
+    "retention_period": "As long as user has an account; longer if necessary to comply with legal obligations or process violations"
+  },
+  {
+    "types_of_data_collected": "User Input (text input, prompts, uploaded files, feedback, chat history, content provided to model and Services)",
+    "methods_of_collection": "Directly from users when using the Services",
+    "data_usage": "To provide the Services (generate outputs based on inputs), improve and develop the Services, train and improve machine learning models and algorithms",
+    "third_party_disclosure": "Service providers (as necessary to enable their services), Third-party APIs (for search services), Corporate group entities (for storage, content delivery, security, research and development, analytics, customer and technical support), Parties to corporate transactions, Law enforcement and parties with legal rights (when legally required or necessary to protect rights and safety)",
+    "retention_period": "As long as user has an account; longer if necessary to comply with legal obligations or process violations"
+  },
+  {
+    "types_of_data_collected": "Personal Data When You Contact Us (proof of identity or age, contact details, feedback, inquiries about use of Services, information about possible violations)",
+    "methods_of_collection": "Directly from users when contacting the company",
+    "data_usage": "To communicate with users, provide customer support, investigate potential violations of terms and policies",
+    "third_party_disclosure": "Service providers (as necessary to enable their services), Corporate group entities (for customer and technical support), Parties to corporate transactions, Law enforcement and parties with legal rights (when legally required or necessary to protect rights and safety)",
+    "retention_period": "As long as necessary to provide Services; longer if necessary to comply with legal obligations, process violations, or for exercise or defense of legal claims"
+  },
+  {
+    "types_of_data_collected": "Device and Network Personal Data (device model, operating system, IP address, device identifiers, system language, device ID, user ID)",
+    "methods_of_collection": "Automatically collected when accessing the Services",
+    "data_usage": "To provide Services, identify activity across devices for seamless log-in experience and security purposes, promote safety and security of Services",
+    "third_party_disclosure": "Service providers (as necessary to enable their services), Corporate group entities (for storage, content delivery, security, research and development, analytics), Parties to corporate transactions, Law enforcement and parties with legal rights (when legally required or necessary to protect rights and safety)",
+    "retention_period": "As long as necessary to provide Services; longer if necessary to comply with legal obligations, improve and develop Services, enhance safety and security, or for exercise or defense of legal claims"
+  },
+  {
+    "types_of_data_collected": "Service-related, diagnostic, and performance Personal Data (crash reports, performance logs)",
+    "methods_of_collection": "Automatically collected when using the Services",
+    "data_usage": "To improve and develop the Services, conduct troubleshooting, data analysis, testing, and research",
+    "third_party_disclosure": "Service providers (as necessary to enable their services), Corporate group entities (for research and development, analytics, technical support), Parties to corporate transactions",
+    "retention_period": "As long as necessary to improve and develop Services; longer if necessary for legitimate business interests"
+  },
+  {
+    "types_of_data_collected": "Log Personal Data (features used, actions taken)",
+    "methods_of_collection": "Automatically collected regarding use of the Services",
+    "data_usage": "To improve and develop the Services, monitor interactions and usage across devices, analyze how people are using Services, train and improve technology",
+    "third_party_disclosure": "Service providers (analytics services providers), Corporate group entities (for analytics, research and development), Parties to corporate transactions",
+    "retention_period": "As long as necessary to provide Services and improve technology; longer if necessary for legitimate business interests"
+  },
+  {
+    "types_of_data_collected": "Location Personal Data (approximate location based on IP address)",
+    "methods_of_collection": "Automatically collected based on IP address",
+    "data_usage": "For security reasons, to protect account by detecting unusual login activity",
+    "third_party_disclosure": "Service providers (security monitoring services), Corporate group entities (for security), Parties to corporate transactions, Law enforcement and parties with legal rights (in emergency situations to protect health or life)",
+    "retention_period": "As long as necessary for security purposes; longer if necessary to comply with legal obligations or enhance safety and security"
+  },
+  {
+    "types_of_data_collected": "Cookies & Similar Technologies",
+    "methods_of_collection": "Automatically collected through cookies and similar tracking technologies",
+    "data_usage": "To operate and provide the Service, for security purposes, to better understand how the Service is used",
+    "third_party_disclosure": "Not applicable to DeepSeek App",
+    "retention_period": "Not specified"
+  },
+  {
+    "types_of_data_collected": "Payment Personal Data (payment order, transaction Personal Data)",
+    "methods_of_collection": "Collected when using paid services for prepayment",
+    "data_usage": "To provide Services such as order placement, payment, customer service, and after-sales support",
+    "third_party_disclosure": "Not applicable to DeepSeek App",
+    "retention_period": "As long as user has an account; longer if necessary to comply with legal obligations"
+  },
+  {
+    "types_of_data_collected": "Personal Data from third-party login/sign-up services (access token)",
+    "methods_of_collection": "Indirectly from third-party services (Apple, Google) when user chooses to sign-up or log-in using these services or link their account",
+    "data_usage": "To provide, administer and maintain the Services, deliver fast and convenient logging-in experience",
+    "third_party_disclosure": "Service providers (as necessary to enable their services), Corporate group entities (for storage, content delivery, security), Parties to corporate transactions, Law enforcement and parties with legal rights (when legally required)",
+    "retention_period": "As long as user has an account; longer if necessary to comply with legal obligations"
+  },
+  {
+    "types_of_data_collected": "Security Personal Data",
+    "methods_of_collection": "Indirectly from trusted security partners",
+    "data_usage": "To promote safety, security, and stability of the Services, protect against fraud, abuse, and other security threats, prevent and detect abuse, fraud, and illegal activity",
+    "third_party_disclosure": "Service providers (support and safety monitoring services), Corporate group entities (for security), Parties to corporate transactions, Law enforcement and parties with legal rights (when legally required)",
+    "retention_period": "As long as necessary for security purposes; longer if necessary to enhance safety, security and stability, or for exercise or defense of legal claims"
+  },
+  {
+    "types_of_data_collected": "Public Personal Data (publicly available Personal Data from online sources)",
+    "methods_of_collection": "Indirectly obtained via online sources",
+    "data_usage": "To train models and provide Services",
+    "third_party_disclosure": "Corporate group entities (for research and development), Parties to corporate transactions",
+    "retention_period": "As long as necessary to train models and provide Services; longer if necessary for legitimate business interests"
+  }
+]

@@ -1,0 +1,93 @@
+[
+  {
+    "types_of_data_collected": "Account Information (name, contact information, account credentials, date of birth, payment information, transaction history)",
+    "methods_of_collection": "Directly from users when creating an account",
+    "data_usage": "To provide, analyze, and maintain Services; to improve and develop Services; to communicate with users; to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates; business account administrators (for enterprise accounts)",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance); depends on processing purpose, amount/nature/sensitivity of information, risk of harm, and legal requirements"
+  },
+  {
+    "types_of_data_collected": "User Content (prompts, uploaded files, images, audio)",
+    "methods_of_collection": "Directly from users as input to Services",
+    "data_usage": "To provide, analyze, and maintain Services (e.g., respond to questions); to improve and develop Services and conduct research (e.g., train models); to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates; business account administrators (for enterprise accounts); other users and third parties when user chooses to share (e.g., shared links, custom actions, third-party applications)",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes; temporary chats kept up to 30 days for safety purposes; users can control retention through settings"
+  },
+  {
+    "types_of_data_collected": "Communication Information (name, contact information, message contents)",
+    "methods_of_collection": "Directly from users when communicating via email or social media",
+    "data_usage": "To provide, analyze, and maintain Services; to improve and develop Services; to communicate with users; to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Other Information You Provide (information from events, surveys, identity/age verification)",
+    "methods_of_collection": "Directly from users during participation in events/surveys or identity verification",
+    "data_usage": "To provide, analyze, and maintain Services; to improve and develop Services; to communicate with users; to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Log Data (IP address, browser type and settings, date and time of requests, interaction data)",
+    "methods_of_collection": "Automatically collected from browser or device when using Services",
+    "data_usage": "To provide, analyze, and maintain Services; to improve and develop Services and conduct research; to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Usage Data (types of content viewed/engaged with, features used, actions taken, time zone, country, dates/times of access, user agent, device type, computer connection)",
+    "methods_of_collection": "Automatically collected during use of Services",
+    "data_usage": "To provide, analyze, and maintain Services; to improve and develop Services and conduct research; to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Device Information (device name, operating system, device identifiers, browser)",
+    "methods_of_collection": "Automatically collected from device when accessing Services",
+    "data_usage": "To provide, analyze, and maintain Services; to improve and develop Services; to prevent fraud and illegal activity; to comply with legal obligations and protect rights and safety",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Location Information (general area from IP address, precise location from GPS if user chooses)",
+    "methods_of_collection": "Indirectly determined from IP address; directly from device GPS if user provides permission",
+    "data_usage": "Security reasons (e.g., detecting unusual login activity); to improve product experience (e.g., provide more accurate responses)",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Cookie Data (information stored via cookies and similar technologies, including preferences)",
+    "methods_of_collection": "Indirectly through cookies and similar technologies",
+    "data_usage": "To operate and administer Services; to improve user experience; to maintain preferences across browsing sessions",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes"
+  },
+  {
+    "types_of_data_collected": "Information from Security Partners (fraud and abuse prevention data)",
+    "methods_of_collection": "Received from trusted security partners",
+    "data_usage": "To prevent fraud, abuse, and other security threats to Services",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes (resolving disputes, safety and security, legal compliance)"
+  },
+  {
+    "types_of_data_collected": "Marketing Information (information about potential business customers)",
+    "methods_of_collection": "Received from marketing vendors",
+    "data_usage": "To identify and communicate with potential customers of business services",
+    "third_party_disclosure": "Vendors and service providers; business transfer counterparties; government authorities or other third parties (when legally required or for safety/security); affiliates",
+    "retention_period": "Only as long as needed to provide Services or for other legitimate business purposes"
+  },
+  {
+    "types_of_data_collected": "Publicly Available Information (information from the internet)",
+    "methods_of_collection": "Collected from publicly available sources on the internet",
+    "data_usage": "To develop models that power Services",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Not specified"
+  },
+  {
+    "types_of_data_collected": "De-identified or Aggregated Data (Personal Data that no longer identifies individuals)",
+    "methods_of_collection": "Derived from Personal Data through aggregation or de-identification processes",
+    "data_usage": "To analyze how Services are used; to improve and add features to Services; to conduct research",
+    "third_party_disclosure": "Not specified",
+    "retention_period": "Maintained in de-identified form; not re-identified unless required by law"
+  }
+]

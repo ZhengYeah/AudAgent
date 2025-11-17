@@ -1,0 +1,44 @@
+[
+  {
+    "types_of_data_collected": "Account Personal Data",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "User Input",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Contact Personal Data",
+    "methods_of_collection": "direct",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Automatically Collected Personal Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Payment Personal Data",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  },
+  {
+    "types_of_data_collected": "Personal Data from Other Sources",
+    "methods_of_collection": "indirect",
+    "data_usage": "relevant",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
+  }
+]
