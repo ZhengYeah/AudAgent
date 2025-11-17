@@ -1,0 +1,983 @@
+[
+    {
+        "full_text": "The address of Persint is 6750 Koskikatu 25 Apt. 864\nArtilleros\n, CO\n Uruguay 64677",
+        "masked": "The address of {{ORGANIZATION}} is {{STREET_ADDRESS}}",
+        "spans": [
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "6750 Koskikatu 25 Apt. 864\nArtilleros\n, CO\n Uruguay 64677",
+                "start_position": 26,
+                "end_position": 83
+            },
+            {
+                "entity_type": "ORGANIZATION",
+                "entity_value": "Persint",
+                "start_position": 15,
+                "end_position": 22
+            }
+        ],
+        "template_id": 87,
+        "metadata": null
+    },
+    {
+        "full_text": "What are my options?",
+        "masked": "What are my options?",
+        "spans": [],
+        "template_id": 41,
+        "metadata": null
+    },
+    {
+        "full_text": "Krisztián Szöllösy listed his top 20 songs for Entertainment Weekly and had the balls to list this song at #15. (What did he put at #1 you ask? Answer:\"Tube Snake Boogie\" by Szabina J Gelencsér ג€“ go figure)",
+        "masked": "{{PERSON}} listed his top 20 songs for Entertainment Weekly and had the balls to list this song at #15. (What did he put at #1 you ask? Answer:\"Tube Snake Boogie\" by {{PERSON}} ג€“ go figure)",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Szabina J Gelencsér",
+                "start_position": 174,
+                "end_position": 193
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Krisztián Szöllösy",
+                "start_position": 0,
+                "end_position": 18
+            }
+        ],
+        "template_id": 106,
+        "metadata": null
+    },
+    {
+        "full_text": "The Exversion Orchestra was founded in 1977. Since then, it has grown from a volunteer community orchestra to a fully professional orchestra serving Southern Tunisia",
+        "masked": "The {{ORGANIZATION}} Orchestra was founded in {{DATE_TIME}}. Since then, it has grown from a volunteer community orchestra to a fully professional orchestra serving Southern {{GPE}}",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "Tunisia",
+                "start_position": 158,
+                "end_position": 165
+            },
+            {
+                "entity_type": "DATE_TIME",
+                "entity_value": "1977",
+                "start_position": 39,
+                "end_position": 43
+            },
+            {
+                "entity_type": "ORGANIZATION",
+                "entity_value": "Exversion",
+                "start_position": 4,
+                "end_position": 13
+            }
+        ],
+        "template_id": 118,
+        "metadata": null
+    },
+    {
+        "full_text": "My name is Rubija",
+        "masked": "My name is {{PERSON}}",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Rubija",
+                "start_position": 11,
+                "end_position": 17
+            }
+        ],
+        "template_id": 58,
+        "metadata": null
+    },
+    {
+        "full_text": "What is the limit for card 4454794511390933?",
+        "masked": "What is the limit for card {{CREDIT_CARD}}?",
+        "spans": [
+            {
+                "entity_type": "CREDIT_CARD",
+                "entity_value": "4454794511390933",
+                "start_position": 27,
+                "end_position": 43
+            }
+        ],
+        "template_id": 56,
+        "metadata": null
+    },
+    {
+        "full_text": "When they weren't singing about Hobbits, satanic felines and interstellar journeys, they were singing about the verses from Faina D. Yefremova's Cautionary Tales. Is there a better example of unbridled creativity than early Yefremova?",
+        "masked": "When they weren't singing about Hobbits, satanic felines and interstellar journeys, they were singing about the verses from {{PERSON}}'s Cautionary Tales. Is there a better example of unbridled creativity than early {{PERSON}}?",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Yefremova",
+                "start_position": 224,
+                "end_position": 233
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Faina D. Yefremova",
+                "start_position": 124,
+                "end_position": 142
+            }
+        ],
+        "template_id": 104,
+        "metadata": null
+    },
+    {
+        "full_text": "Here's my SSN: 460-89-9847",
+        "masked": "Here's my SSN: {{US_SSN}}",
+        "spans": [
+            {
+                "entity_type": "US_SSN",
+                "entity_value": "460-89-9847",
+                "start_position": 15,
+                "end_position": 26
+            }
+        ],
+        "template_id": 89,
+        "metadata": null
+    },
+    {
+        "full_text": "Action & Adventure, Animation, Comedy, Kids & Family, Mystery & Suspense\nDirected By:    Johannes Varvio",
+        "masked": "Action & Adventure, Animation, Comedy, Kids & Family, Mystery & Suspense\nDirected By:    {{PERSON}}",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Johannes Varvio",
+                "start_position": 89,
+                "end_position": 104
+            }
+        ],
+        "template_id": 199,
+        "metadata": null
+    },
+    {
+        "full_text": "Bot: What's the name on the account? User: Šárka Ottová",
+        "masked": "Bot: What's the name on the account? User: {{PERSON}}",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Šárka Ottová",
+                "start_position": 43,
+                "end_position": 55
+            }
+        ],
+        "template_id": 43,
+        "metadata": null
+    },
+    {
+        "full_text": "Unlike the Christiansen novel, it's not about necrophilia. What it is about, I suppose is anyone's guess. A brilliant piece of baroque pop.",
+        "masked": "Unlike the {{PERSON}} novel, it's not about necrophilia. What it is about, I suppose is anyone's guess. A brilliant piece of baroque pop.",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Christiansen",
+                "start_position": 11,
+                "end_position": 23
+            }
+        ],
+        "template_id": 99,
+        "metadata": null
+    },
+    {
+        "full_text": "I will be travelling to Canada next week, so I need my passport to be ready by then",
+        "masked": "I will be travelling to {{GPE}} next week, so I need my passport to be ready by then",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "Canada",
+                "start_position": 24,
+                "end_position": 30
+            }
+        ],
+        "template_id": 22,
+        "metadata": null
+    },
+    {
+        "full_text": "my driver's license number is 2270-66-1551",
+        "masked": "My driver's license number is {{US_DRIVER_LICENSE}}",
+        "spans": [
+            {
+                "entity_type": "US_DRIVER_LICENSE",
+                "entity_value": "2270-66-1551",
+                "start_position": 30,
+                "end_position": 42
+            }
+        ],
+        "template_id": 128,
+        "metadata": null
+    },
+    {
+        "full_text": "This 79 year old female complaining of stomach pain.",
+        "masked": "This {{AGE}} year old female complaining of stomach pain.",
+        "spans": [
+            {
+                "entity_type": "AGE",
+                "entity_value": "79",
+                "start_position": 5,
+                "end_position": 7
+            }
+        ],
+        "template_id": 206,
+        "metadata": null
+    },
+    {
+        "full_text": "Billing address: Sara Schwarz\n    28245 Puruntie 82 Apt. 595\n   LAPPEENRANTA\n    SK\n    53650",
+        "masked": "Billing address: {{PERSON}}\n    {{STREET_ADDRESS}} {{STREET_ADDRESS}} {{STREET_ADDRESS}}\n   {{GPE}}\n    {{GPE}}\n    {{ZIP_CODE}}",
+        "spans": [
+            {
+                "entity_type": "ZIP_CODE",
+                "entity_value": "53650",
+                "start_position": 88,
+                "end_position": 93
+            },
+            {
+                "entity_type": "GPE",
+                "entity_value": "SK",
+                "start_position": 81,
+                "end_position": 83
+            },
+            {
+                "entity_type": "GPE",
+                "entity_value": "LAPPEENRANTA",
+                "start_position": 64,
+                "end_position": 76
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Apt. 595",
+                "start_position": 52,
+                "end_position": 60
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Puruntie 82",
+                "start_position": 40,
+                "end_position": 51
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "28245",
+                "start_position": 34,
+                "end_position": 39
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Sara Schwarz",
+                "start_position": 17,
+                "end_position": 29
+            }
+        ],
+        "template_id": 151,
+        "metadata": null
+    },
+    {
+        "full_text": "Ubul: What a wife.\nNicole: Remember me, Mary? When I killed your brother, I talked just like this!\nJohn: You saved my life! How can I ever repay you?",
+        "masked": "{{PERSON}}: What a wife.\n{{PERSON}}: Remember me, {{PERSON}}? When I killed your brother, I talked just like this!\n{{PERSON}}: You saved my life! How can I ever repay you?",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "John",
+                "start_position": 99,
+                "end_position": 103
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Mary",
+                "start_position": 40,
+                "end_position": 44
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Nicole",
+                "start_position": 19,
+                "end_position": 25
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Ubul",
+                "start_position": 0,
+                "end_position": 4
+            }
+        ],
+        "template_id": 200,
+        "metadata": null
+    },
+    {
+        "full_text": "My name appears incorrectly on credit card statement could you please correct it to Dr. Cettina Fanucci?",
+        "masked": "My name appears incorrectly on credit card statement could you please correct it to {{TITLE}} {{PERSON}}?",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Cettina Fanucci",
+                "start_position": 88,
+                "end_position": 103
+            },
+            {
+                "entity_type": "TITLE",
+                "entity_value": "Dr.",
+                "start_position": 84,
+                "end_position": 87
+            }
+        ],
+        "template_id": 29,
+        "metadata": null
+    },
+    {
+        "full_text": "My name appears incorrectly on credit card statement could you please correct it to Dr. Berta Szöllössy?",
+        "masked": "My name appears incorrectly on credit card statement could you please correct it to {{TITLE}} {{PERSON}}?",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Berta Szöllössy",
+                "start_position": 88,
+                "end_position": 103
+            },
+            {
+                "entity_type": "TITLE",
+                "entity_value": "Dr.",
+                "start_position": 84,
+                "end_position": 87
+            }
+        ],
+        "template_id": 29,
+        "metadata": null
+    },
+    {
+        "full_text": "3... 2... 1... liftoff!",
+        "masked": "3... 2... 1... liftoff!",
+        "spans": [],
+        "template_id": 166,
+        "metadata": null
+    },
+    {
+        "full_text": "Unlike the Jensen novel, it's not about necrophilia. What it is about, I suppose is anyone's guess. A brilliant piece of baroque pop.",
+        "masked": "Unlike the {{PERSON}} novel, it's not about necrophilia. What it is about, I suppose is anyone's guess. A brilliant piece of baroque pop.",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Jensen",
+                "start_position": 11,
+                "end_position": 17
+            }
+        ],
+        "template_id": 99,
+        "metadata": null
+    },
+    {
+        "full_text": "What's your last name? Magnusson",
+        "masked": "What's your last name? {{PERSON}}",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Magnusson",
+                "start_position": 23,
+                "end_position": 32
+            }
+        ],
+        "template_id": 69,
+        "metadata": null
+    },
+    {
+        "full_text": "My name is Siiri",
+        "masked": "My name is {{PERSON}}",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Siiri",
+                "start_position": 11,
+                "end_position": 16
+            }
+        ],
+        "template_id": 58,
+        "metadata": null
+    },
+    {
+        "full_text": "William Hughes\n\n20789 Allika 46\n Suite 501\n Riisa\n\n Estonia 62488",
+        "masked": "{{PERSON}}\n\n{{STREET_ADDRESS}} {{STREET_ADDRESS}}\n {{STREET_ADDRESS}}\n {{GPE}}\n\n {{GPE}} {{STREET_ADDRESS}}",
+        "spans": [
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "62488",
+                "start_position": 60,
+                "end_position": 65
+            },
+            {
+                "entity_type": "GPE",
+                "entity_value": "Estonia",
+                "start_position": 52,
+                "end_position": 59
+            },
+            {
+                "entity_type": "GPE",
+                "entity_value": "Riisa",
+                "start_position": 44,
+                "end_position": 49
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Suite 501",
+                "start_position": 33,
+                "end_position": 42
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Allika 46",
+                "start_position": 22,
+                "end_position": 31
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "20789",
+                "start_position": 16,
+                "end_position": 21
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "William Hughes",
+                "start_position": 0,
+                "end_position": 14
+            }
+        ],
+        "template_id": 130,
+        "metadata": null
+    },
+    {
+        "full_text": "Microbilt Corporation is the brainchild of our 3 founders: Kónya, Becker and Vasquez.  The idea was born (on the beach) while they were constructing a website to be the basis of another start-up idea.",
+        "masked": "{{ORGANIZATION}} is the brainchild of our 3 founders: {{PERSON}}, {{PERSON}} and {{PERSON}}.  The idea was born (on the beach) while they were constructing a website to be the basis of another start-up idea.",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Vasquez",
+                "start_position": 77,
+                "end_position": 84
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Becker",
+                "start_position": 66,
+                "end_position": 72
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Kónya",
+                "start_position": 59,
+                "end_position": 64
+            },
+            {
+                "entity_type": "ORGANIZATION",
+                "entity_value": "Microbilt Corporation",
+                "start_position": 0,
+                "end_position": 21
+            }
+        ],
+        "template_id": 120,
+        "metadata": null
+    },
+    {
+        "full_text": "Tomomi Nishiyama lives at 86036 Rua do Arenque 1634, Goiânia",
+        "masked": "{{PERSON}} lives at {{STREET_ADDRESS}} {{STREET_ADDRESS}}, {{GPE}}",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "Goiânia",
+                "start_position": 53,
+                "end_position": 60
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Rua do Arenque 1634",
+                "start_position": 32,
+                "end_position": 51
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "86036",
+                "start_position": 26,
+                "end_position": 31
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Tomomi Nishiyama",
+                "start_position": 0,
+                "end_position": 16
+            }
+        ],
+        "template_id": 137,
+        "metadata": null
+    },
+    {
+        "full_text": "Verdafero is the brainchild of our 3 founders: Eklund, Michael and Hodge.  The idea was born (on the beach) while they were constructing a website to be the basis of another start-up idea.",
+        "masked": "{{ORGANIZATION}} is the brainchild of our 3 founders: {{PERSON}}, {{PERSON}} and {{PERSON}}.  The idea was born (on the beach) while they were constructing a website to be the basis of another start-up idea.",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Hodge",
+                "start_position": 67,
+                "end_position": 72
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Michael",
+                "start_position": 55,
+                "end_position": 62
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Eklund",
+                "start_position": 47,
+                "end_position": 53
+            },
+            {
+                "entity_type": "ORGANIZATION",
+                "entity_value": "Verdafero",
+                "start_position": 0,
+                "end_position": 9
+            }
+        ],
+        "template_id": 120,
+        "metadata": null
+    },
+    {
+        "full_text": "We moved here from Kenosha",
+        "masked": "We moved here from {{GPE}}",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "Kenosha",
+                "start_position": 19,
+                "end_position": 26
+            }
+        ],
+        "template_id": 141,
+        "metadata": null
+    },
+    {
+        "full_text": "My website is http://www.ScrapbookInsider.com.pt/",
+        "masked": "My website is {{DOMAIN_NAME}}",
+        "spans": [
+            {
+                "entity_type": "DOMAIN_NAME",
+                "entity_value": "http://www.ScrapbookInsider.com.pt/",
+                "start_position": 14,
+                "end_position": 49
+            }
+        ],
+        "template_id": 81,
+        "metadata": null
+    },
+    {
+        "full_text": "follow up with patricia desrosiers in a couple of months.",
+        "masked": "Follow up with {{PERSON}} in a couple of months.",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "patricia desrosiers",
+                "start_position": 15,
+                "end_position": 34
+            }
+        ],
+        "template_id": 170,
+        "metadata": null
+    },
+    {
+        "full_text": "The Propublica office is at Růžena and Király u. 15.",
+        "masked": "The {{ORGANIZATION}} office is at {{STREET_ADDRESS}}",
+        "spans": [
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Růžena and Király u. 15.",
+                "start_position": 28,
+                "end_position": 52
+            },
+            {
+                "entity_type": "ORGANIZATION",
+                "entity_value": "Propublica",
+                "start_position": 4,
+                "end_position": 14
+            }
+        ],
+        "template_id": 148,
+        "metadata": null
+    },
+    {
+        "full_text": "I've shared files with you https://ClickPhobia.com.br/",
+        "masked": "I've shared files with you {{DOMAIN_NAME}}",
+        "spans": [
+            {
+                "entity_type": "DOMAIN_NAME",
+                "entity_value": "https://ClickPhobia.com.br/",
+                "start_position": 27,
+                "end_position": 54
+            }
+        ],
+        "template_id": 83,
+        "metadata": null
+    },
+    {
+        "full_text": "My card 4131034282458809939 is expiring this month. Please let me know process to it's extend validity.",
+        "masked": "My card {{CREDIT_CARD}} is expiring this month. Please let me know process to it's extend validity.",
+        "spans": [
+            {
+                "entity_type": "CREDIT_CARD",
+                "entity_value": "4131034282458809939",
+                "start_position": 8,
+                "end_position": 27
+            }
+        ],
+        "template_id": 11,
+        "metadata": null
+    },
+    {
+        "full_text": "Could you please send me the last billed amount for cc 4007070753690781 on my e-mail UtaKortig@jourrapide.com?",
+        "masked": "Could you please send me the last billed amount for cc {{CREDIT_CARD}} on my e-mail {{EMAIL_ADDRESS}}?",
+        "spans": [
+            {
+                "entity_type": "EMAIL_ADDRESS",
+                "entity_value": "UtaKortig@jourrapide.com",
+                "start_position": 85,
+                "end_position": 109
+            },
+            {
+                "entity_type": "CREDIT_CARD",
+                "entity_value": "4007070753690781",
+                "start_position": 55,
+                "end_position": 71
+            }
+        ],
+        "template_id": 26,
+        "metadata": null
+    },
+    {
+        "full_text": "The Avalara office is at PSC 0413, Box 8144\nAPO AA 42323",
+        "masked": "The {{ORGANIZATION}} office is at {{STREET_ADDRESS}}",
+        "spans": [
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "PSC 0413, Box 8144\nAPO AA 42323",
+                "start_position": 25,
+                "end_position": 56
+            },
+            {
+                "entity_type": "ORGANIZATION",
+                "entity_value": "Avalara",
+                "start_position": 4,
+                "end_position": 11
+            }
+        ],
+        "template_id": 148,
+        "metadata": null
+    },
+    {
+        "full_text": "You said your email is UshurmaDratchev@rhyta.com. Is that correct?",
+        "masked": "You said your email is {{EMAIL_ADDRESS}}. Is that correct?",
+        "spans": [
+            {
+                "entity_type": "EMAIL_ADDRESS",
+                "entity_value": "UshurmaDratchev@rhyta.com",
+                "start_position": 23,
+                "end_position": 48
+            }
+        ],
+        "template_id": 62,
+        "metadata": null
+    },
+    {
+        "full_text": "I have done an online order but didn't get any message on my registered 905-674-3793. Could you please look into it ?",
+        "masked": "I have done an online order but didn't get any message on my registered {{PHONE_NUMBER}}. Could you please look into it ?",
+        "spans": [
+            {
+                "entity_type": "PHONE_NUMBER",
+                "entity_value": "905-674-3793",
+                "start_position": 72,
+                "end_position": 84
+            }
+        ],
+        "template_id": 12,
+        "metadata": null
+    },
+    {
+        "full_text": "This 74 year old female complaining of stomach pain.",
+        "masked": "This {{AGE}} year old female complaining of stomach pain.",
+        "spans": [
+            {
+                "entity_type": "AGE",
+                "entity_value": "74",
+                "start_position": 5,
+                "end_position": 7
+            }
+        ],
+        "template_id": 206,
+        "metadata": null
+    },
+    {
+        "full_text": "card number 630427373398 is lost, can you please send a new one to 1987 74 Diakou Street\n Suite 680\n Kissousa\n Cyprus 36903? I am in ΛΕΥΚΩΣΙΑ for a business trip",
+        "masked": "card number {{CREDIT_CARD}} is lost, can you please send a new one to {{STREET_ADDRESS}}? I am in {{GPE}} for a business trip",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "ΛΕΥΚΩΣΙΑ",
+                "start_position": 133,
+                "end_position": 141
+            },
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "1987 74 Diakou Street\n Suite 680\n Kissousa\n Cyprus 36903",
+                "start_position": 67,
+                "end_position": 123
+            },
+            {
+                "entity_type": "CREDIT_CARD",
+                "entity_value": "630427373398",
+                "start_position": 12,
+                "end_position": 24
+            }
+        ],
+        "template_id": 30,
+        "metadata": null
+    },
+    {
+        "full_text": "When: 2000-04-16 11:34:35\nWhere: UPTON SCUDAMORE Country Club.",
+        "masked": "When: {{DATE_TIME}}\nWhere: {{GPE}} Country Club.",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "UPTON SCUDAMORE",
+                "start_position": 33,
+                "end_position": 48
+            },
+            {
+                "entity_type": "DATE_TIME",
+                "entity_value": "2000-04-16 11:34:35",
+                "start_position": 6,
+                "end_position": 25
+            }
+        ],
+        "template_id": 157,
+        "metadata": null
+    },
+    {
+        "full_text": "I'm Naomi Ryan, originally from ΕΓΚΩΜΗ, and i'm 31 y/o.",
+        "masked": "I'm {{PERSON}}, originally from {{GPE}}, and i'm {{AGE}} y/o.",
+        "spans": [
+            {
+                "entity_type": "AGE",
+                "entity_value": "31",
+                "start_position": 48,
+                "end_position": 50
+            },
+            {
+                "entity_type": "GPE",
+                "entity_value": "ΕΓΚΩΜΗ",
+                "start_position": 32,
+                "end_position": 38
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Naomi Ryan",
+                "start_position": 4,
+                "end_position": 14
+            }
+        ],
+        "template_id": 202,
+        "metadata": null
+    },
+    {
+        "full_text": "I'm moving out of the country, so please cancel my subscription",
+        "masked": "I'm moving out of the country, so please cancel my subscription",
+        "spans": [],
+        "template_id": 59,
+        "metadata": null
+    },
+    {
+        "full_text": "It may be too that Kaczmarek was influenced by an earlier song, \"Carry Me Back To Canada,\" which was arranged and sung by Bonifacy Kaczmarek in 1977 (though Meza's song was actually about a boat!).",
+        "masked": "It may be too that {{PERSON}} was influenced by an earlier song, \"Carry Me Back To {{GPE}},\" which was arranged and sung by {{PERSON}} in {{DATE_TIME}} (though {{PERSON}}'s song was actually about a boat!).",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Meza",
+                "start_position": 157,
+                "end_position": 161
+            },
+            {
+                "entity_type": "DATE_TIME",
+                "entity_value": "1977",
+                "start_position": 144,
+                "end_position": 148
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Bonifacy Kaczmarek",
+                "start_position": 122,
+                "end_position": 140
+            },
+            {
+                "entity_type": "GPE",
+                "entity_value": "Canada",
+                "start_position": 82,
+                "end_position": 88
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Kaczmarek",
+                "start_position": 19,
+                "end_position": 28
+            }
+        ],
+        "template_id": 112,
+        "metadata": null
+    },
+    {
+        "full_text": "C'mon, sing it with me: \"You picked a fine time to leave me Mette, four hungry children and a crop in the field...\"",
+        "masked": "C'mon, sing it with me: \"You picked a fine time to leave me {{PERSON}}, four hungry children and a crop in the field...\"",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Mette",
+                "start_position": 60,
+                "end_position": 65
+            }
+        ],
+        "template_id": 102,
+        "metadata": null
+    },
+    {
+        "full_text": "Why is Katrine so impulsive?",
+        "masked": "Why is {{PERSON}} so impulsive?",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Katrine",
+                "start_position": 7,
+                "end_position": 14
+            }
+        ],
+        "template_id": 92,
+        "metadata": null
+    },
+    {
+        "full_text": "Maybe it's under Mathias Ruud",
+        "masked": "Maybe it's under {{PERSON}}",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Mathias Ruud",
+                "start_position": 17,
+                "end_position": 29
+            }
+        ],
+        "template_id": 78,
+        "metadata": null
+    },
+    {
+        "full_text": "My credit card 6586108984332171 has been lost, Can I request you to block it.",
+        "masked": "My credit card {{CREDIT_CARD}} has been lost, Can I request you to block it.",
+        "spans": [
+            {
+                "entity_type": "CREDIT_CARD",
+                "entity_value": "6586108984332171",
+                "start_position": 15,
+                "end_position": 31
+            }
+        ],
+        "template_id": 1,
+        "metadata": null
+    },
+    {
+        "full_text": "Have you been to a Ravil G Yefimov concert before?",
+        "masked": "Have you been to a {{PERSON}} concert before?",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Ravil G Yefimov",
+                "start_position": 19,
+                "end_position": 34
+            }
+        ],
+        "template_id": 95,
+        "metadata": null
+    },
+    {
+        "full_text": "ZIP: 3520",
+        "masked": "ZIP: {{ZIP_CODE}}",
+        "spans": [
+            {
+                "entity_type": "ZIP_CODE",
+                "entity_value": "3520",
+                "start_position": 5,
+                "end_position": 9
+            }
+        ],
+        "template_id": 162,
+        "metadata": null
+    },
+    {
+        "full_text": "Estonia was super fun to visit!",
+        "masked": "{{GPE}} was super fun to visit!",
+        "spans": [
+            {
+                "entity_type": "GPE",
+                "entity_value": "Estonia",
+                "start_position": 0,
+                "end_position": 7
+            }
+        ],
+        "template_id": 24,
+        "metadata": null
+    },
+    {
+        "full_text": "Janka M. Szász\n\nNetwork and computer systems administrator\n\nPersonal Info:\nPhone:\n60-56-85-91\n\nE-mail:\nSzaszJanka@cuvox.de\n\nWebsite:\nhttps://www.UEarly.se/\n\nAddress:\nBrucker Bundesstrasse 31 Zezig Streets\n Suite 245\n FÜRLING\n Austria 25173.",
+        "masked": "{{PERSON}}\n\n{{TITLE}}\n\nPersonal Info:\nPhone:\n{{PHONE_NUMBER}}\n\nE-mail:\n{{EMAIL_ADDRESS}}\n\nWebsite:\n{{DOMAIN_NAME}}\n\nAddress:\n{{STREET_ADDRESS}}.",
+        "spans": [
+            {
+                "entity_type": "STREET_ADDRESS",
+                "entity_value": "Brucker Bundesstrasse 31 Zezig Streets\n Suite 245\n FÜRLING\n Austria 25173",
+                "start_position": 166,
+                "end_position": 239
+            },
+            {
+                "entity_type": "DOMAIN_NAME",
+                "entity_value": "https://www.UEarly.se/",
+                "start_position": 133,
+                "end_position": 155
+            },
+            {
+                "entity_type": "EMAIL_ADDRESS",
+                "entity_value": "SzaszJanka@cuvox.de",
+                "start_position": 103,
+                "end_position": 122
+            },
+            {
+                "entity_type": "PHONE_NUMBER",
+                "entity_value": "60-56-85-91",
+                "start_position": 82,
+                "end_position": 93
+            },
+            {
+                "entity_type": "TITLE",
+                "entity_value": "Network and computer systems administrator",
+                "start_position": 16,
+                "end_position": 58
+            },
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Janka M. Szász",
+                "start_position": 0,
+                "end_position": 14
+            }
+        ],
+        "template_id": 188,
+        "metadata": null
+    },
+    {
+        "full_text": "Bryan Maclean's killers sentenced to life in prison",
+        "masked": "{{PERSON}}'s killers sentenced to life in prison",
+        "spans": [
+            {
+                "entity_type": "PERSON",
+                "entity_value": "Bryan Maclean",
+                "start_position": 0,
+                "end_position": 13
+            }
+        ],
+        "template_id": 184,
+        "metadata": null
+    }
+]
