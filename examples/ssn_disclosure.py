@@ -34,8 +34,8 @@ async def web_search_tool(query: str) -> dict:
     params = {"q": query, "format": "json", "no_redirect": 1, "no_html": 1}
     async with aiohttp.ClientSession() as session:
         async with session.get(url, params=params) as resp:
-            data = await resp.json()
-    abstract = data.get("AbstractText", "")
+            data = await resp.json(content_type=None)
+    abstract = data.get("Abstract", "")
     return {
         "query": query,
         "abstract": abstract

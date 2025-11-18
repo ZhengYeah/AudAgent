@@ -40,8 +40,7 @@ async def web_search_tool(query: str) -> dict:
     params = {"q": query, "format": "json", "no_redirect": 1, "no_html": 1}
     async with aiohttp.ClientSession() as session:
         async with session.get(url, params=params) as resp:
-            data = await resp.json()
-    data = json.loads(data.text) # Force parse JSON even if the mimetype is application/x-javascript
+            data = await resp.json(content_type=None)
     abstract = data.get("Abstract", "")
     return {
         "query": query,
