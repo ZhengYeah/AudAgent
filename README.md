@@ -47,10 +47,22 @@ Generally, this URL will be opened automatically in your web browser to access t
 ### 2. Run the Agent Process
 
 To run the agent process along with privacy auditing, you can follow one of the provided example scripts or create your own.
-For example, to reproduce the demonstration shown in the GIF above, navigate to the `examples/` directory and run:
+For example, to reproduce the demonstration shown in the GIF above, you should first have access to the necessary LLMs (e.g. Claude or GPT).
+If you don't have an API key yet, please refer to the respective LLM provider's website to obtain one.
+After obtaining the API key, put your LLM api key into `examples/.env` file like this:
+
+```text
+ANTHROPIC_API_KEY="sk-xxxxxxxx"
+OPENAI_API_KEY="sk-proj-xxxxxxxx"
+```
+
+Make sure to add the `.env` file to your `.gitignore` to avoid exposing your API keys publicly.
+The `.env` info will be automatically loaded when you run the example scripts.
+
+Then, navigate to the root directory and run the following command:
 
 ```bash
-uv run ./personal_email_disclosure.py
+uv run ./examples/personal_email_disclosure.py
 ```
 
 This is an AI agent with three search tools, along with AudAgent module plug-in for privacy auditing and visualization.

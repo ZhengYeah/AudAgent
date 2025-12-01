@@ -1,11 +1,15 @@
 import asyncio
-import json
 import logging
+import sys
 import os
 from pathlib import Path
 
 import aiohttp
 from dotenv import load_dotenv
+
+# Add path of audagent to sys.path (test only, not necessary if you install audagent)
+path_audagent = (Path(__file__).resolve().parent / "..").resolve()
+sys.path.insert(0, str(path_audagent))
 
 # --- Initialize Audagent with privacy policy ---
 PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
