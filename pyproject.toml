@@ -1,0 +1,24 @@
+[project]
+name = "audagent"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "aiohttp>=3.13.1",
+    "anthropic==0.71.0",
+    "autogen-agentchat==0.7.5",
+    "autogen-ext==0.7.5",
+    "fastapi>=0.119.1",
+    "httpcore>=1.0.9",
+    "httpx>=0.28.1",
+    "jsonpath-ng>=1.7.0",
+    "openai>=2.7.2",
+    "pip>=25.3",
+    "presidio-analyzer>=2.2.360",
+    "pydantic>=2.12.3",
+    "pytest>=8.4.2",
+    "python-dotenv>=1.1.1",
+    "tiktoken>=0.12.0",
+    "uvicorn>=0.38.0",
+    "websockets>=15.0.1",
+]
