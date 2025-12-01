@@ -14,7 +14,7 @@ sys.path.insert(0, str(path_audagent))
 # --- Initialize Audagent with privacy policy ---
 PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
 os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
-import audagent
+import audagent # noqa: F401
 # --- End of Audagent initialization ---
 
 from autogen_agentchat.agents import AssistantAgent

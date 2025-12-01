@@ -1,7 +1,6 @@
 """
 FastAPI server for WebSocket connection and handling events from /api/events.
 """
-
 import logging
 import os
 from pathlib import Path

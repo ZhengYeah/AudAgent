@@ -1,7 +1,7 @@
 [project]
 name = "audagent"
 version = "0.1.0"
-description = "Add your description here"
+description = "A tool for automated and visualized auditing of privacy policy compliance in AI agents."
 requires-python = ">=3.13"
 dependencies = [
     "aiohttp>=3.13.1",
