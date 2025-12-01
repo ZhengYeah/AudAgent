@@ -1,5 +1,5 @@
 """
-Input: Natural language description of a target policy (in the `pri_policy` folder)
+Input: Natural language description of a target policy (in the `privacy_policy` folder)
 Output: `PolicyTarget` class instances after applying ontology graphs
 """
 import json

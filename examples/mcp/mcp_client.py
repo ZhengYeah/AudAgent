@@ -13,7 +13,7 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_openai import ChatOpenAI
 from langchain.agents import create_agent
 
-PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "pri_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
 sys.path.insert(0, str(Path(__file__).parent.parent / "audagent"))
 load_dotenv()
 model = ChatOpenAI(model="gpt-4.1")

@@ -8,7 +8,7 @@ import aiohttp
 from dotenv import load_dotenv
 
 # --- Initialize Audagent with privacy policy ---
-PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "pri_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
 os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
 import audagent # noqa: F401
 # --- End of Audagent initialization ---

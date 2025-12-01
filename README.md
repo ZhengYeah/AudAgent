@@ -72,10 +72,10 @@ More specifically, the AudAgent module is plugged into the agent using the follo
 
 ```python
 # --- Initialize Audagent with privacy policy ---
-PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "pri_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
 os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
 import audagent
 # --- End of Audagent initialization ---
 ```
-You only need to provide the path to your privacy policy JSON file and import the `audagent` module to enable privacy auditing and visualization.
+You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
 It is independent of the agent and tools.
