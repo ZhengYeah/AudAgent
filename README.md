@@ -2,6 +2,8 @@
 
 A tool for automated and visualized auditing of privacy policy compliance in AI agents
 
+A media post introducing AudAgent is available at: [Are Your AI Agents Keeping Their Promises?](https://paragraph.com/@metaend/are-your-ai-agents-keeping-their-promises)
+
 <p align="center">
     <img src="/others/demo_disclosure_violation.gif" alt="Demonstration" width="1080"/>
 </p>
