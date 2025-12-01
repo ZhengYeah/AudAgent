@@ -91,3 +91,7 @@ import audagent
 ```
 You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
 It is independent of the agent and tools.
+
+## Thanks
+
+This project is based on the visualization tool [agentwatch](https://github.com/cyberark/agentwatch) by cyberark, thanks to their great work.
