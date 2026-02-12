@@ -1,8 +1,10 @@
 import {type Edge} from '@xyflow/react';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 import {motion} from "framer-motion";
 import * as React from 'react';
 import {useMemo, useState} from 'react';
-import {LuChevronDown, LuChevronRight, LuLink2, LuLink2Off} from 'react-icons/lu';
+import {LuChevronDown, LuChevronRight, LuLink2, LuLink2Off, LuCircleHelp} from 'react-icons/lu';
 import '../sidebar.css'
 
 type EdgeData = Edge & {
@@ -64,11 +66,33 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
 
   return (
     <div className="col-12 col-lg-3 bg-dark text-white border-left border-secondary h-100 overflow-auto">
-      <h2 className="h5 p-4 border-bottom border-secondary">AudAgent trace {isConnected ? (
-        <LuLink2 className="text-green-500 inline-block ml-2" title="Receiving events"/>
-      ) : (
-        <LuLink2Off className="text-red-500 inline-block ml-2" title="Disconnected from events server"/>
-      )}</h2>
+      <h2 className="h5 p-4 border-bottom border-secondary w-100" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+        <span style={{display: 'flex', alignItems: 'center'}}>
+          AudAgent trace&nbsp;
+          {isConnected ? (
+            <LuLink2 className="text-green-500 ml-2" title="Receiving events"/>
+          ) : (
+            <LuLink2Off className="text-red-500 ml-2" title="Disconnected from events server"/>
+          )}
+        </span>
+        <span>
+          <LuCircleHelp data-tooltip-id="doc-tooltip"
+                        data-tooltip-html="
+                          <em>Left panel:</em> <br/>
+                          Nodes □ represents the user, LLM, and third-party tools; <br/>
+                          edges → represents request/response interactions.
+                          <br/><br/>
+                          <em>Right panel:</em> <br/>
+                          Data practices for each interaction (edge), <br/>
+                          potential violation highlighted in <span class='text-red-500'>red</span>.
+                          <br/><br/>
+                          Full documentation: <a href='https://xxx.xxxxxxxx.xxx' target='_blank' class='text-blue-500 underline'>https://xxx.xxxxxxxx.xxx</a>
+                        "
+                        className="text-black-500 ml-2"
+                        style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}/>
+        </span>
+        <Tooltip id="doc-tooltip" />
+      </h2>
 
       <div className="table-responsive">
         <table className="table table-dark table-striped table-hover">
