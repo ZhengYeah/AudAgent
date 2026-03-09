@@ -63,7 +63,7 @@ OPENAI_API_KEY="sk-proj-xxxxxxxx"
 Make sure to add the `.env` file to your `.gitignore` to avoid exposing your API keys publicly.
 The `.env` info will be automatically loaded by the `dotenv` package when you run the example script.
 
-Then, navigate to the root directory and run the following command:
+Then, navigate to the root directory and run the following command: (This is also the Figure 5 in our paper.)
 
 ```bash
 uv run ./examples/personal_email_disclosure.py
@@ -97,7 +97,7 @@ It is independent of the agent, so you can easily integrate it with your own age
 
 ## Findings: Refusal Levels of Different AI Agents
 
-This part corresponds to the experiment results on SSNs in our paper, where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
+This part corresponds to the experiment results on SSNs in our paper (Figure 6), where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
 
 AI agent with GPT-4o: Refuse to process.
 <p align="center">
