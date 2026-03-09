@@ -7,13 +7,14 @@ from pathlib import Path
 import aiohttp
 from dotenv import load_dotenv
 
-# Add path of audagent to sys.path (test only, not necessary if you install audagent)
+# Add path of audagent to sys.path (not necessary if you have installed audagent)
 path_audagent = (Path(__file__).resolve().parent / "..").resolve()
 sys.path.insert(0, str(path_audagent))
 
 # --- Initialize Audagent with privacy policy ---
 PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
+PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "user_defined" / "prohibited_policy.json").resolve()
+os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) # Support multiple policies by comma separation
 import audagent # noqa: F401
 # --- End of Audagent initialization ---
 
@@ -22,7 +23,7 @@ from autogen_agentchat.messages import TextMessage
 from autogen_ext.models.anthropic import AnthropicChatCompletionClient
 from audagent.utils.custom_logging_formatter import setup_logging
 
-setup_logging(logging.DEBUG)
+setup_logging(logging.ERROR)
 logging.getLogger()
 load_dotenv(override=True)
 

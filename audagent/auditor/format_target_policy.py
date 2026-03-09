@@ -186,7 +186,7 @@ class PolicyTargetFormatter:
 
             collection = _normalize_collection(entry.get("methods_of_collection"))
             processing = _normalize_processing(entry.get("data_usage"))
-            disclosure = _normalize_disclosure(entry.get("data_disclosure"))
+            disclosure = _normalize_disclosure(entry.get("third_party_disclosure") or entry.get("data_disclosure"))
             retention = _normalize_retention(entry.get("retention_period"))
             prohibited_col = entry.get("prohibited_col", False)
             prohibited_dis = entry.get("prohibited_dis", False)

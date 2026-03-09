@@ -62,11 +62,18 @@ class EventProcessor:
             logger.info("AUDAGENT_PRIVACY_POLICIES not set.")
             return None
         try:
-            with open(path_env, "r", encoding="utf-8") as f:
-                data = json.load(f)
-            # Load to PolicyTarget models
-            policy_targets = PolicyTargetFormatter(simplified_json=data).format_target_policy()
-            logger.debug(f"Loaded privacy policies from '{path_env}'.")
+            # Support multiple policies by comma separation, and load them sequentially
+            # Note: Constraints for the same data type will be coexisted, which means the most strict one will be applied in the runtime checker
+            policy_targets: list[PolicyTarget] = []
+            for path in path_env.split(","):
+                if not os.path.isfile(path):
+                    logger.error(f"Policy file '{path}' does not exist.")
+                    return None
+                with open(path.strip(), "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                # Load to PolicyTarget models
+                policy_targets.extend(PolicyTargetFormatter(simplified_json=data).format_target_policy())
+                logger.debug(f"Loaded privacy policies from '{path}'.")
             return policy_targets
         except Exception as e:
             logger.error(f"Failed to read AUDAGENT_POLICIES_PATH '{path_env}': {e}", exc_info=True)

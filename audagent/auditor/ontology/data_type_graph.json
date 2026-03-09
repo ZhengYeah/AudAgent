@@ -35,6 +35,19 @@
       ]
     },
     {
+        "name": "Identity Data",
+        "children": [
+            { "name": "PERSON" },
+            { "name": "PHONE_NUMBER" },
+            { "name": "EMAIL_ADDRESS" },
+            { "name": "US_PASSPORT" },
+            { "name": "US_DRIVER_LICENSE" },
+            { "name": "US_ITIN" },
+            { "name": "MEDICAL_LICENSE" },
+            { "name": "NRP" }
+        ]
+    },
+    {
       "name": "Device Information",
       "children": [
         { "name": "IP_ADDRESS" },

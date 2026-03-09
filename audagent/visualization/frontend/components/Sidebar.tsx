@@ -86,7 +86,7 @@ const Sidebar: React.FC<SidebarProps> = ({edges, selectedNodes, isConnected}) =>
                           Data practices for each interaction (edge), <br/>
                           potential violation highlighted in <span class='text-red-500'>red</span>.
                           <br/><br/>
-                          Full documentation: <a href='https://xxx.xxxxxxxx.xxx' target='_blank' class='text-blue-500 underline'>https://xxx.xxxxxxxx.xxx</a>
+                          Full documentation: <a href='https://github.com/ZhengYeah/AudAgent' target='_blank' class='text-blue-500 underline'>https://github.com/ZhengYeah/AudAgent</a>
                         "
                         className="text-black-500 ml-2"
                         style={{marginLeft: 'auto', display: 'flex', alignItems: 'center'}}/>

@@ -19,7 +19,7 @@ from autogen_ext.models.anthropic import AnthropicChatCompletionClient
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 from audagent.utils.custom_logging_formatter import setup_logging
 
-setup_logging(logging.DEBUG)
+setup_logging(logging.ERROR)
 logging.getLogger()
 load_dotenv(override=True)
 
@@ -75,7 +75,7 @@ async def main():
 
     agent = AssistantAgent(
         name="currency_agent",
-        model_client=deepseek_client,
+        model_client=gemini_client,
         system_message=(
             " You are a personal assistant. Users will ask things like 'How do you know about Standford University?', or 'Search him' "
             " You must call the tool `save_file_tool(filename, content)`, or `search_tool(query)` to get the information or data, "

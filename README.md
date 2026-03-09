@@ -1,26 +1,28 @@
 # AudAgent
 
-A tool for automated and visualized auditing of privacy policy compliance in AI agents
+Code for paper: [PETS'26] AudAgent: Automated Auditing of Privacy Policy Compliance in AI Agents.
 
-A media post introducing AudAgent is available at: [Are Your AI Agents Keeping Their Promises?](https://paragraph.com/@metaend/are-your-ai-agents-keeping-their-promises)
+A tool for automated and visualized auditing of privacy policy compliance in AI agents. 
+
+A media report introducing AudAgent is available at: [Are Your AI Agents Keeping Their Promises?](https://paragraph.com/@metaend/are-your-ai-agents-keeping-their-promises)
+
+Here is a demonstration of AudAgent in action, auditing an AI agent for potential personal email disclosure violations.
 
 <p align="center">
     <img src="/others/demo_disclosure_violation.gif" alt="Demonstration" width="1080"/>
 </p>
 
-⚠️ This project is still a work in progress. Some features may be incomplete or contain errors.
-
 ## Installation
 
 This project was developed with Python 3.13 and uses `uv` for package management. Ensure you have `uv` installed.
 
-To install the required dependencies (in `pyproject.toml`), cd to the root directory and run:
+**Python packages:** To install the required dependencies (in `pyproject.toml`), cd to the root directory and run:
 
 ```bash
 uv pip install .
 ```
 
-The visualization frontend requires the Node.js (tested on v22.20.0) environment. Make sure you have it installed.
+**Node packages:** The visualization frontend requires the Node.js (tested on v22.20.0) environment. Make sure you have it installed.
 
 To install the required dependencies for the frontend (in `package.json`), navigate to the `audagent/visualization/frontend` directory and run:
 
@@ -30,9 +32,7 @@ npm install
 
 ## Usage
 
-Polished line replacement:
-
-AudAgent's workflow has two main steps: 
+AudAgent's starting includes two main steps: 
 1. start the visualization frontend to receive streaming data;
 2. run agent processes to automatically perform privacy auditing and stream results to the frontend.
 
@@ -86,14 +86,18 @@ Refer to the example `examples/personal_email_disclosure.py` for guidance on how
 More specifically, the AudAgent module is plugged into the agent using the following code snippet:
 
 ```python
-# --- Initialize Audagent with privacy policy ---
-PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
+ANTHROPIC_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "user_defined" / "prohibited_policy.json").resolve()
+# Support multiple policies by comma separation
+os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(ANTHROPIC_POLICY) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) 
 import audagent
-# --- End of Audagent initialization ---
 ```
 You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
 It is independent of the agent, so you can easily integrate it with your own agent implementations.
+
+## Findings: Refusal Levels of Different AI Agents
+
+We have tested several popular AI agents with the same personal email disclosure policy, and observed different refusal levels among them.
 
 ## Thanks
 
