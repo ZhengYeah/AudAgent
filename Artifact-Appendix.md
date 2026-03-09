@@ -28,6 +28,8 @@ We do not claim the Functional and Reproduced badges for the following reasons:
 - Reproduction of the experiments requires repeated inputs and manual comparison of (potentially) long text/conversations, which is not feasible to automate.
 
 Instead, we provide screen recordings and screenshots in the `README.md` file to demonstrate the two key components described in Section 5.1 and Section 5.2.
+Results of ablation studies (Section 5.3 and Appendix C.10) can be found in `privacy_policy` and `other_evaluations` folders.
+
 ## Notes on Reusability (Encouraged for all badges)
 
 The artifact is designed to be reusable and adaptable for a wide range of AI agents and privacy policies.

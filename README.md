@@ -78,26 +78,10 @@ My friend Bob, who lives in New York City, worked there before. His email addres
 
 The agent will process your query, and you can observe the privacy auditing process in real-time on the AudAgent visualization interface in your web browser.
 
-## Customization
-
-You can customize the agent and auditing policies according to your needs. 
-Refer to the example `examples/personal_email_disclosure.py` for guidance on how to set up your own agent and privacy policies.
-
-More specifically, the AudAgent module is plugged into the agent using the following code snippet:
-
-```python
-ANTHROPIC_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
-PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "user_defined" / "prohibited_policy.json").resolve()
-# Support multiple policies by comma separation
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(ANTHROPIC_POLICY) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) 
-import audagent
-```
-You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
-It is independent of the agent, so you can easily integrate it with your own agent implementations.
-
 ## Findings: Refusal Levels of Different AI Agents
 
 This part corresponds to the experiment results on SSNs in our paper (Figure 6), where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
+Reproductions of the experiment can be done by running the `examples/ssn_disclosure_disguised_tool.py` script with different LLM backbones (already set in the script).
 
 AI agent with GPT-4o: Refuse to process.
 <p align="center">
@@ -120,6 +104,24 @@ AI agent with DeepSeek-V3.2-Exp: Refuse to process first, but ask for user confi
 </p>
 
 We can see that different AI agents have different refusal levels when processing queries that may involve highly sensitive information, and many of them do not refuse to process such data via (disguised) third-party tools. 
+
+## Customization
+
+You can customize the agent and auditing policies according to your needs. 
+Refer to the example `examples/personal_email_disclosure.py` for guidance on how to set up your own agent and privacy policies.
+
+More specifically, the AudAgent module is plugged into the agent using the following code snippet:
+
+```python
+ANTHROPIC_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "user_defined" / "prohibited_policy.json").resolve()
+# Support multiple policies by comma separation
+os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(ANTHROPIC_POLICY) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) 
+import audagent
+```
+You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
+It is independent of the agent, so you can easily integrate it with your own agent implementations.
+
 
 ## Thanks
 
