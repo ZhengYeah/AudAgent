@@ -83,22 +83,22 @@ The agent will process your query, and you can observe the privacy auditing proc
 This part corresponds to the experiment results on SSNs in our paper (Figure 6), where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
 Reproductions of the experiment can be done by running the `examples/ssn_disclosure_disguised_tool.py` script with different LLM backbones (already set in the script).
 
-AI agent with GPT-4o: Refuse to process.
+**AI agent with GPT-4o:** Refuse to process.
 <p align="center">
     <img src="./others/gpt_ssn.png" alt="GPT-4o Refusal" width="1080"/>
 </p>
 
-AI agent with Claude-Sonnet-4.5: Directly process without refusal.
+**AI agent with Claude-Sonnet-4.5:** Directly process without refusal.
 <p align="center">
     <img src="./others/claude_ssn.png" alt="Claude-Sonnet-4.5 Refusal" width="1080"/>
 </p>
 
-AI agent with Gemini-2.5-flash: Directly process without refusal.
+**AI agent with Gemini-2.5-flash:** Directly process without refusal.
 <p align="center">
     <img src="./others/gemini_ssn.png" alt="Gemini-2.5-flash Refusal" width="1080"/>
 </p>
 
-AI agent with DeepSeek-V3.2-Exp: Refuse to process first, but ask for user confirmation and eventually process after receiving user confirmation.
+**AI agent with DeepSeek-V3.2-Exp:** Refuse to process first, but ask for user confirmation and eventually process after receiving user confirmation.
 <p align="center">
     <img src="./others/deepseek_ssn.png" alt="DeepSeek-V3.2-Exp Refusal" width="1080"/>
 </p>
