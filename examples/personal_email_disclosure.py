@@ -12,9 +12,9 @@ path_audagent = (Path(__file__).resolve().parent / "..").resolve()
 sys.path.insert(0, str(path_audagent))
 
 # --- Initialize Audagent with privacy policy ---
-PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
+ANTHROPIC_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
 PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "user_defined" / "prohibited_policy.json").resolve()
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) # Support multiple policies by comma separation
+os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(ANTHROPIC_POLICY) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) # Support multiple policies by comma separation
 import audagent # noqa: F401
 # --- End of Audagent initialization ---
 
