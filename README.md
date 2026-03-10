@@ -12,8 +12,6 @@ Here is a demonstration of AudAgent in action, auditing an AI agent for potentia
     <img src="/others/demo_disclosure_violation.gif" alt="Demonstration" width="1080"/>
 </p>
 
-[![Watch the demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](others/demo.mp4)
-
 ## Installation
 
 This project was developed with Python 3.13 and uses `uv` for package management. Ensure you have `uv` installed.
