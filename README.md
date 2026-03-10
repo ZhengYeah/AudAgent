@@ -12,10 +12,7 @@ Here is a demonstration of AudAgent in action, auditing an AI agent for potentia
     <img src="/others/demo_disclosure_violation.gif" alt="Demonstration" width="1080"/>
 </p>
 
-<video controls width="600">
-  <source src="/others/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[![Watch the demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](others/demo.mp4)
 
 ## Installation
 
