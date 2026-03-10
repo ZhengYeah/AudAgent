@@ -6,6 +6,10 @@ A tool for automated and visualized auditing of privacy policy compliance in AI 
 
 A media report introducing AudAgent is available at: [Are Your AI Agents Keeping Their Promises?](https://paragraph.com/@metaend/are-your-ai-agents-keeping-their-promises)
 
+Contributions of this project include:
+- AudAgent: an end-to-end system for automated auditing of privacy policy compliance in AI agents.
+- An auditable privacy policy model that can be derived from natural language descriptions and used for compliance auditing.
+
 Here is a demonstration of AudAgent in action, auditing an AI agent for potential personal email disclosure violations.
 
 <p align="center">
