@@ -18,6 +18,7 @@ AudAgent tackles this exact problem. AudAgent provides real-time visibility into
 ### Security/Privacy Issues and Ethical Concerns
 
 The artifact does not require any security modifications for installation or execution.
+Most evaluations are theoretical or comparative in nature. The dataset included is small and publicly available, with no sensitive information involved.
 
 ## Environment
 
