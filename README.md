@@ -7,8 +7,8 @@ A tool for automated and visualized auditing of privacy policy compliance in AI 
 A media report introducing AudAgent is available at: [Are Your AI Agents Keeping Their Promises?](https://paragraph.com/@metaend/are-your-ai-agents-keeping-their-promises)
 
 Contributions of this project include:
-- AudAgent: an end-to-end system for automated auditing of privacy policy compliance in AI agents.
-- An auditable privacy policy model that can be derived from natural language descriptions and used for compliance auditing.
+- *AudAgent: an end-to-end system* for automated auditing of privacy policy compliance in AI agents.
+- *An auditable privacy policy model* that can be derived from natural language descriptions and used for compliance auditing.
 
 Here is a demonstration of AudAgent in action, auditing an AI agent for potential personal email disclosure violations.
 
@@ -21,15 +21,14 @@ Here is a demonstration of AudAgent in action, auditing an AI agent for potentia
 This project was developed with Python 3.13 and uses `uv` for package management. Ensure you have `uv` installed.
 
 **Python packages:** To install the required dependencies (in `pyproject.toml`), cd to the root directory and run:
-
 ```bash
-uv pip install .
+uv sync
 ```
+This will create a virtual environment and install all the necessary Python packages with Python version specified in `.python-version` (3.13 in this case).
 
 **Node packages:** The visualization frontend requires the Node.js (tested on v22.20.0) environment. Make sure you have it installed.
 
 To install the required dependencies for the frontend (in `package.json`), navigate to the `audagent/visualization/frontend` directory and run:
-
 ```bash
 npm install
 ```
@@ -43,7 +42,6 @@ AudAgent's starting includes two main steps:
 ### 1. Start the Visualization Frontend
 
 To start the AudAgent visualization frontend, navigate to the root directory and run:
-
 ```bash
 uv run ./audagent/cli.py ui
 ```

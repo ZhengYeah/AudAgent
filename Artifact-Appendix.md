@@ -1,4 +1,4 @@
-# Artifact Appendix (Required for all badges)
+# Artifact Appendix
 
 Paper title: **AudAgent: Automated Auditing of Privacy Policy Compliance in AI Agents**
 
@@ -7,7 +7,7 @@ Requested Badge(s):
   - [ ] **Functional**
   - [ ] **Reproduced**
 
-## Description (Required for all badges)
+## Description
 
 [PETS'26] AudAgent: Automated Auditing of Privacy Policy Compliance in AI Agents.
 
@@ -15,22 +15,22 @@ Requested Badge(s):
 
 AudAgent tackles this exact problem. AudAgent provides real-time visibility into potential privacy violations and lets you customize your own privacy preferences so your agents behave the way you control.
 
-### Security/Privacy Issues and Ethical Concerns (Required for all badges)
+### Security/Privacy Issues and Ethical Concerns
 
 The artifact does not require any security modifications for installation or execution.
 
-## Environment (Required for all badges)
+## Environment
 
 GitHub repository: https://github.com/ZhengYeah/AudAgent
 
 We do not claim the Functional and Reproduced badges for the following reasons:
 - The project requires access to paid LLM APIs for setup and execution, and the framework involves four different LLMs.
-- Reproduction of the experiments requires repeated inputs and manual comparison of (potentially) long text/conversations, which is not feasible to automate.
+- Reproduction of the experiments requires repeated inputs and manual comparison of (potentially) long text/conversations, which seems not feasible to automate.
 
 Instead, we provide screen recordings and screenshots in the `README.md` file to demonstrate the two key components described in Section 5.1 and Section 5.2.
 Results of ablation studies (Section 5.3 and Appendix C.10) can be found in `privacy_policy` and `other_evaluations` folders.
 
-## Notes on Reusability (Encouraged for all badges)
+## Notes on Reusability
 
 The artifact is designed to be reusable and adaptable for a wide range of AI agents and privacy policies.
 The core auditing framework is modular, allowing users to integrate different agents, tools, and policy specifications with minimal modification.
