@@ -143,51 +143,6 @@ Running the above commands will show different refusal levels of different AI ag
 
 Note: We observed that refusal behavior may vary across environments, such as PyCharm and PowerShell. Nevertheless, by trying multiple times, you should still be able to obtain similar refusal responses.
 
-The results we observed in PyCharm terminal are listed in the reminder.
-
-**AI agent with GPT-4o:** Refuse to process.
-
-<p align="center">
-    <img src="./others/gpt_ssn.png" alt="GPT-4o Refusal" width="1080"/>
-</p>
-
-**AI agent with Claude-Sonnet-4.5:** Directly process without refusal.
-
-<p align="center">
-    <img src="./others/claude_ssn.png" alt="Claude-Sonnet-4.5 Refusal" width="1080"/>
-</p>
-
-**AI agent with Gemini-2.5-flash:** Directly process without refusal.
-
-<p align="center">
-    <img src="./others/gemini_ssn.png" alt="Gemini-2.5-flash Refusal" width="1080"/>
-</p>
-
-**AI agent with DeepSeek-V3.2-Exp:** Refuse to process first, but ask for user confirmation and eventually process after receiving user confirmation.
-
-<p align="center">
-    <img src="./others/deepseek_ssn.png" alt="DeepSeek-V3.2-Exp Refusal" width="1080"/>
-</p>
-
-We can see that different AI agents have different refusal levels when processing queries that may involve highly sensitive information, and many of them do not refuse to process such data via (disguised) third-party tools. 
-
-## Customization
-
-You can customize the agent and auditing policies according to your needs. 
-Refer to the example `examples/personal_email_disclosure.py` for guidance on how to set up your own agent and privacy policies.
-
-More specifically, the AudAgent module is plugged into the agent using the following code snippet:
-
-```python
-ANTHROPIC_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
-PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "user_defined" / "prohibited_policy.json").resolve()
-# Support multiple policies by comma separation
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(ANTHROPIC_POLICY) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) 
-import audagent
-```
-You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
-It is independent of the agent, so you can easily integrate it with your own agent implementations.
-
 ## Notes on Reusability
 
 The artifact is designed to be reusable and adaptable for a wide range of AI agents and privacy policies.
