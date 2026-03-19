@@ -3,9 +3,14 @@ import logging
 import os
 import json
 from pathlib import Path
+import sys
 
 import aiohttp
 from dotenv import load_dotenv
+
+# Add path of audagent to sys.path (not necessary if you have installed audagent)
+path_audagent = (Path(__file__).resolve().parent / "..").resolve()
+sys.path.insert(0, str(path_audagent))
 
 # --- Initialize Audagent with privacy policy ---
 PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
