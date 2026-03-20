@@ -3,8 +3,8 @@
 Paper title: **AudAgent: Automated Auditing of Privacy Policy Compliance in AI Agents**
 
 Requested Badge(s):
-  - [x] **Available**
-  - [ ] **Functional**
+  - [ ] **Available**
+  - [x] **Functional**
   - [ ] **Reproduced**
 
 ## Description
@@ -22,10 +22,28 @@ Most evaluations are theoretical or comparative in nature. The dataset included 
 
 ## Basic Requirements
 
+### Hardware Requirements
+
+The code has been tested on both Windows desktops and wsl environment (with specifications below). Standard hardware with a typical CPU and 16GB of memory should be sufficient.
+- CPU: Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz
+- Memory: 64GB RAM with speed 2666 MT/s
+
+### Software Requirements
+
 The software requirements for running the artifact are as follows:
 
-1. Display environment: This artifact includes visualization components and therefore requires a web browser such as Chrome or Firefox.
-2. Dependencies: All the dependent packages are specified in `./pyproject.toml` and `./audagent/visualization/frontend/package.json`. They can be installed using the commands provided later. The total installation size is approximately 1 GB.
+1. Operating System: The artifact has been tested on Windows 11 and Ubuntu 22.04 (WSL). It should also work on other operating systems that support Python and Node.js.
+2. Artifact packaging: The artifact is a Python & Node.js project packaged with `uv` and `npm`. It includes both backend and frontend components, which will be run together to demonstrate the functionality of AudAgent.
+3. Python & Node.js versions: The artifact is tested with Python 3.13 and Node.js v22.20.0. 
+4. Dependencies: All the dependent packages are specified in `./pyproject.toml` and `./audagent/visualization/frontend/package.json`. They can be installed using the commands provided later.
+5. Dataset: The artifact includes `presidio_research` and `pii_direct_prompts` datasets, which are included in the repository and do not require additional software to access.
+
+### Estimated Time and Storage Consumption
+
+The estimated time and storage consumption for running the artifact are as follows:
+
+- The overall human and compute times required to run the artifact: Approximately 30 mins for setup and running all experiments.
+- The overall disk space consumed by the artifact: Approximately 2GB, including the codebase, dependencies, and datasets.
 
 ## Environment
 
@@ -61,19 +79,23 @@ npm install
 
 It installs the required Node.js packages, including those for the React frontend, into `node_modules`. NPM may report vulnerability warnings; these can be safely ignored for the purpose of running the artifact.
 
-========
+### Testing the Environment 
 
-We do not claim the Functional and Reproduced badges for the following reasons:
+To verify that the python environment is set up correctly, you can run the following command in the project root directory:
 
-- The project requires access to paid LLM APIs for setup and execution, and the framework involves four different LLMs.
-- Reproduction of the experiments requires repeated inputs and manual comparison of (potentially) long text/conversations, which seems not feasible to automate.
+```bash
+[PROJECT_ROOT]$ uv pip check
+```
+This will print: all installed packages are compatible.
 
-Instead, we provide screen recordings and screenshots in the `README.md` file to demonstrate the two key components described in Section 5.1 and Section 5.2.
-Results of ablation studies (Section 5.3 and Appendix C.10) can be found in `privacy_policy` and `other_evaluations` folders.
+To verify that the Node.js environment is set up correctly, you can run the following command in the `audagent/visualization/frontend` directory:
 
-========
+```bash
+[PROJECT_ROOT/audagent/visualization/frontend]$ npm list
+```
+This will print the list of installed Node.js packages and their versions. You should see React and other dependencies listed.
 
-## Testing & Usage
+## Artifact Evaluation
 
 AudAgent's starting includes two main steps: 
 1. start the visualization frontend to receive streaming data;
@@ -103,6 +125,21 @@ OPENAI_API_KEY="sk-proj-xxxxxxxx"
 ```
 
 Make sure to add the `.env` file to your `.gitignore` to avoid exposing your API keys publicly. The `.env` info will be automatically loaded by the `dotenv` package when you run the example script.
+
+### Main Results and Claims
+
+This artifact mainly supports the following two main results in the paper.
+
+#### Main Result 1: AudAgent's Effectiveness in Real-time and Visual Privacy Auditing
+
+This part corresponds to the demonstration of AudAgent's real-time and visual privacy auditing capabilities, as shown in the GIF above and in Figure 5 of our paper.
+
+#### Main Result 2: AI agents' Refusal Levels when Processing Queries involving SSNs
+
+This part corresponds to the experiment results on SSNs in our paper (Table 2), where we tested several AI agents backed by popular LLMs and observed their refusal levels, i.e. how likely they are to refuse a query that processes SSNs with (disguised) tools.
+We observed that different AI agents have different refusal levels when processing SSNs, and most of them do not have a high refusal level.
+
+### Statistical Analys
 
 Then, navigate to the root directory and run the following command: (This is also the Figure 5 in our paper.)
 

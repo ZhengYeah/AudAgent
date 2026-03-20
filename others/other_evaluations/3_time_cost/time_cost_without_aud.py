@@ -2,16 +2,21 @@ import asyncio
 import os
 import time
 from pathlib import Path
+import sys
 
 import aiohttp
 from dotenv import load_dotenv
+
+# Add path of audagent to sys.path (not necessary if you have installed audagent)
+path_audagent = (Path(__file__).resolve().parent / "..").resolve()
+sys.path.insert(0, str(path_audagent))
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
 from autogen_ext.models.anthropic import AnthropicChatCompletionClient
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 
-load_dotenv(override=True)
+load_dotenv(dotenv_path=Path(__file__).resolve().parent / ".." / ".." / ".." / "examples" / ".env", override=True)
 
 async def currency_exchange_tool(from_currency: str, to_currency: str, amount: float = 1.0) -> dict:
     url = "https://api.frankfurter.app/latest"
@@ -97,7 +102,7 @@ async def main():
 
     agent = AssistantAgent(
         name="currency_agent",
-        model_client=gemini_client,
+        model_client=deepseek_client,
         system_message=(
             " You are a personal assistant. Users will ask things like 'Convert 150 USD to JPY', 'How do you know about Standford University?', or 'Search him' "
             " You must call the tool `exchange_rate_tool(from_currency, to_currency, amount)`, `organization_search_tool(query)`, or `search_tool(query)` to get the information. "
@@ -127,14 +132,5 @@ async def main():
         print("Agent:", result.messages[-1].content)
 
 
-init_start_time = time.time()
-# --- Initialize Audagent with privacy policy ---
-PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / ".." / "privacy_policy" / "anthropic" / "simplified_privacy_model.json").resolve()
-os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
-import audagent # noqa: F401
-# --- End of Audagent initialization ---
-
 if __name__ == "__main__":
-    init_end_time = time.time()
-    print(f"\033[33mInitialization time: {init_end_time - init_start_time:.2f} seconds\033[0m") # Red color for emphasis
     asyncio.run(main())
