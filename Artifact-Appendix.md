@@ -53,7 +53,7 @@ GitHub repository: https://github.com/ZhengYeah/AudAgent
 
 ### Set up the environment
 
-**Install UV package manager.** This project is packaged by `uv`, a modern Python package management system similar to `miniconda` or `poetry`. You can install `uv` by following the instructions on their official website: https://docs.astral.sh/uv/. (Remember to add `uv` to yout PATH.)
+**Install UV package manager.** This project is packaged by `uv`, a modern Python package management system similar to `miniconda` or `poetry`. You can install `uv` by following the instructions on their official website: https://docs.astral.sh/uv/. (Remember to add `uv` to your PATH.)
 
 **Clone the repository.** You can clone the repository using the following command:
 
@@ -67,7 +67,7 @@ cd AudAgent
 ```bash
 [PROJECT_ROOT]$ uv sync
 ```
-This command creates a virtual environment in the project root with Python version specified `.python-version` file (Python 3.13 in this case), and installs the dependencies listed in `pyproject.toml`.
+This command creates a virtual environment in the project root with Python version specified in the `.python-version` file (Python 3.13 in this case), and installs the dependencies listed in `pyproject.toml`.
 
 **Install Node dependencies:** 
 
@@ -116,8 +116,8 @@ This will build the frontend (if you haven't built it before) and start a local 
 **Run An Agent Process.**
 Keep the frontend running, and open a new terminal, navigate to the root directory.
 To run an agent process along with privacy auditing, e.g. the demonstration shown in the GIF above, you should first have access to the necessary LLMs (e.g. Claude or GPT).
-Please refer to the respective LLM provider's website to obtain one API if you don't have it yet.
-After obtaining the API key, put your LLM api key into `examples/.env` file like this: (You can use Notepad on Windows or Vim on Linux)
+Please refer to the respective LLM provider's website to obtain an API key if you don't have it yet.
+After obtaining the API key, put your LLM API key into the `examples/.env` file like this: (You can use Notepad on Windows or Vim on Linux)
 
 ```text
 ANTHROPIC_API_KEY="sk-xxxxxxxx"
@@ -215,7 +215,7 @@ To show functionality, we use the Claude LLM formalizer for formalizing Anthropi
 [PROJECT_ROOT]$ uv run ./others/other_evaluations/1_privacy_policy_parsing/claude_stage_1.py
 ```
 
-The prompts for formalizing the privacy policy is encoded in the script, and the formalization process will be performed by the LLM. 
+The prompts for formalizing the privacy policy are encoded in the script, and the formalization process will be performed by the LLM. 
 The result will be saved as a `json` file, and you will see the following message in the terminal:
     
 ```text
@@ -246,7 +246,7 @@ The evaluation of the real-time auditing module is done by running the following
 [PROJECT_ROOT]$ uv run ./others/other_evaluations/3_time_cost/time_cost_without_aud.py
 ```
 
-These two scripts runs AI agents with Claude LLM backbone. The prompts for agents are encoded in the scripts, and the time cost of running the agents with and without AudAgent will be printed in the terminal.
+These two scripts run AI agents with Claude LLM backbone. The prompts for agents are encoded in the scripts, and the time cost of running the agents with and without AudAgent will be printed in the terminal.
 Note that if the visualization frontend is not running, there will be error messages about failing to connect to the frontend, but the time cost will still be printed.
 
 ## Limitations
