@@ -102,7 +102,7 @@ async def main():
 
     agent = AssistantAgent(
         name="currency_agent",
-        model_client=deepseek_client,
+        model_client=anthropic_client,
         system_message=(
             " You are a personal assistant. Users will ask things like 'Convert 150 USD to JPY', 'How do you know about Standford University?', or 'Search him' "
             " You must call the tool `exchange_rate_tool(from_currency, to_currency, amount)`, `organization_search_tool(query)`, or `search_tool(query)` to get the information. "

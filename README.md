@@ -22,7 +22,7 @@ This project was developed with Python 3.13 and uses `uv` for package management
 
 **Python packages:** To install the required dependencies (in `pyproject.toml`), cd to the root directory and run:
 ```bash
-uv sync
+[PROJECT_ROOT]$ uv sync
 ```
 This will create a virtual environment and install all the necessary Python packages with Python version specified in `.python-version` (3.13 in this case).
 
@@ -30,7 +30,7 @@ This will create a virtual environment and install all the necessary Python pack
 
 To install the required dependencies for the frontend (in `package.json`), navigate to the `audagent/visualization/frontend` directory and run:
 ```bash
-npm install
+[PROJECT_ROOT]$ npm install
 ```
 It installs the required Node.js packages, including those for the React frontend, into `node_modules`. NPM may report vulnerability warnings; these can be ignored, or you can resolve them by following the instructions provided in the terminal.
 
@@ -44,7 +44,7 @@ AudAgent's starting includes two main steps:
 
 To start the AudAgent visualization frontend, navigate to the root directory and run:
 ```bash
-uv run ./audagent/cli.py ui
+[PROJECT_ROOT]$ uv run ./audagent/cli.py ui
 ```
 
 This will build the frontend (if you haven't built it before) and start a local server. 
@@ -71,7 +71,7 @@ The `.env` info will be automatically loaded by the `dotenv` package when you ru
 Then, navigate to the root directory and run the following command: (This is also the Figure 5 in our paper.)
 
 ```bash
-uv run ./examples/personal_email_disclosure.py
+[PROJECT_ROOT]$ uv run ./examples/personal_email_disclosure.py
 ```
 
 The `personal_email_disclosure.py` example is an AI agent with three search tools, along with AudAgent module plug-in.
@@ -85,17 +85,18 @@ The agent will process your query, and you can observe the privacy auditing proc
 
 ## Findings: Refusal Levels of Different AI Agents
 
-This part corresponds to the experiment results on SSNs in our paper (Figure 6), where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
+This part corresponds to the experiment results on SSNs in our paper (Table 2), where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
 Reproductions of the experiment can be done by running the `examples/ssn_disclosure_disguised_tool_*.py` script with * meaning different LLM backbones (already set in the script).
 
 Commands to run with different LLM backbones:
 
-```commandline
-uv run ./examples/ssn_disclosure_disguised_tool_openai.py
-uv run ./examples/ssn_disclosure_disguised_tool_anthropic.py
-uv run ./examples/ssn_disclosure_disguised_tool_gemini.py
-uv run ./examples/ssn_disclosure_disguised_tool_deepseek.py
+```bash
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_openai.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_anthropic.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_gemini.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_deepseek.py
 ```
+
 When you see the prompting interface, paste one of the following to the agent:
 
 ```
@@ -144,6 +145,7 @@ PERSONAL_EMAIL_DISCLOSURE_POLICY = (Path(__file__).resolve().parent / ".." / "pr
 os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(ANTHROPIC_POLICY) + "," + str(PERSONAL_EMAIL_DISCLOSURE_POLICY) 
 import audagent
 ```
+
 You only need to provide the path to your privacy policy file (analyzed by LLMs into a JSON model in this paper) and import the `audagent` module to enable privacy auditing and visualization.
 It is independent of the agent, so you can easily integrate it with your own agent implementations.
 

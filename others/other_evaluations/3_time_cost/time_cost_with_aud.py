@@ -3,12 +3,13 @@ import os
 import time
 from pathlib import Path
 import sys
+import logging
 
 import aiohttp
 from dotenv import load_dotenv
 
 # Add path of audagent to sys.path (not necessary if you have installed audagent)
-path_audagent = (Path(__file__).resolve().parent / "..").resolve()
+path_audagent = (Path(__file__).resolve().parent / ".." / ".." / "..").resolve()
 sys.path.insert(0, str(path_audagent))
 
 from autogen_agentchat.agents import AssistantAgent
@@ -138,6 +139,11 @@ PRIVACY_PATH = (Path(__file__).resolve().parent / ".." / ".." / "privacy_policy"
 os.environ["AUDAGENT_PRIVACY_POLICIES"] = str(PRIVACY_PATH)
 import audagent # noqa: F401
 # --- End of Audagent initialization ---
+
+from audagent.utils.custom_logging_formatter import setup_logging
+setup_logging(logging.ERROR)
+logging.getLogger()
+
 
 if __name__ == "__main__":
     init_end_time = time.time()

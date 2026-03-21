@@ -54,7 +54,7 @@ def main():
     cases = load_json(base / "presidio_research.json")
     mapping = load_json(base / "entity_mapping.json")
     results = evaluate(cases, mapping)
-    print("Overall:", results["overall"])
+    print(f"\033[33mOverall:", results["overall"], "\033[0m")
     for t, m in sorted(results["per_entity_type"].items()):
         print(f"{t}: {m}")
 

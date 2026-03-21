@@ -2,71 +2,71 @@
   {
     "types_of_data_collected": "Identity Data",
     "methods_of_collection": "directly from users",
-    "data_usage": "account management, service provision, user identification",
+    "data_usage": "account management, service provision, user authentication",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Payment Data",
     "methods_of_collection": "directly from users",
-    "data_usage": "payment processing, transaction management, billing",
-    "third_party_disclosure": "service providers (payment processors)",
-    "retention_period": "as long as necessary for stated purposes"
+    "data_usage": "processing payments, billing, financial transactions",
+    "third_party_disclosure": "service providers",
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Input/Output Data",
     "methods_of_collection": "directly from users",
-    "data_usage": "service provision, processing user requests, generating responses",
+    "data_usage": "providing AI services, generating responses",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Feedback Data",
     "methods_of_collection": "directly from users",
-    "data_usage": "service improvement, quality assurance, user satisfaction analysis",
+    "data_usage": "improving services, quality assurance",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Communication Data",
     "methods_of_collection": "directly from users",
-    "data_usage": "customer support, user communication, service notifications",
+    "data_usage": "customer support, responding to inquiries",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Device Data",
-    "methods_of_collection": "indirectly through automated collection (device information)",
-    "data_usage": "service optimization, compatibility, security, analytics",
+    "methods_of_collection": "indirectly through automated technologies",
+    "data_usage": "service optimization, technical support, security",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Usage Data",
-    "methods_of_collection": "indirectly through automated collection (user behavior tracking)",
-    "data_usage": "analytics, service improvement, personalization, usage patterns analysis",
+    "methods_of_collection": "indirectly through automated technologies",
+    "data_usage": "analytics, service improvement, understanding user behavior",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Log Data",
-    "methods_of_collection": "indirectly through automated server logs",
-    "data_usage": "security monitoring, troubleshooting, system maintenance, analytics",
+    "methods_of_collection": "indirectly through automated technologies",
+    "data_usage": "security monitoring, troubleshooting, system maintenance",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   },
   {
     "types_of_data_collected": "Cookie Data",
-    "methods_of_collection": "indirectly through cookies and similar tracking technologies",
-    "data_usage": "user preferences, session management, analytics, personalization",
+    "methods_of_collection": "indirectly through cookies and similar technologies",
+    "data_usage": "session management, personalization, analytics",
     "third_party_disclosure": "service providers",
     "retention_period": "not specified"
   },
   {
     "types_of_data_collected": "Training Data",
-    "methods_of_collection": "indirectly from user interactions and inputs",
-    "data_usage": "AI model training, service improvement, algorithm optimization",
+    "methods_of_collection": "indirectly from user interactions",
+    "data_usage": "improving AI models, enhancing service quality",
     "third_party_disclosure": "service providers",
-    "retention_period": "as long as necessary for stated purposes"
+    "retention_period": "as long as necessary"
   }
 ]

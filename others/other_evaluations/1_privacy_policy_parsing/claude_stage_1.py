@@ -60,7 +60,8 @@ async def main():
         json_end = result_text.rfind("]") + 1
         json_str = result_text[json_start:json_end]
         parsed_json = json.loads(json_str)
-        with open("claude_parsed_policy.json", "w", encoding="utf-8") as f:
+        file_path = Path(__file__).resolve().parent / "claude_parsed_policy.json"
+        with open(file_path, "w") as f:
             json.dump(parsed_json, f, indent=2)
         print("Parsed JSON output has been saved to 'claude_parsed_policy.json'.")
         # Print the number of data types collected according to the parsed JSON
