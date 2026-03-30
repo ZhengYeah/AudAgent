@@ -54,19 +54,20 @@ Generally, this URL will be opened automatically in your web browser to access t
 ### 2. Run An Agent Process
 
 Keep the frontend running, and open a new terminal, navigate to the root directory.
-
-To run an agent process along with privacy auditing, you can follow one of the provided example scripts or create your own.
-For example, to reproduce the demonstration shown in the GIF above, you should first have access to the necessary LLMs (e.g. Claude or GPT).
-Please refer to the respective LLM provider's website to obtain one API if you don't have it yet.
-After obtaining the API key, put your LLM api key into `examples/.env` file like this:
+To run an agent process along with privacy auditing, e.g. the demonstration shown in the GIF above, you should first have access to the necessary LLMs (e.g. Claude or GPT).
+Please refer to the respective LLM provider's website to obtain an API key if you don't have it yet.
+After obtaining the API key, create a `.env` file in the `examples/` directory (with Notepad on Windows or Vim on Linux).
+Then paste your API keys into the file. The `./examples/.env` file should have the following format, with your actual API keys replacing the "sk-xxxxxxxx" placeholders:
 
 ```text
 ANTHROPIC_API_KEY="sk-xxxxxxxx"
 OPENAI_API_KEY="sk-proj-xxxxxxxx"
+GEMINI_API_KEY="xxxxxxxx"
+DEEPSEEK_API_KEY="sk-xxxxxxxx"
 ```
 
-Make sure to add the `.env` file to your `.gitignore` to avoid exposing your API keys publicly.
-The `.env` info will be automatically loaded by the `dotenv` package when you run the example script.
+Ensure that the key names exactly match those shown above, as they are referenced by the example scripts.
+Also make sure to add the `.env` file to your `.gitignore` to avoid exposing your API keys publicly. The `.env` info will be automatically loaded by the `dotenv` package when you run the example script.
 
 Then, navigate to the root directory and run the following command: (This is also the Figure 5 in our paper.)
 
