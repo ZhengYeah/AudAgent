@@ -73,11 +73,12 @@ This command creates a virtual environment in the project root with Python versi
 
 The visualization frontend requires the Node.js (tested on v22.20.0) environment. Make sure you have it installed. 
 If not, refer to https://nodejs.org/en/download/ to install Node.js.
+(On Linux or WSL, we recommend using `nvm` to manage Node.js versions, which can be found at the same link.)
 
 To install the required dependencies for the frontend (in `package.json`), navigate to the frontend directory and install the dependencies using npm:
 
 ```bash
-[PROJECT_ROOT]$ cd ./audagent./visualization/frontend/
+[PROJECT_ROOT]$ cd ./audagent/visualization/frontend/
 [PROJECT_ROOT/audagent/visualization/frontend]$ npm install
 ```
 
@@ -203,10 +204,10 @@ You can type "exit" to exit the prompting interface with the AI agent.
 You can observe the refusal levels of different AI agents when processing queries that involve SSNs via (disguised) third-party tools by running the following commands:
 
 ```bash
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_openai.py
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_anthropic.py
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_gemini.py
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_deepseek.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_openai.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_anthropic.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_gemini.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_deepseek.py
 ```
 For each command, when you see the prompting interface, paste one of the following to the agent:
 

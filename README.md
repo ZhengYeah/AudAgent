@@ -87,15 +87,15 @@ The agent will process your query, and you can observe the privacy auditing proc
 ## Findings: Refusal Levels of Different AI Agents
 
 This part corresponds to the experiment results on SSNs in our paper (Table 2), where we tested several popular AI agents and observed their refusal levels (i.e. how likely they are to refuse a query that processes SSNs with *disguised tools*).
-Reproductions of the experiment can be done by running the `examples/ssn_disclosure_disguised_tool_*.py` script with * meaning different LLM backbones (already set in the script).
+Reproductions of the experiment can be done by running the `examples/ssn_disclosure_disguised_tools_*.py` script with * meaning different LLM backbones (already set in the script).
 
 Commands to run with different LLM backbones:
 
 ```bash
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_openai.py
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_anthropic.py
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_gemini.py
-[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tool_deepseek.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_openai.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_anthropic.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_gemini.py
+[PROJECT_ROOT]$ uv run ./examples/ssn_disclosure_disguised_tools_deepseek.py
 ```
 
 When you see the prompting interface, paste one of the following to the agent:
