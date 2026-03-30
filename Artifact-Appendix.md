@@ -73,7 +73,7 @@ This command creates a virtual environment in the project root with Python versi
 
 The visualization frontend requires the Node.js (tested on v22.20.0) environment. Make sure you have it installed. 
 If not, refer to https://nodejs.org/en/download/ to install Node.js.
-(On Linux or WSL, we recommend using `nvm` to manage Node.js versions, which can be found at the same link.)
+(On WSL, we recommend using `nvm` to manage Node.js versions to avoid conflictions with the host Windows, which can be found at the same link.)
 
 To install the required dependencies for the frontend (in `package.json`), navigate to the frontend directory and install the dependencies using npm:
 
